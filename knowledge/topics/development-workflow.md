@@ -4,7 +4,7 @@ type: topic
 status: active
 tags: [trading-system, workflow, development]
 created: 2026-04-19
-updated: 2026-04-19
+updated: 2026-04-20
 ---
 
 # Development Workflow
@@ -31,7 +31,7 @@ The intended working setup includes:
 
 ## Early Build Direction
 
-The early runtime should favor local Python development with `uv`, `pyproject.toml`, and Postgres in Docker. Start with a Typer CLI for the first end-to-end workflow. FastAPI is acceptable for an API layer when needed, but it should call the same service layer as the CLI.
+The early runtime should favor local Python development with `uv`, `pyproject.toml`, and a Typer CLI. After the in-memory Milestone 1 demo, the next persistence step can use SQLite or similar durable local storage if that keeps the workflow simple; Postgres in Docker remains an option when stronger database behavior is justified. FastAPI is acceptable later when an API layer is needed, but it should call the same service layer as the CLI.
 
 ## Knowledge Workflow
 
@@ -47,7 +47,7 @@ The application repo keeps active design docs and ADRs under `DOCS/` and `DOCS/A
 
 The application repo `README.md` is maintained in the application repo. It is also a status source for the knowledge base when it reports current workflow, local commands, and implemented scope. Before updating it, verify current status, project purpose, and core principles against the knowledge base.
 
-The 2026-04-19 README update records that the repo has moved from design into initial implementation. Current development should keep work issue-based and should not expand beyond the first vertical slice until the open-position, close-position, fill, rule, lifecycle, and review loop is usable end to end.
+The final 2026-04-20 README alignment records Milestone 1 as complete and frames the current system as a manual discipline and journaling tool. Current development should keep work issue-based and focus next on persistence and `OrderIntent` before external integrations or automation.
 
 ## Related Pages
 

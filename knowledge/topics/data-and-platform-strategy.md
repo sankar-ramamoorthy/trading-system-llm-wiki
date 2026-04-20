@@ -4,7 +4,7 @@ type: topic
 status: active
 tags: [trading-system, data, platforms]
 created: 2026-04-19
-updated: 2026-04-19
+updated: 2026-04-20
 ---
 
 # Data and Platform Strategy
@@ -21,7 +21,7 @@ Alpaca is a likely first programmable execution venue, especially for paper trad
 
 ## Data Providers
 
-Start with free or low-cost data and upgrade only when limits become real.
+Market data remains post-MVP. When added, it should begin as read-only context rather than a driver of automated decisions. Start with free or low-cost data and upgrade only when limits become real.
 
 Initial and candidate sources:
 
@@ -30,6 +30,8 @@ Initial and candidate sources:
 - Polygon.io as a future upgrade
 
 Data quality, alignment, and structure matter more than cost early.
+
+Milestone 2 may add contextual price information, but broker integration and real-time trading systems remain later concerns.
 
 ## Adapter Principle
 

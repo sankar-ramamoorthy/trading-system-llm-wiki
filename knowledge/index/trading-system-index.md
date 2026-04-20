@@ -46,3 +46,5 @@ Application repo `DOCS/domain-model.md` and `DOCS/systems-blueprint.md` v2 updat
 Raw status notes from 2026-04-19 and the updated application repo `README.md` were synthesized into the implementation status, first vertical slice, project structure, development workflow, and source-documentation pages.
 
 Issue 4 through Issue 8 raw notes, the updated app README, `DOCS/milestone-1-summary.md`, `DOCS/milestone-2-roadmap.md`, and ADR-005 were synthesized on 2026-04-20. Milestone 1 is now recorded as complete as a local CLI-driven MVP vertical slice.
+
+The final 2026-04-20 README alignment was synthesized into the project purpose, MVP boundary, implementation status, project structure, Milestone 2 roadmap, and source-documentation pages. It emphasizes the current system as a manual discipline and journaling tool, with persistence and `OrderIntent` as near-term post-MVP focus.

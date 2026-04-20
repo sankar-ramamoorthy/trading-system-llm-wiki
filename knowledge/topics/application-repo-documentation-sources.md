@@ -28,7 +28,7 @@ C:\Users\bosto\dockerstuff\trading-system\DOCS\ADR\
 
 Current observed files:
 
-- `README.md`, updated to reflect Milestone 1 MVP completion, local commands, and post-MVP direction
+- `README.md`, final 2026-04-20 alignment reflecting Milestone 1 MVP completion, local commands, discipline/journaling usage, and post-MVP direction
 - `DOCS/domain-model.md` v2, dated 2026-04-19
 - `DOCS/milestone-1-summary.md` v1, dated 2026-04-20
 - `DOCS/milestone-2-roadmap.md` v1, dated 2026-04-20
@@ -45,7 +45,7 @@ Note: the current application repo filename is `systems-blueprint.md`, plural.
 
 The application repo docs are the versioned source for decisions tied to code history. They answer when a decision was made and what code version it governed.
 
-The application repo `README.md` is a current-state source. It should be used to understand the implemented workflow, local commands, and explicit non-scope, but it should not replace ADRs or the domain model as the decision record.
+The application repo `README.md` is a current-state source. It should be used to understand the implemented workflow, local commands, user-facing framing, and explicit non-scope, but it should not replace ADRs or the domain model as the decision record.
 
 ADR-005 is the source of truth for the Milestone 1 MVP boundary. `DOCS/milestone-1-summary.md` summarizes what was delivered, and `DOCS/milestone-2-roadmap.md` describes likely next work.
 

@@ -19,7 +19,7 @@ C:\Users\bosto\dockerstuff\trading-system
 
 ## Current State
 
-Observed from raw status notes, the updated application repo `README.md`, Milestone 1 docs, ADR-005, and source files under `src/trading_system/`:
+Observed from raw status notes, the final 2026-04-20 application repo `README.md`, Milestone 1 docs, ADR-005, and source files under `src/trading_system/`:
 
 - Initial Python `src/` scaffold exists.
 - The package root is `src/trading_system/`.
@@ -64,6 +64,8 @@ The local demo uses in-memory repositories and exercises:
 - automatically closing the position when fills reduce open quantity to zero
 - creating one manual `TradeReview` for the closed position
 - recording lifecycle events such as `POSITION_OPENED`, `FILL_RECORDED`, `POSITION_CLOSED`, and `TRADE_REVIEW_CREATED`
+
+The final README frames the current system as a manual discipline and journaling tool. It is designed to enforce thinking quality first; automation is explicitly later work built on the correct domain foundation.
 
 ## Position Opening Rule
 
@@ -135,6 +137,8 @@ The application README states these are intentionally out of scope right now:
 - fill correction or amendment workflows
 - manual force-close or reopen workflows
 - automated reviews or review editing workflows
+
+The README's post-MVP direction emphasizes persistence, `OrderIntent`, basic P&L, querying, read-only market data, later broker adapters, and review enhancements.
 
 ## Related Pages
 

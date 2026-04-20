@@ -9,7 +9,7 @@ updated: 2026-04-20
 
 # MVP Definition and Boundaries
 
-ADR-005 defines the Milestone 1 MVP as a local, CLI-driven trading system that enforces structured trade intent, captures manual execution, closes positions from fills, and supports manual post-trade review with auditability.
+ADR-005 and the final 2026-04-20 README alignment define the Milestone 1 MVP as a local, CLI-driven trading system that enforces structured trade intent, captures execution through manual fills, closes positions from fills, and supports manual post-trade review with auditability.
 
 ## MVP Workflow
 
@@ -34,6 +34,8 @@ The MVP includes:
 - one manual `TradeReview` per closed position
 - lifecycle events for audit history
 - CLI demo using in-memory repositories
+
+It is a discipline and journaling workflow, not an execution bot.
 
 ## Excluded
 
@@ -66,6 +68,7 @@ The MVP prioritizes:
 - auditability over optimization
 - correctness over completeness
 - domain clarity over integration breadth
+- thinking quality over trade automation
 
 Broker integration, market data, analytics, and AI remain later concerns because the system must first represent what was planned, what happened, when it closed, and what was learned.
 

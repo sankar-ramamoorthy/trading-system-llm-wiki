@@ -13,14 +13,13 @@ The runtime application should start as a Python modular monolith that makes the
 
 ## Runtime Shape
 
-Use local Python development with Postgres in Docker:
+Use local Python development with `uv`. The immediate post-MVP persistence target may be SQLite or similar durable local storage; Postgres in Docker remains a later option when the project needs stronger database behavior.
 
 - package name: `trading_system`
 - dependency and environment manager: `uv`
-- database: Postgres
-- migrations: Alembic
+- database: SQLite or similar for early durable local persistence; Postgres later if justified
+- migrations: add when the chosen persistence layer needs them
 - ORM: SQLAlchemy 2.x
-- driver: `psycopg`
 - first interface: Typer CLI
 - API: FastAPI only when needed
 - tests: pytest
@@ -91,7 +90,9 @@ Milestone 1 deliberately leaves these to later work:
 - practical CLI commands beyond the demo
 - `OrderIntent`
 - basic P&L
-- broker, market data, API, UI, analytics, and AI integrations
+- read-only market data context
+- broker integration as a later adapter
+- API, UI, analytics, and AI integrations
 
 ## Current Commands
 

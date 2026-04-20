@@ -28,7 +28,8 @@ It should not expand into broker integration, market data ingestion, AI systems,
 Durable persistence:
 
 - persist `TradeIdea`, `TradeThesis`, `TradePlan`, `Position`, `Fill`, `TradeReview`, and `LifecycleEvent`
-- add Alembic migrations and repository implementations
+- use durable storage such as SQLite initially if that keeps local usage simple; Postgres and Alembic remain reasonable when durability or deployment needs justify them
+- add migrations and repository implementations when the chosen persistence layer requires them
 - keep repository interfaces stable where possible
 
 Query and retrieval workflows:
@@ -71,6 +72,8 @@ Unless a future ADR changes the boundary, Milestone 2 should still defer:
 - portfolio-level analytics
 - advanced reporting
 - strategy automation
+
+The final README update frames market data as read-only context and broker integration as a later adapter, not a source of trade meaning.
 
 ## Exit Criteria
 
