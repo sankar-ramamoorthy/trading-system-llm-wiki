@@ -4,7 +4,7 @@ type: topic
 status: active
 tags: [trading-system, milestone-2, roadmap]
 created: 2026-04-20
-updated: 2026-04-20
+updated: 2026-04-24
 ---
 
 # Milestone 2 Roadmap
@@ -23,42 +23,60 @@ Milestone 2 should focus on:
 
 It should not expand into broker integration, market data ingestion, AI systems, dashboards, or broad analytics platforms.
 
+## Observed Progress
+
+Verified against the linked application repo on 2026-04-24:
+
+- durable local JSON persistence is implemented
+- read-only position retrieval and timeline commands are implemented
+- narrow `OrderIntent` support is implemented and inserted before manual fills
+- a minimal realized P&L calculation exists on the read side for closed positions
+- explicit CLI write commands for the core workflow are implemented
+- upstream read commands for trade ideas and trade plans are implemented
+
+Milestone 2 is now largely implemented in code. The remaining work is best understood as final polish, cleanup, and documentation alignment rather than missing core capability.
+
 ## Candidate Work Areas
 
 Durable persistence:
 
-- persist `TradeIdea`, `TradeThesis`, `TradePlan`, `Position`, `Fill`, `TradeReview`, and `LifecycleEvent`
-- use durable storage such as SQLite initially if that keeps local usage simple; Postgres and Alembic remain reasonable when durability or deployment needs justify them
-- add migrations and repository implementations when the chosen persistence layer requires them
-- keep repository interfaces stable where possible
+- implemented first as local JSON persistence in `.trading-system/store.json`
+- persisted workflow now includes `TradeIdea`, `TradeThesis`, `TradePlan`, `Position`, `Fill`, `TradeReview`, `LifecycleEvent`, `RuleEvaluation`, `Violation`, and `OrderIntent`
+- SQLite, Postgres, and migrations remain later options when stronger database behavior is justified
+- repository interfaces should stay stable where possible
 
 Query and retrieval workflows:
 
-- list positions
-- show position
-- list closed positions
-- show associated fills and review
+- implemented commands include `list-positions`, `show-position`, and `show-position-timeline`
+- current position detail output includes linked fills, review, and order intents
+- broader list and inspection workflows for upstream objects still remain useful follow-up work
 
 `OrderIntent`:
 
-- introduce planned execution intent between `TradePlan` and actual `Fill`
-- preserve the distinction between what the trader intended to execute and what actually filled
-- keep broker integration out of scope for this step
+- implemented narrowly as planned execution intent between approved `TradePlan` and manual `Fill`
+- current code keeps `Position` creation timing unchanged
+- fills can optionally link to an `OrderIntent`
+- broker integration remains out of scope
 
 Basic P&L:
 
-- compute minimal realized P&L for simple closed positions from fills
-- avoid tax lots, commissions, fees, and advanced reporting initially
+- source code now computes minimal realized P&L for closed positions from fills on the read side
+- commissions, fees, tax lots, portfolio aggregation, and advanced reporting remain deferred
+- later 2026-04-24 application repo docs now reflect this implementation
 
 Lifecycle timeline:
 
-- expose ordered lifecycle events for a position
-- possible command: `uv run trading-system show-position-timeline <position-id>`
+- implemented through `uv run trading-system show-position-timeline <position-id>`
 
 CLI usability:
 
-- move beyond demo-only usage
-- add simple commands for creating ideas, theses, plans, approvals, rule checks, positions, fills, and reviews
+- practical write commands now exist beyond the demo workflow
+- implemented read and write commands make the local JSON-backed workflow usable without opening the store file directly
+- remaining CLI work is polish rather than missing core workflow coverage
+
+## Follow-On Roadmap
+
+The accepted roadmap after Milestone 2 is now recorded in [[milestones-3-to-5-roadmap]].
 
 ## Deferred
 

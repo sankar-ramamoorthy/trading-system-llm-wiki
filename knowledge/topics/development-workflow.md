@@ -4,7 +4,7 @@ type: topic
 status: active
 tags: [trading-system, workflow, development]
 created: 2026-04-19
-updated: 2026-04-20
+updated: 2026-04-24
 ---
 
 # Development Workflow
@@ -47,7 +47,9 @@ The application repo keeps active design docs and ADRs under `DOCS/` and `DOCS/A
 
 The application repo `README.md` is maintained in the application repo. It is also a status source for the knowledge base when it reports current workflow, local commands, and implemented scope. Before updating it, verify current status, project purpose, and core principles against the knowledge base.
 
-The final 2026-04-20 README alignment records Milestone 1 as complete and frames the current system as a manual discipline and journaling tool. Current development should keep work issue-based and focus next on persistence and `OrderIntent` before external integrations or automation.
+The later 2026-04-24 application repo docs record Milestone 1 as complete and Milestone 2 as largely implemented. Current development should keep work issue-based and follow the accepted next sequence in [[milestones-3-to-5-roadmap]]: manual workflow usability, then read-only market context, then review, learning, and local operations.
+
+Reinforcement learning remains exploratory and should not be treated as the active next milestone direction unless a future ADR changes that.
 
 ## Related Pages
 

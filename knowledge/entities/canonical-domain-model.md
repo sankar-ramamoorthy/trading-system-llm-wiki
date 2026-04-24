@@ -4,7 +4,7 @@ type: entity
 status: active
 tags: [trading-system, domain-model]
 created: 2026-04-19
-updated: 2026-04-20
+updated: 2026-04-24
 ---
 
 # Canonical Domain Model
@@ -99,6 +99,8 @@ The application repo `DOCS/domain-model.md` v2 and ADR-005 define the narrow Mil
 
 This is intentionally smaller than the full canonical domain model. It proves the core lifecycle before watchlists, broker orders, `OrderIntent`, context ingestion, reconciliation, P&L, analytics, and broader market identity features are implemented.
 
+Post-Milestone-1 implementation has now introduced a narrow `OrderIntent` object in the application repo. It remains intentionally smaller than broker-order modeling and should still be understood as system intent, not external execution fact.
+
 ## First Slice Subset
 
 The first executable slice currently matches the narrow v1 implementation scope and is complete as Milestone 1. It proves a planned discretionary swing trade from idea through review before watchlists, context ingestion, broker integration, and reconciliation are added.
@@ -133,6 +135,11 @@ Deferred until after the first slice:
 - `ExternalMapping`
 - `ReconciliationRun`
 - `ReconciliationIssue`
+
+Current post-slice additions observed in code:
+
+- `OrderIntent` is now implemented narrowly between approved `TradePlan` and manual `Fill`
+- realized P&L exists as a read-side calculation for closed positions, not as a persisted canonical entity
 
 ## Related Pages
 

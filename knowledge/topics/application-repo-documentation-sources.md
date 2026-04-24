@@ -4,7 +4,7 @@ type: topic
 status: active
 tags: [trading-system, documentation, adr, application-repo]
 created: 2026-04-19
-updated: 2026-04-20
+updated: 2026-04-24
 ---
 
 # Application Repo Documentation Sources
@@ -28,16 +28,26 @@ C:\Users\bosto\dockerstuff\trading-system\DOCS\ADR\
 
 Current observed files:
 
-- `README.md`, final 2026-04-20 alignment reflecting Milestone 1 MVP completion, local commands, discipline/journaling usage, and post-MVP direction
+- `README.md`, updated 2026-04-24 to reflect current CLI workflow, Milestone 2 implementation, and the accepted Milestones 3 through 5 roadmap
 - `DOCS/domain-model.md` v2, dated 2026-04-19
 - `DOCS/milestone-1-summary.md` v1, dated 2026-04-20
 - `DOCS/milestone-2-roadmap.md` v1, dated 2026-04-20
+- `DOCS/milestones-3-to-5-roadmap.md`, accepted 2026-04-24
+- `DOCS/milestone-4-market-context-design.md`, accepted-for-roadmap 2026-04-24
+- `DOCS/milestone-5-review-learning-and-local-ops-design.md`, accepted-for-roadmap 2026-04-24
 - `DOCS/systems-blueprint.md` v2, dated 2026-04-19
 - `DOCS/ADR/001-system-architecture.md`
 - `DOCS/ADR/002-rules-vs-context.md`
 - `DOCS/ADR/003-development-and-deployment-strategy.md`
 - `DOCS/ADR/004-canonical-domain-and-source-of-truth.md`
 - `DOCS/ADR/005-mvp-definition-and-boundaries.md`, accepted 2026-04-20
+
+Supplemental implementation sources used for the 2026-04-24 synthesis:
+
+- raw and processed Milestone 2 issue notes in this knowledge base for Issues 9, 10, and 11
+- raw notes captured after Issue 12 through Issue 14 implementation
+- application repo source files under `src/trading_system/`
+- application repo tests under `tests/`
 
 Note: the current application repo filename is `systems-blueprint.md`, plural.
 
@@ -48,6 +58,8 @@ The application repo docs are the versioned source for decisions tied to code hi
 The application repo `README.md` is a current-state source. It should be used to understand the implemented workflow, local commands, user-facing framing, and explicit non-scope, but it should not replace ADRs or the domain model as the decision record.
 
 ADR-005 is the source of truth for the Milestone 1 MVP boundary. `DOCS/milestone-1-summary.md` summarizes what was delivered, and `DOCS/milestone-2-roadmap.md` describes likely next work.
+
+As of the later 2026-04-24 repo state, the README and roadmap docs are aligned with the current Milestone 2 implementation and with the accepted next milestone set. When docs and code disagree in future, prefer code and tests for implementation status and docs for intent and boundary.
 
 The knowledge base is the living synthesis. It should summarize current meaning, maintain cross-links, and reconcile multiple source documents into canonical pages such as [[architecture-overview]], [[canonical-domain-model]], and [[deterministic-rules-vs-contextual-intelligence]].
 

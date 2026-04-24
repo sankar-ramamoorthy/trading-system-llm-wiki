@@ -4,7 +4,7 @@ type: entity
 status: active
 tags: [trading-system, project]
 created: 2026-04-19
-updated: 2026-04-20
+updated: 2026-04-24
 ---
 
 # Trading System
@@ -36,7 +36,15 @@ It is not intended to be a trading bot, a black-box system, an automated executi
 - Identify and evaluate opportunities through watchlist monitoring and setup degradation detection.
 - Use AI for knowledge organization, context comparison, contradiction detection, and structured judgment support.
 
-Milestone 1 is currently best understood as a discipline and journaling tool: manual, local, auditable, and intentionally not automated.
+Milestone 1 is best understood as a discipline and journaling tool: manual, local, auditable, and intentionally not automated.
+
+Current repository state extends that base with durable local persistence, explicit CLI workflow commands, narrow `OrderIntent`, and read-side realized P&L while preserving the same manual and auditable design center.
+
+The accepted next roadmap is:
+
+- Milestone 3: manual workflow usability
+- Milestone 4: read-only market context
+- Milestone 5: review, learning, and local operations
 
 ## Related Pages
 

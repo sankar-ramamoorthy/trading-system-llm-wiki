@@ -4,7 +4,7 @@ type: topic
 status: active
 tags: [trading-system, vertical-slice, implementation]
 created: 2026-04-19
-updated: 2026-04-20
+updated: 2026-04-24
 ---
 
 # First Vertical Slice
@@ -13,13 +13,15 @@ The first vertical slice is complete as the Milestone 1 MVP. It proves that the 
 
 ## Current Implementation Status
 
-As of the 2026-04-20 Milestone 1 summary, ADR-005, and updated app README, the implemented local workflow is:
+As of the 2026-04-20 Milestone 1 summary, ADR-005, and updated app README, the Milestone 1 workflow is:
 
 ```text
 TradeIdea -> TradeThesis -> TradePlan -> plan approval -> RuleEvaluation -> Position -> Fill -> Position close -> TradeReview
 ```
 
 Implemented pieces include the Python scaffold, planned trade workflow skeleton, deterministic rule evaluation for an approved plan, opening a position from an approved plan, manual fill recording, execution-state tracking, automatic close from fills, one manual review for a closed position, and lifecycle events.
+
+Post-Milestone-1 application work has already extended the live code with JSON persistence, retrieval commands, and narrow `OrderIntent` support. That does not change what Milestone 1 proved; it means the first slice is now being carried forward rather than replaced.
 
 The canonical demo command is:
 
@@ -109,9 +111,7 @@ Position close is not a separate MVP command. It is a domain transition caused b
 
 ## Data Direction
 
-Use Postgres early enough to make the model real. Use UUIDs, `created_at`, `updated_at`, explicit foreign keys, and JSONB for flexible plan or thesis details where appropriate.
-
-The first persistent schema should cover instruments, trade ideas, theses, plans, positions, manual fills, rules, rule evaluations, violations, reviews, and lifecycle events. Milestone 1 uses in-memory repositories for the demo while SQLAlchemy infrastructure remains scaffolded.
+Milestone 1 originally used in-memory repositories for the demo while SQLAlchemy infrastructure remained scaffolded. The current application has since taken a smaller first durability step with local JSON persistence.
 
 ## Lifecycle Events
 

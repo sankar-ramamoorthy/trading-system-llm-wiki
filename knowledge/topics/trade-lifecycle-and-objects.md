@@ -4,7 +4,7 @@ type: topic
 status: active
 tags: [trading-system, trade-lifecycle, domain-model]
 created: 2026-04-19
-updated: 2026-04-20
+updated: 2026-04-24
 ---
 
 # Trade Lifecycle and Objects
@@ -52,8 +52,9 @@ Active monitoring:
 
 Execution:
 
+- `OrderIntent` records intended execution separately from actual fills
 - `Fill` records execution reality separately from trade intent and position meaning
-- Milestone 1 records fills manually against open positions
+- current code records fills manually against open positions and can link them to an `OrderIntent`
 - position execution state tracks total bought quantity, total sold quantity, current open quantity, and weighted average entry price
 - a reducing fill to zero closes the position with close reason `fills_completed`
 
@@ -72,6 +73,12 @@ TradeIdea -> TradeThesis -> TradePlan -> Rule Checks -> Decision -> Position -> 
 ```
 
 This is represented by the canonical Milestone 1 demo before adding watchlists, AI context, broker integration, order-intent modeling, P&L, or broader market data.
+
+The current post-MVP code path now inserts `OrderIntent` before manual fills:
+
+```text
+TradeIdea -> TradeThesis -> TradePlan -> plan approval -> RuleEvaluation -> OrderIntent -> Position -> Fill -> Position close -> TradeReview
+```
 
 ## Important Separations
 
