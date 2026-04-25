@@ -52,8 +52,25 @@ Verified from raw notes and application source:
 - Issue 10: read-only retrieval commands for persisted positions and timelines.
 - Issue 11: narrow `OrderIntent` implementation between approved `TradePlan` and manual `Fill`.
 - Issue 12 through Issue 14 sequence: read-side P&L output, explicit core write CLI commands, upstream read commands, and CLI workflow polish.
+- Issue 15: trade review inspection commands.
+- Issue 16: read-command output consistency.
 
 The later 2026-04-24 application repo README and roadmap docs are now aligned with those Milestone 2 capabilities.
+
+## Verified Early Milestone 3 Progress
+
+Verified from newer raw notes and application source:
+
+- Issue 17: Milestone 3 usability bundle is implemented.
+
+That bundle adds:
+
+- thesis inspection commands: `list-trade-theses` and `show-trade-thesis`
+- exact-match filters on current list commands where daily manual use benefits from them
+- explicit `oldest|newest` sorting on the supported list commands
+- README alignment so the documented CLI surface matches the implemented commands and flags
+
+The related cancellation proposal remains unimplemented and explicitly deferred from the current usability bundle.
 
 ## Implemented Workflow
 
@@ -85,9 +102,14 @@ The final README frames the current system as a manual discipline and journaling
 Verified CLI commands now include:
 
 - write commands for `create-trade-idea`, `create-trade-thesis`, `create-trade-plan`, `approve-trade-plan`, `evaluate-trade-plan-rules`, `create-order-intent`, `open-position`, `record-fill`, and `create-trade-review`
-- read commands for `list-trade-ideas`, `list-trade-plans`, `show-trade-plan`, `list-positions`, `show-position`, and `show-position-timeline`
+- read commands for `list-trade-ideas`, `list-trade-theses`, `show-trade-thesis`, `list-trade-plans`, `show-trade-plan`, `list-trade-reviews`, `show-trade-review`, `list-positions`, `show-position`, and `show-position-timeline`
 
 Closed positions expose realized P&L on the read side, and the read commands now surface enough linked data for practical CLI chaining.
+
+Review inspection commands are also now present:
+
+- `list-trade-reviews`
+- `show-trade-review`
 
 ## Current Roadmap Direction
 
@@ -98,6 +120,23 @@ Application repo roadmap docs dated 2026-04-24 now define the accepted post-Mile
 - Milestone 5: review, learning, and local operations
 
 Reinforcement learning remains exploratory only and is not the accepted Milestone 3 direction.
+
+The current Milestone 3 usability bundle also explicitly leaves `OrderIntent` cancellation for a later follow-on issue if real usage still justifies it.
+
+## Milestone Call
+
+Milestone 2 appears functionally complete against its roadmap criteria:
+
+- core data persists across runs
+- past positions and trades can be retrieved
+- intended execution is distinct from actual fills
+- basic P&L exists for simple closed trades
+- CLI usage is now practical for manual operation
+
+However, Milestone 2 does not yet look formally closed out in the application repo documentation. The README still says Milestone 2 is in progress, and it does not yet list the newer review inspection commands. The most defensible synthesis is:
+
+- Milestone 2: functionally complete, but not yet formally closed out
+- Milestone 3: started
 
 ## Position Opening Rule
 
@@ -153,6 +192,9 @@ Recorded results include:
 44 passed after Issue 10
 53 passed after Issue 11
 59 passed after the Issue 12 through 14 sequence
+67 passed after the review inspection slice
+73 passed after read-command output consistency
+Issue 17 implementation note captured command and doc alignment work, but did not include a fresh recorded aggregate test count in the raw note
 ```
 
 This page records that result from the note; it does not replace a fresh test run in the application repo before code changes.
@@ -173,7 +215,7 @@ The application docs still treat these as intentionally out of scope:
 - manual force-close or reopen workflows
 - automated reviews or review editing workflows
 
-The post-Milestone-2 direction now emphasizes manual workflow usability, read-only market context, review and learning improvements, and local operational robustness before broker integration, Postgres migration, or RL work.
+The current direction now emphasizes manual workflow usability, read-only market context, review and learning improvements, and local operational robustness before broker integration, Postgres migration, or RL work.
 
 ## Related Pages
 

@@ -33,8 +33,10 @@ Verified against the linked application repo on 2026-04-24:
 - a minimal realized P&L calculation exists on the read side for closed positions
 - explicit CLI write commands for the core workflow are implemented
 - upstream read commands for trade ideas and trade plans are implemented
+- review inspection commands are implemented
+- read-command output formatting has been normalized for consistency
 
-Milestone 2 is now largely implemented in code. The remaining work is best understood as final polish, cleanup, and documentation alignment rather than missing core capability.
+Milestone 2 now appears functionally complete in code. The remaining gap is formal closeout and documentation alignment rather than missing core workflow capability.
 
 ## Candidate Work Areas
 
@@ -77,6 +79,25 @@ CLI usability:
 ## Follow-On Roadmap
 
 The accepted roadmap after Milestone 2 is now recorded in [[milestones-3-to-5-roadmap]].
+
+## Completion Decision
+
+Using the current exit criteria, Milestone 2 looks complete in behavior but not fully closed out in project framing.
+
+Why it looks complete:
+
+- persistence exists
+- retrieval exists
+- `OrderIntent` exists
+- basic realized P&L exists
+- CLI supports practical manual usage
+
+Why it does not look formally closed out yet:
+
+- the application README still says Milestone 2 is in progress
+- the README command summary has not yet caught up to newer review inspection commands
+
+The most accurate current status is: Milestone 2 is functionally complete and awaiting explicit closeout.
 
 ## Deferred
 
