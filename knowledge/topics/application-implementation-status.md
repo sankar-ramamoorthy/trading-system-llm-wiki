@@ -134,18 +134,21 @@ That follow-on is now implemented in the linked application repo.
 
 ## Milestone Call
 
-Milestone 2 appears functionally complete against its roadmap criteria:
+Current synthesis:
+
+- Milestone 2 is complete
+- Milestone 3 is complete
+- Milestone 4 is next
+
+Milestone 2 is complete because its roadmap criteria are satisfied in the repo:
 
 - core data persists across runs
 - past positions and trades can be retrieved
 - intended execution is distinct from actual fills
 - basic P&L exists for simple closed trades
-- CLI usage is now practical for manual operation
+- CLI usage is practical for manual operation
 
-However, Milestone 2 does not yet look formally closed out in the application repo documentation. The README still says Milestone 2 is in progress, and it does not yet list the newer review inspection commands. The most defensible synthesis is:
-
-- Milestone 2: functionally complete, but not yet formally closed out
-- Milestone 3: started
+Milestone 3 is complete because the manual workflow usability work now includes inspection, filtering, sorting, output consistency, and narrow `OrderIntent` cancellation without weakening domain boundaries.
 
 ## Position Opening Rule
 
@@ -232,6 +235,7 @@ The current direction now emphasizes manual workflow usability, read-only market
 - [[first-vertical-slice]]
 - [[mvp-definition-and-boundaries]]
 - [[milestone-2-roadmap]]
+- [[milestone-3-closeout]]
 - [[application-project-structure]]
 - [[development-workflow]]
 - [[canonical-domain-model]]

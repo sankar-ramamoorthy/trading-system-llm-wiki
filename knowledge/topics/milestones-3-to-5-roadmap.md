@@ -20,8 +20,9 @@ This sequence keeps the project local-first and manual-first while extending use
 ## Current Status
 
 - Milestone 1 is complete.
-- Milestone 2 appears functionally complete and is awaiting explicit closeout and documentation alignment.
-- Milestone 3 has started.
+- Milestone 2 is complete.
+- Milestone 3 is complete.
+- Milestone 4 is next.
 
 ## Milestone 3
 
@@ -42,21 +43,16 @@ Observed progress from the linked application repo and new raw notes:
 - README examples have been updated so the documented CLI surface matches the current usability bundle
 - `OrderIntent` cancellation now exists as a narrow follow-on with audit events and fill-linkage enforcement
 
-This means Milestone 3 is in its early usability phase rather than just planning.
+The implemented work now supports an explicit Milestone 3 completion call.
 
-Likely remaining work for Milestone 3:
+Milestone 3 is complete because:
 
-- fill the remaining command-chaining gaps where manual use is still awkward
-- add narrow filtering and sorting where it materially improves manual workflows
-- decide whether a narrow `OrderIntent` terminal-state action such as cancellation belongs in Milestone 3
-- finish documentation and examples so the CLI surface matches actual behavior
+- routine manual workflows no longer depend on the demo command
+- the CLI now supports practical creation, inspection, execution, cancellation, and review chaining
+- usability improvements stayed inside the manual and auditable domain boundary
+- the work did not spill into market context, reporting, or automation concerns that belong to later milestones
 
-Based on the current repo state, thesis inspection and the first filtering/sorting bundle are already done. The most likely remaining Milestone 3 work is now:
-
-- identify any still-missing high-value inspection or chaining gaps from actual daily use
-- make any final closeout updates needed so Milestone 2 can be marked formally complete while Milestone 3 continues
-
-Since `OrderIntent` cancellation is now implemented, the remaining Milestone 3 work should focus on any still-missing manual-usage gaps rather than revisiting that decision.
+See [[milestone-3-closeout]] for the explicit closeout note.
 
 Milestone 3 should still avoid turning into reporting, export, market-context, or analytics work that belongs to later milestones.
 
@@ -103,6 +99,7 @@ Reinforcement learning remains exploratory knowledge only. It is not the accepte
 ## Related Pages
 
 - [[milestone-2-roadmap]]
+- [[milestone-3-closeout]]
 - [[application-implementation-status]]
 - [[development-workflow]]
 - [[data-and-platform-strategy]]

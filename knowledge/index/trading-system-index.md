@@ -24,6 +24,7 @@ This index is the navigation entry point for the trading-system knowledge base.
 - [[first-vertical-slice]] - first executable planned swing-trade workflow
 - [[mvp-definition-and-boundaries]] - Milestone 1 MVP scope and explicit exclusions
 - [[milestone-2-roadmap]] - post-MVP direction for persistence, retrieval, OrderIntent, P&L, and CLI usability
+- [[milestone-3-closeout]] - explicit closeout note for the manual workflow usability milestone
 - [[milestones-3-to-5-roadmap]] - accepted roadmap after Milestone 2 for manual workflow usability, read-only market context, and review/local operations
 - [[application-project-structure]] - Python modular monolith structure and boundaries
 - [[application-implementation-status]] - current observed implementation status from app repo README, status notes, and source files
@@ -57,3 +58,5 @@ Later raw notes on 2026-04-24 show early Milestone 3 implementation work: review
 Later raw notes also record the implemented Issue 17 usability bundle: thesis inspection commands, exact-match filters, stable sort modes, and README alignment. A separate proposal for `OrderIntent` cancellation remains deferred and non-canonical for now.
 
 The later raw note for explicit order-intent cancellation supersedes that earlier planning-only status. Cancellation is now implemented as a narrow Milestone 3 follow-on and should be treated as current application behavior.
+
+The knowledge base now records Milestone 3 as complete through an explicit closeout note, with Milestone 4 as the next active milestone.
