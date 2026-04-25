@@ -62,6 +62,7 @@ The later 2026-04-24 application repo README and roadmap docs are now aligned wi
 Verified from newer raw notes and application source:
 
 - Issue 17: Milestone 3 usability bundle is implemented.
+- explicit `OrderIntent` cancellation follow-on is implemented.
 
 That bundle adds:
 
@@ -70,7 +71,13 @@ That bundle adds:
 - explicit `oldest|newest` sorting on the supported list commands
 - README alignment so the documented CLI surface matches the implemented commands and flags
 
-The related cancellation proposal remains unimplemented and explicitly deferred from the current usability bundle.
+The original cancellation proposal was deferred from the first usability bundle, but it has now landed as a separate follow-on:
+
+- `OrderIntentStatus` includes `created` and `canceled`
+- `cancel-order-intent` is implemented
+- cancellation emits `ORDER_INTENT_CANCELED`
+- canceled order intents are rejected by fill recording
+- canceled status is visible in existing read views
 
 ## Implemented Workflow
 
@@ -122,6 +129,8 @@ Application repo roadmap docs dated 2026-04-24 now define the accepted post-Mile
 Reinforcement learning remains exploratory only and is not the accepted Milestone 3 direction.
 
 The current Milestone 3 usability bundle also explicitly leaves `OrderIntent` cancellation for a later follow-on issue if real usage still justifies it.
+
+That follow-on is now implemented in the linked application repo.
 
 ## Milestone Call
 
@@ -195,6 +204,7 @@ Recorded results include:
 67 passed after the review inspection slice
 73 passed after read-command output consistency
 Issue 17 implementation note captured command and doc alignment work, but did not include a fresh recorded aggregate test count in the raw note
+104 passed after explicit order-intent cancellation
 ```
 
 This page records that result from the note; it does not replace a fresh test run in the application repo before code changes.

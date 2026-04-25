@@ -40,6 +40,7 @@ Observed progress from the linked application repo and new raw notes:
 - thesis inspection now exists through `list-trade-theses` and `show-trade-thesis`
 - exact-match filtering and `oldest|newest` sorting now exist across the current list commands
 - README examples have been updated so the documented CLI surface matches the current usability bundle
+- `OrderIntent` cancellation now exists as a narrow follow-on with audit events and fill-linkage enforcement
 
 This means Milestone 3 is in its early usability phase rather than just planning.
 
@@ -53,8 +54,9 @@ Likely remaining work for Milestone 3:
 Based on the current repo state, thesis inspection and the first filtering/sorting bundle are already done. The most likely remaining Milestone 3 work is now:
 
 - identify any still-missing high-value inspection or chaining gaps from actual daily use
-- decide whether `OrderIntent` cancellation is justified as a narrow follow-on usability issue
 - make any final closeout updates needed so Milestone 2 can be marked formally complete while Milestone 3 continues
+
+Since `OrderIntent` cancellation is now implemented, the remaining Milestone 3 work should focus on any still-missing manual-usage gaps rather than revisiting that decision.
 
 Milestone 3 should still avoid turning into reporting, export, market-context, or analytics work that belongs to later milestones.
 

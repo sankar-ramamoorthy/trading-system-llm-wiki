@@ -55,3 +55,5 @@ Raw notes from 2026-04-22 through 2026-04-24 were processed on 2026-04-24. They 
 Later raw notes on 2026-04-24 show early Milestone 3 implementation work: review inspection commands and read-command output consistency. The current synthesis is that Milestone 2 looks functionally complete but not yet formally closed out, while Milestone 3 has started.
 
 Later raw notes also record the implemented Issue 17 usability bundle: thesis inspection commands, exact-match filters, stable sort modes, and README alignment. A separate proposal for `OrderIntent` cancellation remains deferred and non-canonical for now.
+
+The later raw note for explicit order-intent cancellation supersedes that earlier planning-only status. Cancellation is now implemented as a narrow Milestone 3 follow-on and should be treated as current application behavior.
