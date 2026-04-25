@@ -9,6 +9,7 @@ This repository is a Markdown-first knowledge base for the `trading-system` proj
 - `knowledge/processed/`, `knowledge/entities/`, `knowledge/topics/`, and `knowledge/index/` are intended for refined wiki content, canonical concept pages, topic syntheses, and navigation pages.
 - `knowledge/outputs/` is for generated answers or temporary synthesized outputs.
 - `prompts/` contains restart prompts and reusable context for future AI-assisted sessions.
+- `PROJECT.md`, if present, is the short current-context entrypoint for active milestone focus and high-priority links; keep durable knowledge in the wiki pages.
 
 Keep diagrams ASCII-only. Prefer `[[wikilinks]]` for internal knowledge references when creating durable wiki pages.
 
@@ -73,6 +74,8 @@ Pull requests should include:
 ## Agent-Specific Instructions
 
 Treat this repository as persistent project memory. Integrate new notes incrementally, maintain cross-links, and keep generated output separate from canonical knowledge unless the user asks to promote it.
+
+Current milestone focus, active project state, and short-term priorities should not be expanded here. Keep those in `PROJECT.md` or the relevant pages under `knowledge/topics/`, and keep this file focused on durable repository rules and knowledge-ingestion behavior.
 
 ## Linked Application Repo
 
