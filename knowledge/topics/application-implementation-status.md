@@ -4,7 +4,7 @@ type: topic
 status: active
 tags: [trading-system, implementation, status]
 created: 2026-04-19
-updated: 2026-04-24
+updated: 2026-04-26
 ---
 
 # Application Implementation Status
@@ -19,7 +19,7 @@ C:\Users\bosto\dockerstuff\trading-system
 
 ## Current State
 
-Observed from processed issue notes, raw notes captured on 2026-04-22 through 2026-04-24, later 2026-04-24 application repo docs, and verified source files and tests under `src/trading_system/` and `tests/`:
+Observed from processed issue notes, raw notes captured on 2026-04-22 through 2026-04-26, application repo docs, and verified source files and tests under `src/trading_system/` and `tests/`:
 
 - Initial Python `src/` scaffold exists.
 - The package root is `src/trading_system/`.
@@ -30,6 +30,7 @@ Observed from processed issue notes, raw notes captured on 2026-04-22 through 20
 - SQLAlchemy infrastructure skeleton still exists, but it is not the active Milestone 2 persistence path.
 - Typer CLI exists with `version`, `demo-planned-trade`, retrieval commands, and additional read-side query wiring in source.
 - The canonical demo now uses local JSON persistence rather than in-memory-only execution.
+- Milestone 4 local context snapshot import is now implemented as a read-only local JSON workflow.
 
 ## Completed Milestone 1
 
@@ -79,6 +80,19 @@ The original cancellation proposal was deferred from the first usability bundle,
 - canceled order intents are rejected by fill recording
 - canceled status is visible in existing read views
 
+## Verified Early Milestone 4 Progress
+
+Verified from application repo source, docs, and tests on 2026-04-26:
+
+- `MarketContextSnapshot` domain record exists.
+- `MarketContextSnapshotRepository` and `MarketContextImportSource` ports exist.
+- Local JSON file import adapter exists for explicit context snapshot files.
+- JSON and in-memory snapshot repositories exist.
+- Import and query services validate targets, derive or require `instrument_id`, and store immutable snapshots.
+- CLI commands now exist for `import-context`, `list-context`, and `show-context`.
+- Application docs now state that context snapshots are advisory, read-only, and non-canonical.
+- External providers such as `yfinance` remain deferred and should require an ADR before implementation.
+
 ## Implemented Workflow
 
 Current executable workflow:
@@ -110,6 +124,7 @@ Verified CLI commands now include:
 
 - write commands for `create-trade-idea`, `create-trade-thesis`, `create-trade-plan`, `approve-trade-plan`, `evaluate-trade-plan-rules`, `create-order-intent`, `open-position`, `record-fill`, and `create-trade-review`
 - read commands for `list-trade-ideas`, `list-trade-theses`, `show-trade-thesis`, `list-trade-plans`, `show-trade-plan`, `list-trade-reviews`, `show-trade-review`, `list-positions`, `show-position`, and `show-position-timeline`
+- context commands for `import-context`, `list-context`, and `show-context`
 
 Closed positions expose realized P&L on the read side, and the read commands now surface enough linked data for practical CLI chaining.
 
@@ -138,7 +153,7 @@ Current synthesis:
 
 - Milestone 2 is complete
 - Milestone 3 is complete
-- Milestone 4 is next
+- Milestone 4 has started, with the local context snapshot slice implemented
 
 Milestone 2 is complete because its roadmap criteria are satisfied in the repo:
 
@@ -149,6 +164,8 @@ Milestone 2 is complete because its roadmap criteria are satisfied in the repo:
 - CLI usage is practical for manual operation
 
 Milestone 3 is complete because the manual workflow usability work now includes inspection, filtering, sorting, output consistency, and narrow `OrderIntent` cancellation without weakening domain boundaries.
+
+Milestone 4 is not yet called complete here. The first slice is implemented, but broader context usefulness and any follow-on context types or provider boundaries still need separate acceptance.
 
 ## Position Opening Rule
 
@@ -208,16 +225,17 @@ Recorded results include:
 73 passed after read-command output consistency
 Issue 17 implementation note captured command and doc alignment work, but did not include a fresh recorded aggregate test count in the raw note
 104 passed after explicit order-intent cancellation
+117 passed after Milestone 4 local context snapshot import
 ```
 
-This page records that result from the note; it does not replace a fresh test run in the application repo before code changes.
+The 117-test result was verified in the application repo on 2026-04-26 with `uv run pytest`.
 
 ## Current Non-Scope
 
 The application docs still treat these as intentionally out of scope:
 
 - broker integration
-- market data ingestion
+- external market data providers beyond explicit local snapshot import
 - AI or ML features
 - reconciliation workflows
 - FastAPI
@@ -236,6 +254,7 @@ The current direction now emphasizes manual workflow usability, read-only market
 - [[mvp-definition-and-boundaries]]
 - [[milestone-2-roadmap]]
 - [[milestone-3-closeout]]
+- [[milestone-4-context-snapshot-workflow]]
 - [[application-project-structure]]
 - [[development-workflow]]
 - [[canonical-domain-model]]

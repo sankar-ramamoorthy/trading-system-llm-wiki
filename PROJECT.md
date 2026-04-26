@@ -4,7 +4,7 @@ type: project
 status: active
 tags: [trading-system, project, context]
 created: 2026-04-25
-updated: 2026-04-25
+updated: 2026-04-26
 ---
 
 # Project Brief
@@ -17,9 +17,10 @@ Milestone 4: read-only market context.
 
 ## Active Focus
 
-- Introduce market context as read-only support for judgment and review.
+- Refine the implemented local JSON context snapshot workflow for planning and review.
 - Preserve the manual, local, auditable workflow established through Milestones 1 through 3.
 - Keep deterministic rules separate from advisory context and external data.
+- Keep external market-data providers deferred until a provider-boundary ADR is accepted.
 
 ## Current Concerns
 
@@ -29,7 +30,7 @@ Milestone 4: read-only market context.
 
 ## Open Questions
 
-- Which market-context sources should be used first for Milestone 4?
+- What follow-on context types are useful after the first local snapshot import slice?
 - What minimum read-only context is useful before adding review and learning workflows in Milestone 5?
 
 ## High-Priority Links
@@ -38,6 +39,7 @@ Milestone 4: read-only market context.
 - [[application-implementation-status]]
 - [[knowledge-base-workflow]]
 - [[milestones-3-to-5-roadmap]]
+- [[milestone-4-context-snapshot-workflow]]
 - [[application-repo-documentation-sources]]
 
 ## Update Rule

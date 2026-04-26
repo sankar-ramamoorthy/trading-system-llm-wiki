@@ -4,7 +4,7 @@ type: topic
 status: active
 tags: [trading-system, context-intelligence, ai]
 created: 2026-04-19
-updated: 2026-04-19
+updated: 2026-04-26
 ---
 
 # Context Intelligence Layer
@@ -26,6 +26,14 @@ Internal event types may include `FilingEvent`, `NewsEvent`, `PeerEvent`, `Macro
 - what changed since last review?
 
 Each item should carry timestamp, source, related symbols, event type, raw reference, normalized summary, confidence or relevance score, and affected ideas, watchlist items, or positions.
+
+## Milestone 4 Initial Slice
+
+The first implemented slice for Milestone 4 is a local, read-only context snapshot workflow.
+
+The initial slice imports local JSON context documents into immutable snapshots before adding external market-data providers. This keeps context auditable, deterministic to test, and separate from canonical trade meaning.
+
+See [[milestone-4-context-snapshot-workflow]].
 
 ## Thesis Monitor
 
