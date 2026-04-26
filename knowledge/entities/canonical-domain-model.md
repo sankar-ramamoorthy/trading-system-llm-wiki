@@ -142,6 +142,7 @@ Current post-slice additions observed in code:
 - realized P&L exists as a read-side calculation for closed positions, not as a persisted canonical entity
 - `MarketContextSnapshot` is implemented for read-only, non-canonical context snapshots
 - `TradeReview.tags` is implemented as creation-time review metadata for filtering and learning loops
+- `TradeReview` quality scores are implemented as optional creation-time review metadata for process, setup, execution, and exit quality
 
 ## Related Pages
 
@@ -150,3 +151,4 @@ Current post-slice additions observed in code:
 - [[first-vertical-slice]]
 - [[mvp-definition-and-boundaries]]
 - [[milestone-5-review-tags-and-filtering]]
+- [[milestone-5-review-quality-scores]]

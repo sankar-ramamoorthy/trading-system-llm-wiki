@@ -27,7 +27,7 @@ Milestone 3 and Milestone 4 are complete. Milestone 5 has started.
 
 Milestone 4 added read-only market and context support while preserving the system as the canonical owner of trade meaning.
 
-Milestone 5 should improve review structure, narrow journal-grade reporting, export, and local operations. Its first implemented slice is creation-time review tags and filtering. It should not expand into AI-generated review content or reinforcement learning.
+Milestone 5 should improve review structure, narrow journal-grade reporting, export, and local operations. Its first implemented slices are creation-time review tags/filtering and optional review quality scores. It should not expand into AI-generated review content or reinforcement learning.
 
 ## External Product Assessment Notes
 
@@ -78,6 +78,7 @@ The current application should first generate trustworthy ground truth:
 - rule evaluations
 - fills and position lifecycle
 - review tags and lessons
+- review quality scores
 - completed outcomes
 
 Future learning systems can use that data only after the data is mature enough to support meaningful conclusions.

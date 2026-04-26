@@ -111,6 +111,15 @@ First implementation slice:
 
 See [[milestone-5-review-tags-and-filtering]].
 
+Second implementation slice:
+
+- optional 1-5 process, setup, execution, and exit quality scores on `TradeReview`
+- score display in review list/detail output
+- exact `list-trade-reviews` score filters
+- no review editing, generated coaching, reporting/export, or analytics yet
+
+See [[milestone-5-review-quality-scores]].
+
 ## Explicit Deferrals
 
 The accepted roadmap still defers:

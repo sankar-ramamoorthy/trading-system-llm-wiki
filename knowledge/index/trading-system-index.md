@@ -28,6 +28,7 @@ This index is the navigation entry point for the trading-system knowledge base.
 - [[milestones-3-to-5-roadmap]] - accepted roadmap after Milestone 2 for manual workflow usability, read-only market context, and review/local operations
 - [[milestone-4-context-snapshot-workflow]] - initial local context snapshot workflow and provider deferral for Milestone 4
 - [[milestone-5-review-tags-and-filtering]] - first Milestone 5 review/learning slice for creation-time tags and review filtering
+- [[milestone-5-review-quality-scores]] - second Milestone 5 review/learning slice for optional process, setup, execution, and exit scores
 - [[product-roadmap-and-learning-boundaries]] - near-term roadmap, long-term product direction, and deferred AI/RL boundary
 - [[application-project-structure]] - Python modular monolith structure and boundaries
 - [[application-implementation-status]] - current observed implementation status from app repo README, status notes, and source files
@@ -77,3 +78,5 @@ Milestone 4 is now closed in the application repo. The app repo status and summa
 The first Milestone 5 slice is implemented in the application repo: creation-time review tags and review filtering. The slice adds `TradeReview.tags`, `create-trade-review --tag`, tag display in review list/detail output, and `list-trade-reviews --tag`, while explicitly avoiding review editing, taxonomy management, generated coaching, reporting/export, and broader analytics. Verification recorded 58 focused tests passing and 131 full-suite tests passing.
 
 The Perplexity assessment based on the application repo README and STATUS was processed on 2026-04-26 and moved to `knowledge/processed/`. It did not change the accepted roadmap, but it reinforced durable guardrails: keep the daily workflow fast, keep market context advisory, avoid overbuilding, preserve meaningful review prompts, and continue testing lifecycle invariants.
+
+The second Milestone 5 slice is implemented in the application repo: optional review quality scores. The slice adds `process_score`, `setup_quality`, `execution_quality`, and `exit_quality` to `TradeReview`, exposes create/list/show CLI support, and keeps the feature as creation-time review metadata rather than review editing, reporting, generated coaching, or analytics. Verification recorded 59 focused tests passing and 132 full-suite tests passing.

@@ -31,7 +31,7 @@ Observed from processed issue notes, raw notes captured on 2026-04-22 through 20
 - Typer CLI exists with `version`, `demo-planned-trade`, retrieval commands, and additional read-side query wiring in source.
 - The canonical demo now uses local JSON persistence rather than in-memory-only execution.
 - Milestone 4 local context snapshot workflow is complete.
-- Milestone 5 review tags and filtering are implemented as the first review/learning slice.
+- Milestone 5 review tags/filtering and review quality scores are implemented as early review/learning slices.
 
 ## Completed Milestone 1
 
@@ -116,6 +116,12 @@ Verified from application repo source, docs, and tests on 2026-04-26:
 - `list-trade-reviews` displays tags and supports repeated `--tag` filters.
 - `show-trade-review` displays tags in the review detail section.
 - The first Milestone 5 slice intentionally does not add review editing, taxonomy management, generated coaching, reporting/export, or broader analytics.
+- `TradeReview` now has optional 1-5 process, setup, execution, and exit quality scores.
+- JSON persistence stores review quality scores and loads older review records without scores as `None`.
+- `create-trade-review` accepts `--process-score`, `--setup-quality`, `--execution-quality`, and `--exit-quality`.
+- `list-trade-reviews` displays the quality scores and supports exact score filters.
+- `show-trade-review` displays all four quality scores.
+- The second Milestone 5 slice intentionally does not add review editing, reporting/export, generated coaching, or broader analytics.
 
 ## Implemented Workflow
 
@@ -165,6 +171,11 @@ Review tags are now part of those review workflows:
 - `create-trade-review --tag`
 - `list-trade-reviews --tag`
 
+Review quality scores are now part of those review workflows:
+
+- `create-trade-review --process-score --setup-quality --execution-quality --exit-quality`
+- `list-trade-reviews --process-score --setup-quality --execution-quality --exit-quality`
+
 ## Current Roadmap Direction
 
 Application repo roadmap docs dated 2026-04-24 now define the accepted post-Milestone-2 sequence as:
@@ -186,7 +197,7 @@ Current synthesis:
 - Milestone 2 is complete
 - Milestone 3 is complete
 - Milestone 4 is complete
-- Milestone 5 has started, with review tags and filtering implemented
+- Milestone 5 has started, with review tags/filtering and review quality scores implemented
 
 Milestone 2 is complete because its roadmap criteria are satisfied in the repo:
 
@@ -200,7 +211,7 @@ Milestone 3 is complete because the manual workflow usability work now includes 
 
 Milestone 4 is complete because the local context workflow supports import, discovery, linked detail surfacing, payload inspection, and copy-to-target reuse while preserving context as read-only and non-canonical.
 
-Milestone 5 has started because the app repo now supports creation-time review tags and review filtering without expanding into review editing, taxonomy management, reporting/export, or generated coaching.
+Milestone 5 has started because the app repo now supports creation-time review tags, review filtering, and optional review quality scores without expanding into review editing, taxonomy management, reporting/export, or generated coaching.
 
 ## Position Opening Rule
 
@@ -237,6 +248,7 @@ Trade review remains manual and simple:
 - only one review per position is allowed
 - review content is structured and human-authored
 - review tags can be added at creation time and used for filtering
+- optional 1-5 review quality scores can be added at creation time and used for exact filtering
 - no editing, versioning, multiple reviews, taxonomy management, analytics, or AI-generated feedback is included
 
 ## Validation Recorded
@@ -265,6 +277,7 @@ Issue 17 implementation note captured command and doc alignment work, but did no
 123 passed after surfacing linked market context in detail views
 129 passed after context discovery filters and copy workflow
 131 passed after Milestone 5 review tags and filtering
+132 passed after Milestone 5 review quality scores
 ```
 
 The 117-test result was verified in the application repo on 2026-04-26 with `uv run pytest`.
@@ -278,6 +291,13 @@ The Milestone 5 review-tag slice was verified in the application repo on 2026-04
 ```text
 Focused review-tag suite: 58 passed
 Full suite: 131 passed
+```
+
+The Milestone 5 review quality score slice was verified in the application repo on 2026-04-26:
+
+```text
+Focused review quality suite: 59 passed
+Full suite: 132 passed
 ```
 
 ## Current Non-Scope
@@ -307,6 +327,7 @@ The current direction now emphasizes manual workflow usability, read-only market
 - [[milestone-3-closeout]]
 - [[milestone-4-context-snapshot-workflow]]
 - [[milestone-5-review-tags-and-filtering]]
+- [[milestone-5-review-quality-scores]]
 - [[application-project-structure]]
 - [[development-workflow]]
 - [[canonical-domain-model]]
