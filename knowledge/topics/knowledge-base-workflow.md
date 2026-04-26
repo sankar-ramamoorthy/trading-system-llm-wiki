@@ -4,7 +4,7 @@ type: topic
 status: active
 tags: [trading-system, knowledge-base, workflow, agents]
 created: 2026-04-19
-updated: 2026-04-19
+updated: 2026-04-26
 ---
 
 # Knowledge Base Workflow
@@ -55,6 +55,32 @@ Use `knowledge/raw/` as a scratchpad for unprocessed observations, edge cases, a
 - `prompts/` for reusable AI session context
 
 After promotion, move the source note to `knowledge/processed/` and leave any durable interpretation in canonical pages rather than only in processing summaries.
+
+## Promotion Rule
+
+Promote a note only when it has been reviewed for durable value, reconciled against existing source-of-truth material when practical, and assigned to the correct target artifact.
+
+Promotion targets:
+
+- Keep material in `knowledge/raw/` when it is still an unprocessed observation, brainstorm, feedback note, pasted context, or rough idea.
+- Move the original source note to `knowledge/processed/` after its useful content has been extracted, structured, or promoted.
+- Promote recurring patterns, synthesized workflows, design concerns, and cross-cutting explanations to `knowledge/topics/`.
+- Promote stable domain objects, named systems, project concepts, and canonical definitions to `knowledge/entities/`.
+- Promote navigation maps and reader entrypoints to `knowledge/index/`.
+- Promote durable architectural decisions, source-of-truth boundaries, workflow decisions, repo-structure decisions, and long-term constraints to `adr/`.
+- Promote reusable AI session context to `prompts/`.
+- Move toward application repo work only after the decision or design implication is clear and aligned with the application repo README, docs, ADRs, and current code.
+
+Promotion checklist:
+
+- The useful claim is more than a passing thought, or it captures a high-impact design concern.
+- The target artifact is clear: topic, entity, ADR, prompt, application issue, or no action.
+- Existing canonical pages and application repo docs have been checked when practical.
+- Contradictions are recorded instead of silently resolved.
+- The original source remains traceable through the processed note, links, or cited context.
+- Implementation is not started from raw feedback alone unless the user explicitly asks for a tactical change.
+
+This rule exists to prevent three failure modes: raw backlog, wiki-to-code drift, and raw notes becoming too authoritative before they have been reconciled.
 
 ## Traceability
 
