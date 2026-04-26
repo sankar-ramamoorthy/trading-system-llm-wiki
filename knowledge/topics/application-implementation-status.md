@@ -9,7 +9,7 @@ updated: 2026-04-26
 
 # Application Implementation Status
 
-The application repository has completed Milestone 1 and has implemented several Milestone 2 steps.
+The application repository has completed Milestones 1 through 4 and has started Milestone 5.
 
 Application repo:
 
@@ -30,7 +30,8 @@ Observed from processed issue notes, raw notes captured on 2026-04-22 through 20
 - SQLAlchemy infrastructure skeleton still exists, but it is not the active Milestone 2 persistence path.
 - Typer CLI exists with `version`, `demo-planned-trade`, retrieval commands, and additional read-side query wiring in source.
 - The canonical demo now uses local JSON persistence rather than in-memory-only execution.
-- Milestone 4 local context snapshot import is now implemented as a read-only local JSON workflow.
+- Milestone 4 local context snapshot workflow is complete.
+- Milestone 5 review tags and filtering are implemented as the first review/learning slice.
 
 ## Completed Milestone 1
 
@@ -80,7 +81,7 @@ The original cancellation proposal was deferred from the first usability bundle,
 - canceled order intents are rejected by fill recording
 - canceled status is visible in existing read views
 
-## Verified Early Milestone 4 Progress
+## Verified Milestone 4 Completion
 
 Verified from application repo source, docs, and tests on 2026-04-26:
 
@@ -96,6 +97,25 @@ Verified from application repo source, docs, and tests on 2026-04-26:
 - `copy-context` creates a new immutable linked snapshot from an existing snapshot and leaves the original unchanged.
 - Application docs now state that context snapshots are advisory, read-only, and non-canonical.
 - External providers such as `yfinance` remain deferred and should require an ADR before implementation.
+
+Milestone 4 is closed in the application repo. The closeout summary records:
+
+```text
+Focused Milestone 4/read-model suite: 43 passed
+Full suite: 129 passed
+```
+
+## Verified Early Milestone 5 Progress
+
+Verified from application repo source, docs, and tests on 2026-04-26:
+
+- `TradeReview` now has creation-time `tags`.
+- Review tags normalize to lowercase slugs, de-duplicate, and reject empty normalized tags.
+- JSON persistence stores review tags and loads older review records without tags as an empty list.
+- `create-trade-review` accepts repeated `--tag` options.
+- `list-trade-reviews` displays tags and supports repeated `--tag` filters.
+- `show-trade-review` displays tags in the review detail section.
+- The first Milestone 5 slice intentionally does not add review editing, taxonomy management, generated coaching, reporting/export, or broader analytics.
 
 ## Implemented Workflow
 
@@ -140,6 +160,11 @@ Review inspection commands are also now present:
 - `list-trade-reviews`
 - `show-trade-review`
 
+Review tags are now part of those review workflows:
+
+- `create-trade-review --tag`
+- `list-trade-reviews --tag`
+
 ## Current Roadmap Direction
 
 Application repo roadmap docs dated 2026-04-24 now define the accepted post-Milestone-2 sequence as:
@@ -160,7 +185,8 @@ Current synthesis:
 
 - Milestone 2 is complete
 - Milestone 3 is complete
-- Milestone 4 has started, with the local context snapshot slice implemented
+- Milestone 4 is complete
+- Milestone 5 has started, with review tags and filtering implemented
 
 Milestone 2 is complete because its roadmap criteria are satisfied in the repo:
 
@@ -172,7 +198,9 @@ Milestone 2 is complete because its roadmap criteria are satisfied in the repo:
 
 Milestone 3 is complete because the manual workflow usability work now includes inspection, filtering, sorting, output consistency, and narrow `OrderIntent` cancellation without weakening domain boundaries.
 
-Milestone 4 is not yet called complete here. The first slice is implemented, but broader context usefulness and any follow-on context types or provider boundaries still need separate acceptance.
+Milestone 4 is complete because the local context workflow supports import, discovery, linked detail surfacing, payload inspection, and copy-to-target reuse while preserving context as read-only and non-canonical.
+
+Milestone 5 has started because the app repo now supports creation-time review tags and review filtering without expanding into review editing, taxonomy management, reporting/export, or generated coaching.
 
 ## Position Opening Rule
 
@@ -208,7 +236,8 @@ Trade review remains manual and simple:
 - a review can be created only for a closed position
 - only one review per position is allowed
 - review content is structured and human-authored
-- no editing, versioning, multiple reviews, analytics, or AI-generated feedback is included
+- review tags can be added at creation time and used for filtering
+- no editing, versioning, multiple reviews, taxonomy management, analytics, or AI-generated feedback is included
 
 ## Validation Recorded
 
@@ -235,6 +264,7 @@ Issue 17 implementation note captured command and doc alignment work, but did no
 117 passed after Milestone 4 local context snapshot import
 123 passed after surfacing linked market context in detail views
 129 passed after context discovery filters and copy workflow
+131 passed after Milestone 5 review tags and filtering
 ```
 
 The 117-test result was verified in the application repo on 2026-04-26 with `uv run pytest`.
@@ -242,6 +272,13 @@ The 117-test result was verified in the application repo on 2026-04-26 with `uv 
 The detail-view surfacing note recorded a focused suite of 55 passing tests and a full suite of 123 passing tests. This result was verified from the committed application repo note and commit history, not rerun during this processing pass.
 
 The discovery/copy implementation note recorded 43 focused context/read tests passing and 129 full-suite tests passing. This result was verified from the committed application repo note and commit `4f5b0f0`, not rerun during this processing pass.
+
+The Milestone 5 review-tag slice was verified in the application repo on 2026-04-26:
+
+```text
+Focused review-tag suite: 58 passed
+Full suite: 131 passed
+```
 
 ## Current Non-Scope
 
@@ -254,6 +291,7 @@ The application docs still treat these as intentionally out of scope:
 - FastAPI
 - broker orders or execution adapters
 - analytics, dashboards, and reports beyond the current narrow read-side P&L calculation
+- review editing, tag taxonomy management, generated coaching, and broader analytics
 - commissions, fees, and slippage modeling
 - fill correction or amendment workflows
 - manual force-close or reopen workflows
@@ -268,6 +306,7 @@ The current direction now emphasizes manual workflow usability, read-only market
 - [[milestone-2-roadmap]]
 - [[milestone-3-closeout]]
 - [[milestone-4-context-snapshot-workflow]]
+- [[milestone-5-review-tags-and-filtering]]
 - [[application-project-structure]]
 - [[development-workflow]]
 - [[canonical-domain-model]]

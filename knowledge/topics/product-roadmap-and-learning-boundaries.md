@@ -23,11 +23,25 @@ The accepted near-term sequence remains:
 1. Milestone 4: read-only market context
 2. Milestone 5: review, learning, and local operations
 
-Milestone 3 is already complete. Milestone 4 is the current focus.
+Milestone 3 and Milestone 4 are complete. Milestone 5 has started.
 
-Milestone 4 should add read-only market and context support while preserving the system as the canonical owner of trade meaning.
+Milestone 4 added read-only market and context support while preserving the system as the canonical owner of trade meaning.
 
-Milestone 5 should improve review structure, narrow journal-grade reporting, export, and local operations. It should not expand into AI-generated review content or reinforcement learning.
+Milestone 5 should improve review structure, narrow journal-grade reporting, export, and local operations. Its first implemented slice is creation-time review tags and filtering. It should not expand into AI-generated review content or reinforcement learning.
+
+## External Product Assessment Notes
+
+A Perplexity assessment based only on the application repo `README.md` and `STATUS.md` reinforced the current product direction rather than changing it.
+
+Durable takeaways:
+
+- The system's strongest product identity is discipline, auditability, and explicit intent/execution separation.
+- The biggest execution risk is overbuilding before the daily workflow is fast enough for consistent use.
+- Market context remains valuable only if it stays evidence, not authority or quasi-decision logic.
+- Review quality depends on meaningful prompts and labels, not just more review fields.
+- Lifecycle transitions and invariants should stay heavily tested because they are the trust boundary of the tool.
+
+Near-term planning should treat these as guardrails, not new scope.
 
 ## Long-Term Product Direction
 
@@ -43,7 +57,7 @@ V6 - Paper trading integration
 V7 - Real-money readiness gate
 ```
 
-This is useful product thinking, but it is not yet an accepted implementation sequence. It should be reconciled after Milestone 5 becomes clearer.
+This is useful product thinking, but it is not yet an accepted implementation sequence. It should be reconciled after the near-term Milestone 5 learning and local-operations work is better established.
 
 The most important long-term idea is that the system may become a training, simulation, review, and decision-support system before the user returns to real-money trading.
 
@@ -91,6 +105,7 @@ This page synthesizes:
 - [[deterministic-rules-vs-contextual-intelligence]]
 - [[mvp-definition-and-boundaries]]
 - [[brainstorm-20260426-product-roadmap-rl-boundaries]]
+- `knowledge/processed/Analysis by Perplexity based on just the Repo README.md and Repo STATUS.md 2026-04-26 2_42 pm EST.md`
 
 ## Processing Notes
 

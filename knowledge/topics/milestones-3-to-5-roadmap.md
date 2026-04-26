@@ -22,7 +22,8 @@ This sequence keeps the project local-first and manual-first while extending use
 - Milestone 1 is complete.
 - Milestone 2 is complete.
 - Milestone 3 is complete.
-- Milestone 4 has started.
+- Milestone 4 is complete.
+- Milestone 5 has started.
 
 ## Milestone 3
 
@@ -71,7 +72,7 @@ Focus areas:
 
 It should not expand into live streaming, execution triggers, broker coupling, or automated trading behavior.
 
-Initial implementation progress:
+Implemented Milestone 4 closeout:
 
 - local JSON context snapshot import is implemented
 - `MarketContextSnapshot` is stored locally and remains non-canonical
@@ -85,7 +86,7 @@ Initial implementation progress:
 
 See [[milestone-4-context-snapshot-workflow]].
 
-Current next decision: decide whether these local snapshot capabilities are sufficient for Milestone 4 closeout, or whether one more local-only usability issue is needed before Milestone 5.
+Milestone 4 is complete as of 2026-04-26. The application repo closeout recorded 43 focused market-context/read-model tests passing and 129 full-suite tests passing.
 
 ## Milestone 5
 
@@ -99,6 +100,16 @@ Focus areas:
 - journal-grade summaries rather than portfolio-platform analytics
 
 It should not expand into portfolio-engine behavior, cloud-first operations, AI-generated review content, or reinforcement learning.
+
+First implementation slice:
+
+- creation-time tags on `TradeReview`
+- lowercase slug normalization and duplicate removal
+- tag display in review list/detail output
+- `list-trade-reviews --tag` filtering with repeated tags requiring all requested tags
+- no review editing, taxonomy management, generated coaching, or reporting/export yet
+
+See [[milestone-5-review-tags-and-filtering]].
 
 ## Explicit Deferrals
 

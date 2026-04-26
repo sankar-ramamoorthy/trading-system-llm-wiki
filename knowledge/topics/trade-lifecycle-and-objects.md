@@ -4,7 +4,7 @@ type: topic
 status: active
 tags: [trading-system, trade-lifecycle, domain-model]
 created: 2026-04-19
-updated: 2026-04-24
+updated: 2026-04-26
 ---
 
 # Trade Lifecycle and Objects
@@ -63,6 +63,7 @@ Review:
 - journals and reviews evaluate whether the outcome followed the plan
 - thesis revisions should remain traceable to avoid rewriting history
 - Milestone 1 allows one manual immutable `TradeReview` per closed position
+- Milestone 5 adds creation-time review tags for categorizing and filtering completed reviews
 
 ## First Executable Flow
 
@@ -86,9 +87,12 @@ Keep `TradeIdea`, `TradeThesis`, `TradePlan`, `Position`, `OrderIntent`, `Broker
 
 In the v2 domain model, a `Position` must originate from a `TradePlan`. It should not be created directly from a `TradeIdea`; any idea link on the position is derived through the plan.
 
+Review tags are metadata on `TradeReview`, not separate taxonomy entities in the current implementation.
+
 ## Related Pages
 
 - [[canonical-domain-model]]
 - [[context-intelligence-layer]]
 - [[first-vertical-slice]]
 - [[mvp-definition-and-boundaries]]
+- [[milestone-5-review-tags-and-filtering]]
