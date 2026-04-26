@@ -77,6 +77,14 @@ Treat this repository as persistent project memory. Integrate new notes incremen
 
 Current milestone focus, active project state, and short-term priorities should not be expanded here. Keep those in `PROJECT.md` or the relevant pages under `knowledge/topics/`, and keep this file focused on durable repository rules and knowledge-ingestion behavior.
 
+## Repo-Local Skills
+
+This repository may contain project-specific skills under `skills/`.
+
+When the user asks to use a repo-local skill by name, first read `skills/<skill-name>/SKILL.md`, then follow that skill's instructions for the current turn.
+
+Repo-local skills are project artifacts. Do not install or copy them into `C:\Users\bosto\.codex\skills` unless the user explicitly asks to make a skill global.
+
 ## Linked Application Repo
 
 The active runtime codebase for this project is expected at `C:\Users\bosto\dockerstuff\trading-system`. This knowledge base should preserve the why behind that codebase: architecture decisions, canonical entity definitions, source-of-truth boundaries, rejected alternatives, and prompts for future implementation sessions.
