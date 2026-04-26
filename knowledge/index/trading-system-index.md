@@ -4,7 +4,7 @@ type: index
 status: active
 tags: [trading-system, index]
 created: 2026-04-19
-updated: 2026-04-24
+updated: 2026-04-26
 ---
 
 # Trading System Knowledge Index
@@ -26,6 +26,7 @@ This index is the navigation entry point for the trading-system knowledge base.
 - [[milestone-2-roadmap]] - post-MVP direction for persistence, retrieval, OrderIntent, P&L, and CLI usability
 - [[milestone-3-closeout]] - explicit closeout note for the manual workflow usability milestone
 - [[milestones-3-to-5-roadmap]] - accepted roadmap after Milestone 2 for manual workflow usability, read-only market context, and review/local operations
+- [[product-roadmap-and-learning-boundaries]] - near-term roadmap, long-term product direction, and deferred AI/RL boundary
 - [[application-project-structure]] - Python modular monolith structure and boundaries
 - [[application-implementation-status]] - current observed implementation status from app repo README, status notes, and source files
 - [[knowledge-base-workflow]] - how the wiki supports the application repository
