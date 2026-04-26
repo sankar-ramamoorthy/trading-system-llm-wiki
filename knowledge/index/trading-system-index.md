@@ -4,7 +4,7 @@ type: index
 status: active
 tags: [trading-system, index]
 created: 2026-04-19
-updated: 2026-04-24
+updated: 2026-04-26
 ---
 
 # Trading System Knowledge Index
@@ -26,6 +26,8 @@ This index is the navigation entry point for the trading-system knowledge base.
 - [[milestone-2-roadmap]] - post-MVP direction for persistence, retrieval, OrderIntent, P&L, and CLI usability
 - [[milestone-3-closeout]] - explicit closeout note for the manual workflow usability milestone
 - [[milestones-3-to-5-roadmap]] - accepted roadmap after Milestone 2 for manual workflow usability, read-only market context, and review/local operations
+- [[milestone-4-context-snapshot-workflow]] - initial local context snapshot workflow and provider deferral for Milestone 4
+- [[product-roadmap-and-learning-boundaries]] - near-term roadmap, long-term product direction, and deferred AI/RL boundary
 - [[application-project-structure]] - Python modular monolith structure and boundaries
 - [[application-implementation-status]] - current observed implementation status from app repo README, status notes, and source files
 - [[knowledge-base-workflow]] - how the wiki supports the application repository
@@ -60,3 +62,13 @@ Later raw notes also record the implemented Issue 17 usability bundle: thesis in
 The later raw note for explicit order-intent cancellation supersedes that earlier planning-only status. Cancellation is now implemented as a narrow Milestone 3 follow-on and should be treated as current application behavior.
 
 The knowledge base now records Milestone 3 as complete through an explicit closeout note, with Milestone 4 as the next active milestone.
+
+The raw Milestone 4 initial context snapshot workflow plan from 2026-04-26 was processed into [[milestone-4-context-snapshot-workflow]]. The promoted durable direction is local JSON context snapshot import first, with external providers such as `yfinance` deferred behind a provider boundary and requiring an ADR when introduced.
+
+The later raw implementation note for the Milestone 4 local context snapshot slice was processed on 2026-04-26. The application repo now implements `MarketContextSnapshot`, local JSON import, snapshot repositories, import/query services, and CLI commands for `import-context`, `list-context`, and `show-context`. Verification recorded 13 focused market-context tests passing and 117 total application tests passing.
+
+The raw plan and implementation notes for surfacing market context in detail views were processed on 2026-04-26. The application repo commit `d9af758` adds metadata-only `Market context` sections to `show-trade-plan`, `show-position`, and `show-trade-review`, while keeping full payload inspection in `show-context`. The implementation note recorded 55 focused tests passing and 123 full-suite tests passing.
+
+The raw decision, plan, and implementation notes for context discovery and copy workflow were processed on 2026-04-26. The application repo commit `4f5b0f0` adds broad `list-context` discovery filters and `copy-context`, which creates a new immutable linked snapshot instead of mutating the original. The implementation note recorded 43 focused context/read tests passing and 129 full-suite tests passing.
+
+The current next decision is whether Milestone 4 can close after the local snapshot workflow, or whether one more local-only usability issue is needed before Milestone 5. External provider integration remains deferred.
