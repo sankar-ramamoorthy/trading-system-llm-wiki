@@ -1,6 +1,8 @@
 # Trading System LLM Wiki
 
-This repository is the Markdown-first LLM wiki for the `trading-system` project. It is persistent project memory: the place to preserve architecture rationale, canonical concepts, processed notes, prompts, and AI-assisted synthesis around the trading system.
+This repository is the LLM wiki for the `trading-system` project: a persistent design and coordination layer that keeps project intent stable across human and AI-assisted development sessions.
+
+It preserves architecture rationale, canonical concepts, unresolved design tensions, rejected alternatives, prompts, and AI-assisted synthesis around the trading system.
 
 This is not the runtime application repo. The active application codebase is expected at:
 
@@ -9,6 +11,20 @@ C:\Users\bosto\dockerstuff\trading-system
 ```
 
 Use this wiki to preserve the why behind that codebase, not to run the trading system.
+
+## Why This Exists
+
+Codex sessions are temporary. The project is not.
+
+This wiki gives the project a durable context system:
+
+- continuity across AI sessions
+- architecture memory and source-of-truth boundaries
+- stable domain vocabulary
+- a place to explore design ideas before they become ADRs or code
+- a traceable record of why a decision exists
+
+During development, this wiki is upstream of code as an intent and reasoning layer. The application repo remains the execution surface and must still be checked before durable conclusions or implementation changes are accepted.
 
 ## Current Wiki Status
 
@@ -39,22 +55,34 @@ The status of this LLM wiki is tracked separately in [STATUS.md](STATUS.md).
 
 ## Working Model
 
-The wiki follows a simple LLM-wiki workflow:
+The wiki acts as a pre-ADR sandbox and design pipeline:
 
 ```text
-Capture raw material
-        |
-        v
-Structure or process it
-        |
-        v
-Promote stable conclusions
-        |
-        v
-Maintain canonical pages and indexes
+Idea or friction
+        -> raw note
+        -> processed synthesis
+        -> topic, entity, prompt, or ADR
+        -> application repo alignment
+        -> code
 ```
 
-Raw notes should stay raw until reviewed. Recurring patterns, accepted decisions, and durable concepts can be promoted into topics, entities, indexes, or ADRs.
+Raw notes are flexible thinking space. Canonical pages are durable project memory. ADRs and code require reconciliation with the application repo.
+
+## Promotion Rule
+
+Promote a note only when it has been reviewed for durable value, reconciled against existing source-of-truth material when practical, and assigned to the correct target artifact.
+
+Use this default path:
+
+```text
+knowledge/raw/
+        -> knowledge/processed/
+        -> knowledge/topics/, knowledge/entities/, knowledge/index/, adr/, prompts/, or application repo work
+```
+
+Do not treat raw notes as canonical. Do not start implementation from raw feedback alone unless the user explicitly asks for a tactical change.
+
+See [knowledge/topics/knowledge-base-workflow.md](knowledge/topics/knowledge-base-workflow.md) for the full promotion guidance.
 
 ## Knowledge Rules
 

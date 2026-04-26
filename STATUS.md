@@ -17,6 +17,7 @@ For trading-system milestone focus, use [PROJECT.md](PROJECT.md). For agent oper
 
 - Raw note capture under `knowledge/raw/`
 - Processed note storage under `knowledge/processed/`
+- Explicit promotion rule for moving raw ideas into durable wiki artifacts or application alignment
 - Canonical topic, entity, and index structure under `knowledge/`
 - Knowledge-base ADRs under `adr/`
 - Restart prompts and reusable context under `prompts/`
@@ -27,12 +28,15 @@ For trading-system milestone focus, use [PROJECT.md](PROJECT.md). For agent oper
 
 - Raw notes need periodic review so `knowledge/raw/` does not become a backlog.
 - Processed notes should remain source material, not a substitute for canonical pages.
-- Canonical promotion should preserve contradictions instead of overwriting prior context.
+- Promotion decisions should preserve contradictions instead of overwriting prior context.
+- Wiki intent must be reconciled against application repo docs and code before being treated as implementation truth.
 - Repo-local skills depend on agents reading `AGENTS.md` and then `skills/<skill-name>/SKILL.md`.
 - Wiki status should remain separate from trading-system application status.
 
 ## Recent Wiki Changes
 
+- Clarified the README positioning around the wiki as a persistent design and coordination layer.
+- Added an explicit promotion rule for moving notes from raw material into durable artifacts.
 - Added structured brainstorm capture workflow and ADR.
 - Added a repo-local `structure-feedback-note` skill.
 - Added repo-local skill loading guidance to `AGENTS.md`.
