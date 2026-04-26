@@ -66,3 +66,9 @@ The knowledge base now records Milestone 3 as complete through an explicit close
 The raw Milestone 4 initial context snapshot workflow plan from 2026-04-26 was processed into [[milestone-4-context-snapshot-workflow]]. The promoted durable direction is local JSON context snapshot import first, with external providers such as `yfinance` deferred behind a provider boundary and requiring an ADR when introduced.
 
 The later raw implementation note for the Milestone 4 local context snapshot slice was processed on 2026-04-26. The application repo now implements `MarketContextSnapshot`, local JSON import, snapshot repositories, import/query services, and CLI commands for `import-context`, `list-context`, and `show-context`. Verification recorded 13 focused market-context tests passing and 117 total application tests passing.
+
+The raw plan and implementation notes for surfacing market context in detail views were processed on 2026-04-26. The application repo commit `d9af758` adds metadata-only `Market context` sections to `show-trade-plan`, `show-position`, and `show-trade-review`, while keeping full payload inspection in `show-context`. The implementation note recorded 55 focused tests passing and 123 full-suite tests passing.
+
+The raw decision, plan, and implementation notes for context discovery and copy workflow were processed on 2026-04-26. The application repo commit `4f5b0f0` adds broad `list-context` discovery filters and `copy-context`, which creates a new immutable linked snapshot instead of mutating the original. The implementation note recorded 43 focused context/read tests passing and 129 full-suite tests passing.
+
+The current next decision is whether Milestone 4 can close after the local snapshot workflow, or whether one more local-only usability issue is needed before Milestone 5. External provider integration remains deferred.

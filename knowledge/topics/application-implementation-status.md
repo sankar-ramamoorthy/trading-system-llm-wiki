@@ -90,6 +90,10 @@ Verified from application repo source, docs, and tests on 2026-04-26:
 - JSON and in-memory snapshot repositories exist.
 - Import and query services validate targets, derive or require `instrument_id`, and store immutable snapshots.
 - CLI commands now exist for `import-context`, `list-context`, and `show-context`.
+- Linked snapshot metadata now surfaces in `show-trade-plan`, `show-position`, and `show-trade-review`.
+- Full snapshot payload output remains limited to `show-context`.
+- `list-context` now supports broad discovery with optional filters for context type, source, observed range, captured range, instrument, and target.
+- `copy-context` creates a new immutable linked snapshot from an existing snapshot and leaves the original unchanged.
 - Application docs now state that context snapshots are advisory, read-only, and non-canonical.
 - External providers such as `yfinance` remain deferred and should require an ADR before implementation.
 
@@ -125,8 +129,11 @@ Verified CLI commands now include:
 - write commands for `create-trade-idea`, `create-trade-thesis`, `create-trade-plan`, `approve-trade-plan`, `evaluate-trade-plan-rules`, `create-order-intent`, `open-position`, `record-fill`, and `create-trade-review`
 - read commands for `list-trade-ideas`, `list-trade-theses`, `show-trade-thesis`, `list-trade-plans`, `show-trade-plan`, `list-trade-reviews`, `show-trade-review`, `list-positions`, `show-position`, and `show-position-timeline`
 - context commands for `import-context`, `list-context`, and `show-context`
+- context reuse command `copy-context`
 
 Closed positions expose realized P&L on the read side, and the read commands now surface enough linked data for practical CLI chaining.
+
+The detail commands for trade plans, positions, and trade reviews now include metadata-only `Market context` sections when snapshots are linked to those targets.
 
 Review inspection commands are also now present:
 
@@ -226,9 +233,15 @@ Recorded results include:
 Issue 17 implementation note captured command and doc alignment work, but did not include a fresh recorded aggregate test count in the raw note
 104 passed after explicit order-intent cancellation
 117 passed after Milestone 4 local context snapshot import
+123 passed after surfacing linked market context in detail views
+129 passed after context discovery filters and copy workflow
 ```
 
 The 117-test result was verified in the application repo on 2026-04-26 with `uv run pytest`.
+
+The detail-view surfacing note recorded a focused suite of 55 passing tests and a full suite of 123 passing tests. This result was verified from the committed application repo note and commit history, not rerun during this processing pass.
+
+The discovery/copy implementation note recorded 43 focused context/read tests passing and 129 full-suite tests passing. This result was verified from the committed application repo note and commit `4f5b0f0`, not rerun during this processing pass.
 
 ## Current Non-Scope
 

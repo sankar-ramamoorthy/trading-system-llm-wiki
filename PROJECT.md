@@ -17,7 +17,7 @@ Milestone 4: read-only market context.
 
 ## Active Focus
 
-- Refine the implemented local JSON context snapshot workflow for planning and review.
+- Decide whether Milestone 4 can close after local snapshot import, detail surfacing, discovery filters, and copy-to-target support.
 - Preserve the manual, local, auditable workflow established through Milestones 1 through 3.
 - Keep deterministic rules separate from advisory context and external data.
 - Keep external market-data providers deferred until a provider-boundary ADR is accepted.
@@ -30,7 +30,7 @@ Milestone 4: read-only market context.
 
 ## Open Questions
 
-- What follow-on context types are useful after the first local snapshot import slice?
+- Is the local snapshot workflow sufficient for Milestone 4 closeout?
 - What minimum read-only context is useful before adding review and learning workflows in Milestone 5?
 
 ## High-Priority Links

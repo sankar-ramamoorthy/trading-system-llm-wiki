@@ -77,9 +77,15 @@ Initial implementation progress:
 - `MarketContextSnapshot` is stored locally and remains non-canonical
 - snapshots can be listed by instrument or linked target
 - snapshots can be shown from the CLI
+- linked snapshot metadata now appears in trade plan, position, and trade review detail views
+- full snapshot payload inspection remains isolated to `show-context`
+- `list-context` now supports broad discovery with optional filters
+- `copy-context` creates a new immutable linked snapshot from an existing snapshot without mutating the original
 - external providers such as `yfinance` remain deferred and should require an ADR when introduced
 
 See [[milestone-4-context-snapshot-workflow]].
+
+Current next decision: decide whether these local snapshot capabilities are sufficient for Milestone 4 closeout, or whether one more local-only usability issue is needed before Milestone 5.
 
 ## Milestone 5
 

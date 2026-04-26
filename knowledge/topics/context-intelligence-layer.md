@@ -31,7 +31,9 @@ Each item should carry timestamp, source, related symbols, event type, raw refer
 
 The first implemented slice for Milestone 4 is a local, read-only context snapshot workflow.
 
-The initial slice imports local JSON context documents into immutable snapshots before adding external market-data providers. This keeps context auditable, deterministic to test, and separate from canonical trade meaning.
+The initial slice imports local JSON context documents into immutable snapshots before adding external market-data providers. Linked snapshots now surface as metadata in trade plan, position, and trade review detail views, while full payload inspection remains in `show-context`.
+
+Snapshots can now be discovered broadly through `list-context` filters and copied to a plan, position, or review target without mutating the original import.
 
 See [[milestone-4-context-snapshot-workflow]].
 
