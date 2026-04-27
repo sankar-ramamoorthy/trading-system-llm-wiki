@@ -4,7 +4,7 @@ type: topic
 status: active
 tags: [trading-system, implementation, status]
 created: 2026-04-19
-updated: 2026-04-26
+updated: 2026-04-27
 ---
 
 # Application Implementation Status
@@ -31,7 +31,7 @@ Observed from processed issue notes, raw notes captured on 2026-04-22 through 20
 - Typer CLI exists with `version`, `demo-planned-trade`, retrieval commands, and additional read-side query wiring in source.
 - The canonical demo now uses local JSON persistence rather than in-memory-only execution.
 - Milestone 4 local context snapshot workflow is complete.
-- Milestone 5 review tags/filtering, review quality scores, and Markdown journal export are implemented as early review/learning slices.
+- Milestone 5 review tags/filtering, review quality scores, Markdown journal export, and local JSON operations are implemented as review/learning/local-ops slices.
 
 ## Completed Milestone 1
 
@@ -83,7 +83,7 @@ The original cancellation proposal was deferred from the first usability bundle,
 
 ## Verified Milestone 4 Completion
 
-Verified from application repo source, docs, and tests on 2026-04-26:
+Verified from application repo source, docs, tests, and implementation notes through 2026-04-27:
 
 - `MarketContextSnapshot` domain record exists.
 - `MarketContextSnapshotRepository` and `MarketContextImportSource` ports exist.
@@ -129,6 +129,11 @@ Verified from application repo source, docs, and tests on 2026-04-26:
 - Empty filtered results report `No trade reviews found.` and create no file.
 - Linked market-context metadata appears in the export, but full context payloads remain isolated to `show-context`.
 - The third Milestone 5 slice intentionally does not add CSV export, charts, aggregate statistics, backup/restore, review editing, recommendations, generated coaching, or broader analytics.
+- `validate-store` validates the configured local JSON store and reports store shape/count information.
+- `backup-store` creates an exact timestamped JSON copy of the configured store, defaulting to `.trading-system/backups`.
+- `restore-store <backup-path> --overwrite` validates a backup before replacing the configured store.
+- Restore requires explicit `--overwrite` when the configured store already exists.
+- The fourth Milestone 5 slice intentionally does not add scheduled backups, cloud sync, compression, encryption, migrations, Postgres backup support, or broader operational automation.
 
 ## Implemented Workflow
 
@@ -164,6 +169,7 @@ Verified CLI commands now include:
 - context commands for `import-context`, `list-context`, and `show-context`
 - context reuse command `copy-context`
 - review export command `export-review-journal`
+- local JSON operation commands `validate-store`, `backup-store`, and `restore-store`
 
 Closed positions expose realized P&L on the read side, and the read commands now surface enough linked data for practical CLI chaining.
 
@@ -211,7 +217,7 @@ Current synthesis:
 - Milestone 2 is complete
 - Milestone 3 is complete
 - Milestone 4 is complete
-- Milestone 5 has started, with review tags/filtering, review quality scores, and Markdown journal export implemented
+- Milestone 5 has started, with review tags/filtering, review quality scores, Markdown journal export, and local JSON operations implemented
 
 Milestone 2 is complete because its roadmap criteria are satisfied in the repo:
 
@@ -225,7 +231,7 @@ Milestone 3 is complete because the manual workflow usability work now includes 
 
 Milestone 4 is complete because the local context workflow supports import, discovery, linked detail surfacing, payload inspection, and copy-to-target reuse while preserving context as read-only and non-canonical.
 
-Milestone 5 has started because the app repo now supports creation-time review tags, review filtering, optional review quality scores, and factual Markdown journal export without expanding into review editing, taxonomy management, recommendations, generated coaching, or broad analytics.
+Milestone 5 has started because the app repo now supports creation-time review tags, review filtering, optional review quality scores, factual Markdown journal export, and explicit local JSON validation/backup/restore without expanding into review editing, taxonomy management, recommendations, generated coaching, broad analytics, or cloud operational tooling.
 
 ## Position Opening Rule
 
@@ -264,6 +270,7 @@ Trade review remains manual and simple:
 - review tags can be added at creation time and used for filtering
 - optional 1-5 review quality scores can be added at creation time and used for exact filtering
 - reviewed trades can be exported to factual local Markdown journals through existing review filters
+- the configured local JSON store can be validated, backed up, and restored explicitly
 - no editing, versioning, multiple reviews, taxonomy management, recommendations, broad analytics, or AI-generated feedback is included
 
 ## Validation Recorded
@@ -294,6 +301,7 @@ Issue 17 implementation note captured command and doc alignment work, but did no
 131 passed after Milestone 5 review tags and filtering
 132 passed after Milestone 5 review quality scores
 142 passed after Milestone 5 Markdown journal export
+156 passed after Milestone 5 local JSON operations
 ```
 
 The 117-test result was verified in the application repo on 2026-04-26 with `uv run pytest`.
@@ -323,6 +331,13 @@ Focused review/export suite: 49 passed
 Full suite: 142 passed
 ```
 
+The Milestone 5 local JSON operations slice was recorded in raw implementation notes and application repo docs on 2026-04-27:
+
+```text
+Focused persistence/CLI/retrieval suite: 67 passed
+Full suite: 156 passed
+```
+
 ## Current Non-Scope
 
 The application docs still treat these as intentionally out of scope:
@@ -336,6 +351,7 @@ The application docs still treat these as intentionally out of scope:
 - analytics, dashboards, and reports beyond the current narrow read-side P&L calculation
 - review editing, tag taxonomy management, generated coaching, and broader analytics
 - CSV export, charts, aggregate review statistics, review recommendations, and AI-generated journal interpretation
+- scheduled backups, cloud sync, compression, encryption, migrations, Postgres backup support, and broader operational automation
 - commissions, fees, and slippage modeling
 - fill correction or amendment workflows
 - manual force-close or reopen workflows
@@ -353,6 +369,7 @@ The current direction now emphasizes manual workflow usability, read-only market
 - [[milestone-5-review-tags-and-filtering]]
 - [[milestone-5-review-quality-scores]]
 - [[milestone-5-markdown-journal-export]]
+- [[milestone-5-local-json-operations]]
 - [[application-project-structure]]
 - [[development-workflow]]
 - [[canonical-domain-model]]
