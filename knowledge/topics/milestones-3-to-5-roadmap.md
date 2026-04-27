@@ -4,7 +4,7 @@ type: topic
 status: active
 tags: [trading-system, roadmap, milestone-3, milestone-4, milestone-5]
 created: 2026-04-24
-updated: 2026-04-26
+updated: 2026-04-27
 ---
 
 # Milestones 3 To 5 Roadmap
@@ -129,6 +129,16 @@ Third implementation slice:
 - no review editing, generated coaching, recommendations, CSV, charts, aggregate statistics, backup/restore, or broad analytics
 
 See [[milestone-5-markdown-journal-export]].
+
+Fourth implementation slice:
+
+- local JSON store validation through `validate-store`
+- exact timestamped JSON backups through `backup-store`
+- validated restore through `restore-store <backup-path> --overwrite`
+- existing stores require explicit overwrite consent
+- no scheduled backups, cloud sync, compression, encryption, migrations, Postgres backup support, or broad operational automation
+
+See [[milestone-5-local-json-operations]].
 
 ## Explicit Deferrals
 

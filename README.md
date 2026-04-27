@@ -38,6 +38,7 @@ The status of this LLM wiki is tracked separately in [STATUS.md](STATUS.md).
 - [STATUS.md](STATUS.md) - current status, capabilities, and maintenance concerns for this LLM wiki.
 - [AGENTS.md](AGENTS.md) - repository rules for agents working in this knowledge base.
 - [knowledge/index/trading-system-index.md](knowledge/index/trading-system-index.md) - main wiki navigation index.
+- [knowledge/topics/application-implementation-status.md](knowledge/topics/application-implementation-status.md) - synthesized application milestone and capability status.
 - [knowledge/topics/knowledge-base-workflow.md](knowledge/topics/knowledge-base-workflow.md) - knowledge ingestion and processing workflow.
 - [knowledge/topics/development-workflow.md](knowledge/topics/development-workflow.md) - AI-assisted development workflow context.
 
