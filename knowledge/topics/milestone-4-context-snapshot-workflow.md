@@ -4,7 +4,7 @@ type: topic
 status: active
 tags: [trading-system, milestone-4, market-context, snapshots]
 created: 2026-04-26
-updated: 2026-04-26
+updated: 2026-04-27
 ---
 
 # Milestone 4 Context Snapshot Workflow
@@ -89,11 +89,11 @@ The implementation boundary includes:
 
 When a snapshot links to a target, the import service validates that the target exists. If possible, it derives `instrument_id` from the linked `TradePlan`, `Position`, or `TradeReview`; otherwise an explicit `instrument_id` is required.
 
-## External Provider Deferral
+## External Provider Boundary
 
-`yfinance` or another external provider may be useful later as a prototype-grade, read-only snapshot source.
+`yfinance` or another external provider may be useful as a prototype-grade, read-only snapshot source.
 
-It should not be the first implementation path.
+It was not the first Milestone 4 implementation path.
 
 If introduced later, provider data should be:
 
@@ -105,7 +105,7 @@ If introduced later, provider data should be:
 
 Provider failures must not block the core trade workflow.
 
-An ADR should be introduced when adding `yfinance` or any external data provider. That ADR should record that provider data is advisory, snapshot-based, non-streaming, and never allowed to trigger execution or automated plan creation.
+ADR-007 now accepts the Milestone 6 provider boundary for optional prototype-grade `yfinance` daily OHLCV snapshots. Provider data remains advisory, snapshot-based, non-streaming, and never allowed to trigger execution or automated plan creation.
 
 ## CLI Direction
 
@@ -225,15 +225,15 @@ Full suite: 129 passed
 
 The implementation is committed in the application repo as `4f5b0f0 Improve context discovery and copying`.
 
-## Remaining Milestone 4 Question
+## Milestone 4 Closeout
 
 The current local snapshot workflow now supports import, discovery, target copy, detail surfacing, and payload inspection.
 
-The next decision is whether this is enough for Milestone 4 closeout or whether one more local-only issue is needed for payload display ergonomics, context export/reporting, or context review workflow polish.
+This was sufficient for Milestone 4 closeout.
 
-External providers such as `yfinance` remain deferred and should not be the next issue unless a provider-boundary ADR is created first.
+External provider work moved to Milestone 6 after ADR-007 accepted the provider boundary.
 
-## Current Next Decision
+## Current State
 
 The local snapshot workflow now includes:
 
@@ -243,9 +243,7 @@ The local snapshot workflow now includes:
 - broad discovery filters
 - copy-to-target reuse without mutating the original snapshot
 
-The next repository decision is whether this is sufficient for Milestone 4 closeout.
-
-If one more local-only Milestone 4 issue is needed, likely candidates are payload display ergonomics, context export/reporting, or review workflow polish. External providers should remain deferred until a provider-boundary ADR is accepted.
+The next provider-related work belongs to [[milestone-6-market-data-provider-boundary]], not Milestone 4.
 
 ## Related Pages
 
@@ -253,3 +251,4 @@ If one more local-only Milestone 4 issue is needed, likely candidates are payloa
 - [[context-intelligence-layer]]
 - [[deterministic-rules-vs-contextual-intelligence]]
 - [[data-and-platform-strategy]]
+- [[milestone-6-market-data-provider-boundary]]

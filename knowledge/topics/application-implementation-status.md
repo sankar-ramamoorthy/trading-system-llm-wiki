@@ -9,7 +9,7 @@ updated: 2026-04-27
 
 # Application Implementation Status
 
-The application repository has completed Milestones 1 through 4 and has started Milestone 5.
+The application repository has completed Milestones 1 through 5 and has started Milestone 6.
 
 Application repo:
 
@@ -19,7 +19,7 @@ C:\Users\bosto\dockerstuff\trading-system
 
 ## Current State
 
-Observed from processed issue notes, raw notes captured on 2026-04-22 through 2026-04-26, application repo docs, and verified source files and tests under `src/trading_system/` and `tests/`:
+Observed from processed issue notes, raw notes captured on 2026-04-22 through 2026-04-27, application repo docs, and verified source files and tests under `src/trading_system/` and `tests/`:
 
 - Initial Python `src/` scaffold exists.
 - The package root is `src/trading_system/`.
@@ -32,6 +32,7 @@ Observed from processed issue notes, raw notes captured on 2026-04-22 through 20
 - The canonical demo now uses local JSON persistence rather than in-memory-only execution.
 - Milestone 4 local context snapshot workflow is complete.
 - Milestone 5 review tags/filtering, review quality scores, Markdown journal export, and local JSON operations are implemented as review/learning/local-ops slices.
+- ADR-007 starts Milestone 6 by accepting a read-only market data provider boundary for optional prototype-grade `yfinance` daily OHLCV snapshots.
 
 ## Completed Milestone 1
 
@@ -96,7 +97,7 @@ Verified from application repo source, docs, tests, and implementation notes thr
 - `list-context` now supports broad discovery with optional filters for context type, source, observed range, captured range, instrument, and target.
 - `copy-context` creates a new immutable linked snapshot from an existing snapshot and leaves the original unchanged.
 - Application docs now state that context snapshots are advisory, read-only, and non-canonical.
-- External providers such as `yfinance` remain deferred and should require an ADR before implementation.
+- External provider implementation was deferred until ADR-007; the ADR is now accepted, but provider code has not been implemented yet.
 
 Milestone 4 is closed in the application repo. The closeout summary records:
 
@@ -105,7 +106,7 @@ Focused Milestone 4/read-model suite: 43 passed
 Full suite: 129 passed
 ```
 
-## Verified Early Milestone 5 Progress
+## Verified Milestone 5 Completion
 
 Verified from application repo source, docs, and tests on 2026-04-26:
 
@@ -134,6 +135,21 @@ Verified from application repo source, docs, and tests on 2026-04-26:
 - `restore-store <backup-path> --overwrite` validates a backup before replacing the configured store.
 - Restore requires explicit `--overwrite` when the configured store already exists.
 - The fourth Milestone 5 slice intentionally does not add scheduled backups, cloud sync, compression, encryption, migrations, Postgres backup support, or broader operational automation.
+
+Milestone 5 is now marked complete in the application repo.
+
+## Verified Early Milestone 6 Progress
+
+Verified from application repo docs on 2026-04-27:
+
+- `DOCS/ADR/007-market-data-provider-boundary.md` is accepted.
+- `DOCS/milestone-6-market-data-provider-design.md` is accepted for roadmap use.
+- The first provider stance is optional prototype-grade `yfinance`.
+- The first data shape is daily OHLCV history only.
+- Provider output must be stored as explicit `MarketContextSnapshot` records.
+- Provider data remains advisory and non-canonical.
+- Provider failures must not block core trade workflows.
+- Provider code has not been implemented yet.
 
 ## Implemented Workflow
 
@@ -203,8 +219,9 @@ Application repo roadmap docs dated 2026-04-24 now define the accepted post-Mile
 - Milestone 3: manual workflow usability
 - Milestone 4: read-only market context
 - Milestone 5: review, learning, and local operations
+- Milestone 6: read-only market data provider integration
 
-Reinforcement learning remains exploratory only and is not the accepted Milestone 3 direction.
+Reinforcement learning remains exploratory only and is not the accepted Milestone 6 direction.
 
 The current Milestone 3 usability bundle also explicitly leaves `OrderIntent` cancellation for a later follow-on issue if real usage still justifies it.
 
@@ -217,7 +234,8 @@ Current synthesis:
 - Milestone 2 is complete
 - Milestone 3 is complete
 - Milestone 4 is complete
-- Milestone 5 has started, with review tags/filtering, review quality scores, Markdown journal export, and local JSON operations implemented
+- Milestone 5 is complete
+- Milestone 6 has started with ADR-007 accepted
 
 Milestone 2 is complete because its roadmap criteria are satisfied in the repo:
 
@@ -231,7 +249,9 @@ Milestone 3 is complete because the manual workflow usability work now includes 
 
 Milestone 4 is complete because the local context workflow supports import, discovery, linked detail surfacing, payload inspection, and copy-to-target reuse while preserving context as read-only and non-canonical.
 
-Milestone 5 has started because the app repo now supports creation-time review tags, review filtering, optional review quality scores, factual Markdown journal export, and explicit local JSON validation/backup/restore without expanding into review editing, taxonomy management, recommendations, generated coaching, broad analytics, or cloud operational tooling.
+Milestone 5 is complete because the app repo now supports creation-time review tags, review filtering, optional review quality scores, factual Markdown journal export, and explicit local JSON validation/backup/restore without expanding into review editing, taxonomy management, recommendations, generated coaching, broad analytics, or cloud operational tooling.
+
+Milestone 6 has started because ADR-007 accepts the market data provider boundary before provider code is introduced.
 
 ## Position Opening Rule
 
@@ -343,7 +363,8 @@ Full suite: 156 passed
 The application docs still treat these as intentionally out of scope:
 
 - broker integration
-- external market data providers beyond explicit local snapshot import
+- external market data provider code beyond explicit local snapshot import
+- live streaming market data, execution-grade quotes, and provider-driven trade recommendations
 - AI or ML features
 - reconciliation workflows
 - FastAPI
@@ -370,6 +391,7 @@ The current direction now emphasizes manual workflow usability, read-only market
 - [[milestone-5-review-quality-scores]]
 - [[milestone-5-markdown-journal-export]]
 - [[milestone-5-local-json-operations]]
+- [[milestone-6-market-data-provider-boundary]]
 - [[application-project-structure]]
 - [[development-workflow]]
 - [[canonical-domain-model]]

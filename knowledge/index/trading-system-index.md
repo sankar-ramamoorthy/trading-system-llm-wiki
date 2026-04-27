@@ -31,6 +31,7 @@ This index is the navigation entry point for the trading-system knowledge base.
 - [[milestone-5-review-quality-scores]] - second Milestone 5 review/learning slice for optional process, setup, execution, and exit scores
 - [[milestone-5-markdown-journal-export]] - third Milestone 5 review/learning slice for factual Markdown exports of reviewed trades
 - [[milestone-5-local-json-operations]] - fourth Milestone 5 local-operations slice for JSON store validation, backup, and restore
+- [[milestone-6-market-data-provider-boundary]] - accepted ADR-007 boundary for prototype yfinance daily OHLCV snapshots
 - [[product-roadmap-and-learning-boundaries]] - near-term roadmap, long-term product direction, and deferred AI/RL boundary
 - [[application-project-structure]] - Python modular monolith structure and boundaries
 - [[application-implementation-status]] - current observed implementation status from app repo README, status notes, and source files
@@ -86,3 +87,5 @@ The second Milestone 5 slice is implemented in the application repo: optional re
 The third Milestone 5 slice is implemented in the application repo: Markdown journal export for reviewed trades. The slice adds `export-review-journal --output <path>`, reuses review filters, writes one section per matching review, refuses existing output files without `--overwrite`, leaves empty results unwritten, and keeps full context payload inspection isolated to `show-context`. Verification recorded 49 focused tests passing and 142 full-suite tests passing.
 
 The fourth Milestone 5 slice is implemented in the application repo: local JSON operations for the configured store. The slice adds `validate-store`, `backup-store`, and `restore-store <backup-path> --overwrite`; backups are exact timestamped JSON copies, and restore validates backup files before replacing the active store. Verification recorded 67 focused persistence/CLI/retrieval tests passing and 156 full-suite tests passing.
+
+Milestone 6 has started in the application repo with ADR-007: Market Data Provider Boundary. The ADR accepts optional prototype-grade `yfinance` as the first provider stance and daily OHLCV history as the first data shape, with all provider output stored as advisory, non-canonical `MarketContextSnapshot` records. Provider implementation has not started in code yet.
