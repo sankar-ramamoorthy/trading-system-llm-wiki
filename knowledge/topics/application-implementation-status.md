@@ -33,6 +33,7 @@ Observed from processed issue notes, raw notes captured on 2026-04-22 through 20
 - Milestone 4 local context snapshot workflow is complete.
 - Milestone 5 review tags/filtering, review quality scores, Markdown journal export, and local JSON operations are implemented as review/learning/local-ops slices.
 - ADR-007 starts Milestone 6 by accepting a read-only market data provider boundary for optional prototype-grade `yfinance` daily OHLCV snapshots.
+- The first Milestone 6 slice is implemented as `fetch-market-data`, which stores daily OHLCV snapshots through the provider boundary.
 
 ## Completed Milestone 1
 
@@ -97,7 +98,7 @@ Verified from application repo source, docs, tests, and implementation notes thr
 - `list-context` now supports broad discovery with optional filters for context type, source, observed range, captured range, instrument, and target.
 - `copy-context` creates a new immutable linked snapshot from an existing snapshot and leaves the original unchanged.
 - Application docs now state that context snapshots are advisory, read-only, and non-canonical.
-- External provider implementation was deferred until ADR-007; the ADR is now accepted, but provider code has not been implemented yet.
+- External provider implementation was deferred until ADR-007; the accepted boundary now underpins the first implemented Milestone 6 slice.
 
 Milestone 4 is closed in the application repo. The closeout summary records:
 
@@ -149,7 +150,8 @@ Verified from application repo docs on 2026-04-27:
 - Provider output must be stored as explicit `MarketContextSnapshot` records.
 - Provider data remains advisory and non-canonical.
 - Provider failures must not block core trade workflows.
-- Provider code has not been implemented yet.
+- The first provider slice is implemented as `fetch-market-data` in the application CLI.
+- Verification recorded 24 focused market-data tests passing and 162 full-suite tests passing.
 
 ## Implemented Workflow
 
@@ -251,7 +253,7 @@ Milestone 4 is complete because the local context workflow supports import, disc
 
 Milestone 5 is complete because the app repo now supports creation-time review tags, review filtering, optional review quality scores, factual Markdown journal export, and explicit local JSON validation/backup/restore without expanding into review editing, taxonomy management, recommendations, generated coaching, broad analytics, or cloud operational tooling.
 
-Milestone 6 has started because ADR-007 accepts the market data provider boundary before provider code is introduced.
+Milestone 6 has started because ADR-007 accepts the market data provider boundary before provider code is introduced. The first slice is now implemented, but the milestone remains open because the provider surface can still be extended.
 
 ## Position Opening Rule
 

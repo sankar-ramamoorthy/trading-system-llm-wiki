@@ -31,9 +31,15 @@ The application still owns trade meaning. External providers supply market facts
 
 ## Implementation Direction
 
-The first implementation issue should add explicit user-invoked fetch-and-store behavior for daily OHLCV snapshots.
+The first implementation issue is now complete: explicit user-invoked `fetch-market-data` fetch-and-store behavior for daily OHLCV snapshots.
 
 Provider response objects and schemas should stay inside the adapter boundary. The rest of the application should use stored snapshots and existing context inspection workflows.
+
+## Implemented Slice
+
+- `fetch-market-data <symbol> --start YYYY-MM-DD --end YYYY-MM-DD`
+- optional `--instrument-id`, `--target-type`, and `--target-id` linking
+- `daily_ohlcv` snapshot payloads with raw OHLCV plus adjusted close
 
 ## Non-Scope
 

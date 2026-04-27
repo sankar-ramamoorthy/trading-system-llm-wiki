@@ -18,6 +18,7 @@ Milestone 6: read-only market data provider integration.
 ## Active Focus
 
 - Build on ADR-007: market data provider boundary for optional prototype-grade `yfinance` daily OHLCV snapshots.
+- The first implementation slice is now `fetch-market-data`, which stores daily OHLCV snapshots as explicit `MarketContextSnapshot` records.
 - Preserve the manual, local, auditable workflow established through Milestones 1 through 3.
 - Treat Milestone 4 read-only market context as complete and keep it advisory, local-first, and non-canonical.
 - Treat Milestone 5 review, export, and local JSON operations as complete.
@@ -30,6 +31,7 @@ Milestone 6: read-only market data provider integration.
 - Do not let external market data become the source of truth for trade meaning.
 - Do not treat `yfinance` as production-grade market data infrastructure.
 - Do not expand the first provider slice beyond daily OHLCV history.
+- Do not couple provider response objects or schemas to domain logic.
 - Do not turn review tags into a taxonomy system, analytics platform, generated coaching, or review-editing workflow.
 - Do not turn review quality scores or journal export into optimization, recommendations, or coaching.
 - Keep Markdown export factual and metadata-only for linked context; full context payload inspection belongs in `show-context`.
@@ -38,7 +40,6 @@ Milestone 6: read-only market data provider integration.
 
 ## Open Questions
 
-- What is the narrow first CLI workflow for fetching and storing daily OHLCV snapshots?
 - When should review editing or tag management be introduced, if ever?
 
 ## High-Priority Links
