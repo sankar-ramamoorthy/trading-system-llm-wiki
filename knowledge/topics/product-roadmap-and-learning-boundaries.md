@@ -32,6 +32,8 @@ Milestone 5 improved review structure, narrow journal-grade reporting/export, an
 
 Milestone 6 should add read-only daily OHLCV provider integration behind the `MarketContextSnapshot` boundary. The first accepted provider stance is optional prototype-grade `yfinance`. It should not expand into live streaming, execution-grade quotes, broker integration, provider-driven recommendations, or AI-generated interpretation.
 
+The first Milestone 6 slice is now implemented as `fetch-market-data`, which stores daily OHLCV snapshots as explicit local market context.
+
 ## External Product Assessment Notes
 
 A Perplexity assessment based only on the application repo `README.md` and `STATUS.md` reinforced the current product direction rather than changing it.

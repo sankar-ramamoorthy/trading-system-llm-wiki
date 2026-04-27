@@ -42,6 +42,7 @@ For trading-system milestone focus, use [PROJECT.md](PROJECT.md). For agent oper
 - Added repo-local skill loading guidance to `AGENTS.md`.
 - Added root `README.md` and this wiki-specific `STATUS.md`.
 - Processed the Milestone 5 local JSON backup/restore plan and implementation notes into canonical wiki status and topic pages.
+- Synced the Milestone 6 market-data provider boundary and the implemented `fetch-market-data` slice into the project brief, implementation status, and milestone topic pages.
 
 ## Next Maintenance Candidates
 
