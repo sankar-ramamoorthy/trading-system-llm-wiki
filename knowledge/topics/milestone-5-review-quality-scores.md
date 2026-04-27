@@ -46,6 +46,8 @@ This slice intentionally does not add:
 
 Scores are structured review metadata, not a performance model or recommendation system.
 
+The next implemented follow-on is [[milestone-5-markdown-journal-export]], which exports factual reviewed-trade journal data to Markdown while still avoiding generated coaching and broad analytics.
+
 ## Validation
 
 The application repo recorded the following validation after implementation:
@@ -58,6 +60,7 @@ Full suite: 132 passed
 ## Related Pages
 
 - [[milestone-5-review-tags-and-filtering]]
+- [[milestone-5-markdown-journal-export]]
 - [[milestones-3-to-5-roadmap]]
 - [[application-implementation-status]]
 - [[trade-lifecycle-and-objects]]

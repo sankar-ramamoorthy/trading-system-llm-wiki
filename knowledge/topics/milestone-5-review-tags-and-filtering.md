@@ -52,7 +52,7 @@ The processed external assessment reinforced two Milestone 5 risks:
 
 Likely follow-on work should stay narrow and journal-grade, such as improving review prompt quality, making the completed-trade review flow faster, or adding local export only after the review data stays useful in daily practice.
 
-The next implemented follow-on is [[milestone-5-review-quality-scores]], which adds optional 1-5 process, setup, execution, and exit quality scores without adding review editing or reporting.
+The next implemented follow-on is [[milestone-5-review-quality-scores]], which adds optional 1-5 process, setup, execution, and exit quality scores without adding review editing or reporting. Markdown export is tracked separately in [[milestone-5-markdown-journal-export]].
 
 ## Validation
 
@@ -68,5 +68,6 @@ Full suite: 131 passed
 - [[milestones-3-to-5-roadmap]]
 - [[application-implementation-status]]
 - [[milestone-5-review-quality-scores]]
+- [[milestone-5-markdown-journal-export]]
 - [[trade-lifecycle-and-objects]]
 - [[product-roadmap-and-learning-boundaries]]

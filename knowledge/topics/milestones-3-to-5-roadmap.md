@@ -120,6 +120,16 @@ Second implementation slice:
 
 See [[milestone-5-review-quality-scores]].
 
+Third implementation slice:
+
+- Markdown journal export through `export-review-journal --output <path>`
+- reuse of review filters for rating, purpose, direction, tags, quality scores, and sort order
+- one factual Markdown section per reviewed trade
+- linked market-context metadata included without full payloads
+- no review editing, generated coaching, recommendations, CSV, charts, aggregate statistics, backup/restore, or broad analytics
+
+See [[milestone-5-markdown-journal-export]].
+
 ## Explicit Deferrals
 
 The accepted roadmap still defers:

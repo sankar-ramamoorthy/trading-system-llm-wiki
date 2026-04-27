@@ -31,7 +31,7 @@ Observed from processed issue notes, raw notes captured on 2026-04-22 through 20
 - Typer CLI exists with `version`, `demo-planned-trade`, retrieval commands, and additional read-side query wiring in source.
 - The canonical demo now uses local JSON persistence rather than in-memory-only execution.
 - Milestone 4 local context snapshot workflow is complete.
-- Milestone 5 review tags/filtering and review quality scores are implemented as early review/learning slices.
+- Milestone 5 review tags/filtering, review quality scores, and Markdown journal export are implemented as early review/learning slices.
 
 ## Completed Milestone 1
 
@@ -122,6 +122,13 @@ Verified from application repo source, docs, and tests on 2026-04-26:
 - `list-trade-reviews` displays the quality scores and supports exact score filters.
 - `show-trade-review` displays all four quality scores.
 - The second Milestone 5 slice intentionally does not add review editing, reporting/export, generated coaching, or broader analytics.
+- `ReviewJournalExportService` now builds factual Markdown journals from existing review read models.
+- `export-review-journal --output <path>` writes reviewed trades to a local Markdown file.
+- The export reuses review filters for rating, purpose, direction, repeated tags, quality scores, and sort order.
+- Existing output files are refused unless `--overwrite` is provided.
+- Empty filtered results report `No trade reviews found.` and create no file.
+- Linked market-context metadata appears in the export, but full context payloads remain isolated to `show-context`.
+- The third Milestone 5 slice intentionally does not add CSV export, charts, aggregate statistics, backup/restore, review editing, recommendations, generated coaching, or broader analytics.
 
 ## Implemented Workflow
 
@@ -156,6 +163,7 @@ Verified CLI commands now include:
 - read commands for `list-trade-ideas`, `list-trade-theses`, `show-trade-thesis`, `list-trade-plans`, `show-trade-plan`, `list-trade-reviews`, `show-trade-review`, `list-positions`, `show-position`, and `show-position-timeline`
 - context commands for `import-context`, `list-context`, and `show-context`
 - context reuse command `copy-context`
+- review export command `export-review-journal`
 
 Closed positions expose realized P&L on the read side, and the read commands now surface enough linked data for practical CLI chaining.
 
@@ -175,6 +183,12 @@ Review quality scores are now part of those review workflows:
 
 - `create-trade-review --process-score --setup-quality --execution-quality --exit-quality`
 - `list-trade-reviews --process-score --setup-quality --execution-quality --exit-quality`
+
+Markdown journal export is now part of the review workflow:
+
+- `export-review-journal --output <path>`
+- `export-review-journal --output <path> --tag <tag> --sort newest`
+- `export-review-journal --output <path> --overwrite`
 
 ## Current Roadmap Direction
 
@@ -197,7 +211,7 @@ Current synthesis:
 - Milestone 2 is complete
 - Milestone 3 is complete
 - Milestone 4 is complete
-- Milestone 5 has started, with review tags/filtering and review quality scores implemented
+- Milestone 5 has started, with review tags/filtering, review quality scores, and Markdown journal export implemented
 
 Milestone 2 is complete because its roadmap criteria are satisfied in the repo:
 
@@ -211,7 +225,7 @@ Milestone 3 is complete because the manual workflow usability work now includes 
 
 Milestone 4 is complete because the local context workflow supports import, discovery, linked detail surfacing, payload inspection, and copy-to-target reuse while preserving context as read-only and non-canonical.
 
-Milestone 5 has started because the app repo now supports creation-time review tags, review filtering, and optional review quality scores without expanding into review editing, taxonomy management, reporting/export, or generated coaching.
+Milestone 5 has started because the app repo now supports creation-time review tags, review filtering, optional review quality scores, and factual Markdown journal export without expanding into review editing, taxonomy management, recommendations, generated coaching, or broad analytics.
 
 ## Position Opening Rule
 
@@ -249,7 +263,8 @@ Trade review remains manual and simple:
 - review content is structured and human-authored
 - review tags can be added at creation time and used for filtering
 - optional 1-5 review quality scores can be added at creation time and used for exact filtering
-- no editing, versioning, multiple reviews, taxonomy management, analytics, or AI-generated feedback is included
+- reviewed trades can be exported to factual local Markdown journals through existing review filters
+- no editing, versioning, multiple reviews, taxonomy management, recommendations, broad analytics, or AI-generated feedback is included
 
 ## Validation Recorded
 
@@ -278,6 +293,7 @@ Issue 17 implementation note captured command and doc alignment work, but did no
 129 passed after context discovery filters and copy workflow
 131 passed after Milestone 5 review tags and filtering
 132 passed after Milestone 5 review quality scores
+142 passed after Milestone 5 Markdown journal export
 ```
 
 The 117-test result was verified in the application repo on 2026-04-26 with `uv run pytest`.
@@ -300,6 +316,13 @@ Focused review quality suite: 59 passed
 Full suite: 132 passed
 ```
 
+The Milestone 5 Markdown journal export slice was verified in the application repo on 2026-04-26:
+
+```text
+Focused review/export suite: 49 passed
+Full suite: 142 passed
+```
+
 ## Current Non-Scope
 
 The application docs still treat these as intentionally out of scope:
@@ -312,6 +335,7 @@ The application docs still treat these as intentionally out of scope:
 - broker orders or execution adapters
 - analytics, dashboards, and reports beyond the current narrow read-side P&L calculation
 - review editing, tag taxonomy management, generated coaching, and broader analytics
+- CSV export, charts, aggregate review statistics, review recommendations, and AI-generated journal interpretation
 - commissions, fees, and slippage modeling
 - fill correction or amendment workflows
 - manual force-close or reopen workflows
@@ -328,6 +352,7 @@ The current direction now emphasizes manual workflow usability, read-only market
 - [[milestone-4-context-snapshot-workflow]]
 - [[milestone-5-review-tags-and-filtering]]
 - [[milestone-5-review-quality-scores]]
+- [[milestone-5-markdown-journal-export]]
 - [[application-project-structure]]
 - [[development-workflow]]
 - [[canonical-domain-model]]
