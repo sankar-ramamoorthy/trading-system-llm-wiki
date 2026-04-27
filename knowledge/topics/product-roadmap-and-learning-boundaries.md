@@ -32,7 +32,13 @@ Milestone 5 improved review structure, narrow journal-grade reporting/export, an
 
 Milestone 6 should add read-only daily OHLCV provider integration behind the `MarketContextSnapshot` boundary. The first accepted provider stance is optional prototype-grade `yfinance`. It should not expand into live streaming, execution-grade quotes, broker integration, provider-driven recommendations, or AI-generated interpretation.
 
-The first Milestone 6 slice is now implemented as `fetch-market-data`, which stores daily OHLCV snapshots as explicit local market context.
+The first Milestone 6 slice, Milestone 6A, is complete. It is implemented as `fetch-market-data`, which stores daily OHLCV snapshots as explicit local market context. Validation on 2026-04-27 recorded 6 focused yfinance tests passing and 162 full-suite tests passing.
+
+Milestone 6B Issue 1 is also complete. It adds explicit provider selection through `--provider yfinance`, keeps yfinance as the default and only implemented provider, and moves provider-backed source selection behind a small registry boundary. Validation on 2026-04-27 recorded 10 focused provider-boundary tests passing and 166 full-suite tests passing.
+
+The accepted sequencing after the API-first product brainstorm is to finish Milestone 6 before starting ADR-008 implementation. The next Milestone 6 direction is planning access to Massive.com, formerly Polygon.io, as the next provider candidate after yfinance.
+
+ADR-008 is accepted as a future product architecture direction, but it should start after Milestone 6 is closed or explicitly paused.
 
 ## External Product Assessment Notes
 

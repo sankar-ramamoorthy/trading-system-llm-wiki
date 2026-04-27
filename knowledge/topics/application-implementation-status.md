@@ -150,8 +150,12 @@ Verified from application repo docs on 2026-04-27:
 - Provider output must be stored as explicit `MarketContextSnapshot` records.
 - Provider data remains advisory and non-canonical.
 - Provider failures must not block core trade workflows.
-- The first provider slice is implemented as `fetch-market-data` in the application CLI.
-- Verification recorded 24 focused market-data tests passing and 162 full-suite tests passing.
+- The first provider slice, Milestone 6A, is implemented as `fetch-market-data` in the application CLI.
+- Milestone 6A is closed out in `DOCS/milestone-6a-yfinance-market-data-closeout.md`.
+- Verification recorded 6 focused yfinance market-data tests passing and 162 full-suite tests passing.
+- Milestone 6B Issue 1 is implemented and closed out in `DOCS/milestone-6b-provider-boundary-hardening-closeout.md`.
+- `fetch-market-data` now accepts explicit `--provider yfinance`, while existing calls still default to yfinance.
+- Verification recorded 10 focused provider-boundary tests passing and 166 full-suite tests passing.
 
 ## Implemented Workflow
 
@@ -238,6 +242,8 @@ Current synthesis:
 - Milestone 4 is complete
 - Milestone 5 is complete
 - Milestone 6 has started with ADR-007 accepted
+- Milestone 6A is complete
+- Milestone 6B Issue 1 is complete
 
 Milestone 2 is complete because its roadmap criteria are satisfied in the repo:
 
@@ -253,7 +259,7 @@ Milestone 4 is complete because the local context workflow supports import, disc
 
 Milestone 5 is complete because the app repo now supports creation-time review tags, review filtering, optional review quality scores, factual Markdown journal export, and explicit local JSON validation/backup/restore without expanding into review editing, taxonomy management, recommendations, generated coaching, broad analytics, or cloud operational tooling.
 
-Milestone 6 has started because ADR-007 accepts the market data provider boundary before provider code is introduced. The first slice is now implemented, but the milestone remains open because the provider surface can still be extended.
+Milestone 6 has started because ADR-007 accepts the market data provider boundary. Milestone 6A is complete because the first yfinance daily OHLCV snapshot slice is implemented, documented, and validated. Milestone 6B Issue 1 is complete because provider-backed source selection now goes through an explicit registry while preserving yfinance behavior. The milestone remains open for 6C Massive.com provider planning.
 
 ## Position Opening Rule
 
