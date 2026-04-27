@@ -23,7 +23,8 @@ This sequence keeps the project local-first and manual-first while extending use
 - Milestone 2 is complete.
 - Milestone 3 is complete.
 - Milestone 4 is complete.
-- Milestone 5 has started.
+- Milestone 5 is complete.
+- Milestone 6 has started with ADR-007 for the market data provider boundary.
 
 ## Milestone 3
 
@@ -82,7 +83,7 @@ Implemented Milestone 4 closeout:
 - full snapshot payload inspection remains isolated to `show-context`
 - `list-context` now supports broad discovery with optional filters
 - `copy-context` creates a new immutable linked snapshot from an existing snapshot without mutating the original
-- external providers such as `yfinance` remain deferred and should require an ADR when introduced
+- external provider implementation was deferred until ADR-007; that boundary is now accepted for Milestone 6
 
 See [[milestone-4-context-snapshot-workflow]].
 
@@ -152,6 +153,10 @@ The accepted roadmap still defers:
 
 Reinforcement learning remains exploratory knowledge only. It is not the accepted Milestone 3 direction.
 
+## Milestone 6 Transition
+
+Milestone 6 begins after this roadmap with read-only market data provider integration. ADR-007 accepts optional prototype-grade `yfinance` as the first provider stance and daily OHLCV history as the first data shape. Provider output must remain advisory, non-canonical, and stored as `MarketContextSnapshot` records.
+
 ## Related Pages
 
 - [[milestone-2-roadmap]]
@@ -159,3 +164,4 @@ Reinforcement learning remains exploratory knowledge only. It is not the accepte
 - [[application-implementation-status]]
 - [[development-workflow]]
 - [[data-and-platform-strategy]]
+- [[milestone-6-market-data-provider-boundary]]

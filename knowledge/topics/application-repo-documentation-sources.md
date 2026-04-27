@@ -4,7 +4,7 @@ type: topic
 status: active
 tags: [trading-system, documentation, adr, application-repo]
 created: 2026-04-19
-updated: 2026-04-24
+updated: 2026-04-27
 ---
 
 # Application Repo Documentation Sources
@@ -28,19 +28,22 @@ C:\Users\bosto\dockerstuff\trading-system\DOCS\ADR\
 
 Current observed files:
 
-- `README.md`, updated 2026-04-24 to reflect current CLI workflow, Milestone 2 implementation, and the accepted Milestones 3 through 5 roadmap
+- `README.md`, updated 2026-04-27 to reflect Milestone 6 provider-boundary status
 - `DOCS/domain-model.md` v2, dated 2026-04-19
 - `DOCS/milestone-1-summary.md` v1, dated 2026-04-20
 - `DOCS/milestone-2-roadmap.md` v1, dated 2026-04-20
 - `DOCS/milestones-3-to-5-roadmap.md`, accepted 2026-04-24
 - `DOCS/milestone-4-market-context-design.md`, accepted-for-roadmap 2026-04-24
 - `DOCS/milestone-5-review-learning-and-local-ops-design.md`, accepted-for-roadmap 2026-04-24
+- `DOCS/milestone-6-market-data-provider-design.md`, accepted-for-roadmap 2026-04-27
 - `DOCS/systems-blueprint.md` v2, dated 2026-04-19
 - `DOCS/ADR/001-system-architecture.md`
 - `DOCS/ADR/002-rules-vs-context.md`
 - `DOCS/ADR/003-development-and-deployment-strategy.md`
 - `DOCS/ADR/004-canonical-domain-and-source-of-truth.md`
 - `DOCS/ADR/005-mvp-definition-and-boundaries.md`, accepted 2026-04-20
+- `DOCS/ADR/006-deferred-learning-systems-boundary.md`, accepted 2026-04-26
+- `DOCS/ADR/007-market-data-provider-boundary.md`, accepted 2026-04-27
 
 Supplemental implementation sources used for the 2026-04-24 synthesis:
 
@@ -57,7 +60,7 @@ The application repo docs are the versioned source for decisions tied to code hi
 
 The application repo `README.md` is a current-state source. It should be used to understand the implemented workflow, local commands, user-facing framing, and explicit non-scope, but it should not replace ADRs or the domain model as the decision record.
 
-ADR-005 is the source of truth for the Milestone 1 MVP boundary. `DOCS/milestone-1-summary.md` summarizes what was delivered, and `DOCS/milestone-2-roadmap.md` describes likely next work.
+ADR-005 is the source of truth for the Milestone 1 MVP boundary. ADR-006 is the source of truth for deferring AI, ML, and reinforcement-learning systems. ADR-007 is the source of truth for the Milestone 6 market data provider boundary.
 
 As of the later 2026-04-24 repo state, the README and roadmap docs are aligned with the current Milestone 2 implementation and with the accepted next milestone set. When docs and code disagree in future, prefer code and tests for implementation status and docs for intent and boundary.
 
