@@ -4,7 +4,7 @@ type: entity
 status: active
 tags: [trading-system, domain-model]
 created: 2026-04-19
-updated: 2026-04-24
+updated: 2026-04-26
 ---
 
 # Canonical Domain Model
@@ -140,6 +140,9 @@ Current post-slice additions observed in code:
 
 - `OrderIntent` is now implemented narrowly between approved `TradePlan` and manual `Fill`
 - realized P&L exists as a read-side calculation for closed positions, not as a persisted canonical entity
+- `MarketContextSnapshot` is implemented for read-only, non-canonical context snapshots
+- `TradeReview.tags` is implemented as creation-time review metadata for filtering and learning loops
+- `TradeReview` quality scores are implemented as optional creation-time review metadata for process, setup, execution, and exit quality
 
 ## Related Pages
 
@@ -147,3 +150,5 @@ Current post-slice additions observed in code:
 - [[deterministic-rules-vs-contextual-intelligence]]
 - [[first-vertical-slice]]
 - [[mvp-definition-and-boundaries]]
+- [[milestone-5-review-tags-and-filtering]]
+- [[milestone-5-review-quality-scores]]
