@@ -4,7 +4,7 @@ type: topic
 status: active
 tags: [trading-system, roadmap, learning-systems, reinforcement-learning, product-boundaries]
 created: 2026-04-26
-updated: 2026-04-27
+updated: 2026-04-29
 ---
 
 # Product Roadmap And Learning Boundaries
@@ -24,21 +24,25 @@ The accepted near-term sequence has advanced to:
 2. Milestone 5: review, learning, and local operations
 3. Milestone 6: read-only market data provider integration
 
-Milestones 3 through 5 are complete. Milestone 6 has started with ADR-007.
+Milestones 3 through 6 are complete.
 
 Milestone 4 added read-only market and context support while preserving the system as the canonical owner of trade meaning.
 
 Milestone 5 improved review structure, narrow journal-grade reporting/export, and local operations. Its implemented slices are creation-time review tags/filtering, optional review quality scores, Markdown journal export, and local JSON operations.
 
-Milestone 6 should add read-only daily OHLCV provider integration behind the `MarketContextSnapshot` boundary. The first accepted provider stance is optional prototype-grade `yfinance`. It should not expand into live streaming, execution-grade quotes, broker integration, provider-driven recommendations, or AI-generated interpretation.
+Milestone 6 adds read-only daily OHLCV provider integration behind the `MarketContextSnapshot` boundary. The first accepted provider stance is optional prototype-grade `yfinance`; Massive.com is now the first credentialed provider. Milestone 6 should not expand into live streaming, execution-grade quotes, broker integration, provider-driven recommendations, or AI-generated interpretation.
 
 The first Milestone 6 slice, Milestone 6A, is complete. It is implemented as `fetch-market-data`, which stores daily OHLCV snapshots as explicit local market context. Validation on 2026-04-27 recorded 6 focused yfinance tests passing and 162 full-suite tests passing.
 
-Milestone 6B Issue 1 is also complete. It adds explicit provider selection through `--provider yfinance`, keeps yfinance as the default and only implemented provider, and moves provider-backed source selection behind a small registry boundary. Validation on 2026-04-27 recorded 10 focused provider-boundary tests passing and 166 full-suite tests passing.
+Milestone 6B Issue 1 is also complete. It adds explicit provider selection through `--provider yfinance`, keeps yfinance as the default provider, and moves provider-backed source selection behind a small registry boundary. Validation on 2026-04-27 recorded 10 focused provider-boundary tests passing and 166 full-suite tests passing.
 
-The accepted sequencing after the API-first product brainstorm is to finish Milestone 6 before starting ADR-008 implementation. The next Milestone 6 direction is planning access to Massive.com, formerly Polygon.io, as the next provider candidate after yfinance.
+Milestone 6C Issue 1 is complete. ADR-009 accepts Massive.com, formerly Polygon.io, as the next provider candidate after yfinance, with the official `massive` Python client as the preferred first implementation path, `MASSIVE_API_KEY` as the credential boundary, and daily aggregate/OHLCV-style bars as the first data shape.
 
-ADR-008 is accepted as a future product architecture direction, but it should start after Milestone 6 is closed or explicitly paused.
+Milestone 6C Issue 2 is complete. The linked application repo now supports `fetch-market-data --provider massive`, requires `MASSIVE_API_KEY`, normalizes Massive daily aggregate bars into `daily_ohlcv` snapshots, and keeps yfinance as the default provider. Validation on 2026-04-29 recorded 21 focused market-data tests passing and 177 full-suite tests passing.
+
+Milestone 6D is complete. Milestone 6 is closed with yfinance and Massive.com behind the provider boundary.
+
+ADR-008 is now the next accepted implementation direction. A narrow local API-key ergonomics issue may be considered first, but it should not expand into cloud secret management, accounts, provider fallback, or broad web configuration.
 
 ## External Product Assessment Notes
 
@@ -100,8 +104,9 @@ The companion ADR is:
 
 - `C:\Users\bosto\dockerstuff\trading-system\DOCS\ADR\006-deferred-learning-systems-boundary.md`
 - `C:\Users\bosto\dockerstuff\trading-system\DOCS\ADR\007-market-data-provider-boundary.md`
+- `C:\Users\bosto\dockerstuff\trading-system\DOCS\ADR\009-massive-provider-boundary.md`
 
-ADR-006 records the durable decision that AI, ML, and RL are deferred beyond the accepted near-term roadmap. ADR-007 records the durable market data provider boundary for Milestone 6.
+ADR-006 records the durable decision that AI, ML, and RL are deferred beyond the accepted near-term roadmap. ADR-007 records the durable market data provider boundary for Milestone 6. ADR-009 records the Massive.com provider boundary.
 
 The roadmap page records evolving sequence:
 
@@ -119,6 +124,8 @@ This page synthesizes:
 - [[mvp-definition-and-boundaries]]
 - [[brainstorm-20260426-product-roadmap-rl-boundaries]]
 - `knowledge/processed/Analysis by Perplexity based on just the Repo README.md and Repo STATUS.md 2026-04-26 2_42 pm EST.md`
+- [[milestone-6c-massive-daily-bars-implemented-20260429]]
+- [[milestone-6-closeout-20260429]]
 
 ## Processing Notes
 

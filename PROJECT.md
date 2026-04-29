@@ -4,7 +4,7 @@ type: project
 status: active
 tags: [trading-system, project, context]
 created: 2026-04-25
-updated: 2026-04-27
+updated: 2026-04-29
 ---
 
 # Project Brief
@@ -13,12 +13,14 @@ This file is the short current-context entrypoint for the trading-system LLM wik
 
 ## Current Phase
 
-Milestone 6: read-only market data provider integration.
+Milestone 6 is complete. Next accepted direction: ADR-008 API-first web product and trade-capture draft workflow.
 
 ## Active Focus
 
-- Build on ADR-007: market data provider boundary for optional prototype-grade `yfinance` daily OHLCV snapshots.
-- The first implementation slice is now `fetch-market-data`, which stores daily OHLCV snapshots as explicit `MarketContextSnapshot` records.
+- Treat Milestone 6 read-only market data provider integration as closed.
+- Build the next implementation plan from ADR-008.
+- Preserve ADR-007 and ADR-009: market data provider boundaries for yfinance and Massive.com daily OHLCV snapshots.
+- Keep yfinance as the default provider and Massive.com as the first credentialed provider.
 - Preserve the manual, local, auditable workflow established through Milestones 1 through 3.
 - Treat Milestone 4 read-only market context as complete and keep it advisory, local-first, and non-canonical.
 - Treat Milestone 5 review, export, and local JSON operations as complete.
@@ -30,7 +32,8 @@ Milestone 6: read-only market data provider integration.
 - Do not turn context ingestion into broker execution, automation, or trade decision delegation.
 - Do not let external market data become the source of truth for trade meaning.
 - Do not treat `yfinance` as production-grade market data infrastructure.
-- Do not expand the first provider slice beyond daily OHLCV history.
+- Do not expand provider work beyond daily OHLCV history during Milestone 6.
+- Do not store API keys in snapshots, logs, docs examples, tests, or committed files.
 - Do not couple provider response objects or schemas to domain logic.
 - Do not turn review tags into a taxonomy system, analytics platform, generated coaching, or review-editing workflow.
 - Do not turn review quality scores or journal export into optimization, recommendations, or coaching.
@@ -40,7 +43,7 @@ Milestone 6: read-only market data provider integration.
 
 ## Open Questions
 
-- When should review editing or tag management be introduced, if ever?
+- Should local API-key ergonomics get a narrow issue before ADR-008 implementation, or stay as environment-variable-only for now?
 
 ## High-Priority Links
 
