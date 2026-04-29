@@ -156,6 +156,15 @@ Verified from application repo docs on 2026-04-27:
 - Milestone 6B Issue 1 is implemented and closed out in `DOCS/milestone-6b-provider-boundary-hardening-closeout.md`.
 - `fetch-market-data` now accepts explicit `--provider yfinance`, while existing calls still default to yfinance.
 - Verification recorded 10 focused provider-boundary tests passing and 166 full-suite tests passing.
+- Milestone 6C Issue 1 is complete with accepted `DOCS/ADR/009-massive-provider-boundary.md`.
+- ADR-009 accepts Massive.com as the next provider candidate, prefers the official `massive` Python client, uses `MASSIVE_API_KEY` as the initial credential boundary, and keeps daily aggregate/OHLCV-style bars as the first data shape.
+- Milestone 6C Issue 2 is complete with `DOCS/milestone-6c-massive-daily-bars-closeout.md`.
+- The application now supports `fetch-market-data --provider massive`.
+- Massive fetches require `MASSIVE_API_KEY`.
+- The official `massive` Python client is added with `massive>=2.5,<3.0`, and `uv.lock` resolves `massive 2.6.0`.
+- Verification recorded 21 focused market-data tests passing and 177 full-suite tests passing on 2026-04-29.
+- Milestone 6D is complete with `DOCS/milestone-6-closeout.md`.
+- Milestone 6 is closed.
 
 ## Implemented Workflow
 
@@ -244,6 +253,9 @@ Current synthesis:
 - Milestone 6 has started with ADR-007 accepted
 - Milestone 6A is complete
 - Milestone 6B Issue 1 is complete
+- Milestone 6C Issue 1 is complete
+- Milestone 6C Issue 2 is complete
+- Milestone 6D is complete
 
 Milestone 2 is complete because its roadmap criteria are satisfied in the repo:
 
@@ -259,7 +271,7 @@ Milestone 4 is complete because the local context workflow supports import, disc
 
 Milestone 5 is complete because the app repo now supports creation-time review tags, review filtering, optional review quality scores, factual Markdown journal export, and explicit local JSON validation/backup/restore without expanding into review editing, taxonomy management, recommendations, generated coaching, broad analytics, or cloud operational tooling.
 
-Milestone 6 has started because ADR-007 accepts the market data provider boundary. Milestone 6A is complete because the first yfinance daily OHLCV snapshot slice is implemented, documented, and validated. Milestone 6B Issue 1 is complete because provider-backed source selection now goes through an explicit registry while preserving yfinance behavior. The milestone remains open for 6C Massive.com provider planning.
+Milestone 6 is complete. Milestone 6A is complete because the first yfinance daily OHLCV snapshot slice is implemented, documented, and validated. Milestone 6B Issue 1 is complete because provider-backed source selection now goes through an explicit registry while preserving yfinance behavior. Milestone 6C Issue 1 is complete because ADR-009 records the Massive.com provider boundary. Milestone 6C Issue 2 is complete because Massive.com daily bars are implemented behind the provider registry. Milestone 6D closes the milestone with the provider boundary proven by two providers and 177 full-suite tests passing.
 
 ## Position Opening Rule
 

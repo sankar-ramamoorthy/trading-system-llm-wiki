@@ -4,7 +4,7 @@ type: topic
 status: active
 tags: [trading-system, data, platforms]
 created: 2026-04-19
-updated: 2026-04-27
+updated: 2026-04-29
 ---
 
 # Data and Platform Strategy
@@ -23,7 +23,7 @@ Alpaca is a likely first programmable execution venue, especially for paper trad
 
 Market data has moved into Milestone 6 as read-only provider integration.
 
-ADR-007 accepts optional prototype-grade `yfinance` as the first provider stance and daily OHLCV history as the first data shape. Provider output must be stored as `MarketContextSnapshot` records before the rest of the application uses it.
+ADR-007 accepts optional prototype-grade `yfinance` as the first provider stance and daily OHLCV history as the first data shape. ADR-009 accepts Massive.com as the next provider candidate. Provider output must be stored as `MarketContextSnapshot` records before the rest of the application uses it.
 
 Market data remains advisory context rather than a driver of automated decisions. Start with free or low-cost data and upgrade only when limits become real.
 
@@ -31,9 +31,11 @@ Initial and candidate sources:
 
 - Yahoo Finance
 - Alpha Vantage
-- Polygon.io as a future upgrade
+- Massive.com, formerly Polygon.io
 
 Data quality, alignment, and structure matter more than cost early.
+
+Provider credentials are an operational boundary. Massive.com currently uses `MASSIVE_API_KEY`; keys should stay in the local environment or another explicit local configuration mechanism and must not be committed, logged, or stored inside snapshots.
 
 Broker integration, execution-grade quotes, live streaming, and provider-driven recommendations remain later concerns.
 
