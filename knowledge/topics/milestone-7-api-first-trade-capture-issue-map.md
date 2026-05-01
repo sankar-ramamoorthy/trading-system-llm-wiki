@@ -40,6 +40,8 @@ The product should use symbols and playbook slugs, not user-entered UUIDs.
 
 Seeded local reference data is enough for the first version. Management screens are not required yet.
 
+Status: complete in the application repo on 2026-04-29.
+
 ### 7C: Trade Capture Draft Contract
 
 Define editable draft contracts for:
