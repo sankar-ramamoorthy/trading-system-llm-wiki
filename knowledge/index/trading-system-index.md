@@ -108,7 +108,9 @@ The later raw implementation note for Milestone 7E was processed into [[implemen
 
 The raw notes describing what 7F should do were processed into [[proposed-milestone-7f-react-trade-capture-workspace-20260502]]. The durable direction was that 7F should replace the frontend status shell with a browser trade-capture workspace over the 7E backend. That planning status was superseded by the later 7F implementation note.
 
-The raw implementation note for Milestone 7F was processed into [[implemented-milestone-7f-20260502]]. The application repo now has a React/Vite trade-capture workspace for raw trader-language input, parse, editable Idea/Thesis/Plan sections, field-level issue display, explicit save, and saved-result summary. Milestone 7G End-to-End Save Workflow is now the next planned slice.
+The raw implementation note for Milestone 7F was processed into [[implemented-milestone-7f-20260502]]. The application repo now has a React/Vite trade-capture workspace for raw trader-language input, parse, editable Idea/Thesis/Plan sections, field-level issue display, explicit save, and saved-result summary.
+
+The Milestone 7G acceptance run was processed into [[implemented-milestone-7g-20260502]]. Docker/API end-to-end validation confirmed the full parse→save→persist workflow: Groq-backed `qwen/qwen3-32b` model wired in, `env_file` added to docker-compose for secret passing, LiteLLM parser hardened for small-model output variance, linked records confirmed in local JSON store, and 216 tests passing. Milestone 7H Milestone Closeout is now the next planned slice.
 
 The API key/key vault discussion was processed into [[api-key-vault-discussion-20260502]] as design discussion input only. Key-vault work is not accepted 7F scope. The current stance remains environment-variable based configuration, with a possible later ADR or milestone for encrypted local key storage.
 
