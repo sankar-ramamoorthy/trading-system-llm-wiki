@@ -96,9 +96,20 @@ A future ADR should decide:
 - Docker and local development behavior
 - redaction and testing requirements
 
+## Milestone Assignment
+
+Proposed as **Milestone 9A** within "Milestone 9: Secure Credentials and Market Data Depth":
+
+- **9A**: Write ADR for key vault boundary → implement `local_secret_vault` library → wire into CLI secret resolution
+- **9B**: Massive.com options chain data as new snapshot type
+- **9C**: Milestone 9 closeout
+
+Key vault lands before Alpaca/paper trading (Milestone 10) so broker credentials (higher stakes) use the vault from day one.
+
 ## Related Pages
 
 - [[api-key-vault-discussion-20260502]]
+- [[key-vault-encryption-brainstorm-20260502]]
 - [[data-and-platform-strategy]]
 - [[milestone-6-market-data-provider-boundary]]
 - [[milestone-7-api-first-trade-capture-issue-map]]

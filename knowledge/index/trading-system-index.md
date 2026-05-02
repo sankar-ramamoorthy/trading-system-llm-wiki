@@ -117,3 +117,5 @@ The Milestone 7H closeout was processed into [[implemented-milestone-7h-20260502
 The API key/key vault discussion was processed into [[api-key-vault-discussion-20260502]] as design discussion input only. Key-vault work is not accepted 7F scope. The current stance remains environment-variable based configuration, with a possible later ADR or milestone for encrypted local key storage.
 
 The reusable key-vault library idea was captured as a raw brainstorm note and promoted to [[reusable-local-secret-vault-library]] as an ADR candidate topic. The durable stance is library-first: reusable encrypted local storage and secret resolution, with project-specific CLI/API/UI integration left outside the reusable core.
+
+A detailed encryption and master-key brainstorm was captured in [[key-vault-encryption-brainstorm-20260502]]. It covers Fernet vs AES-GCM vs OS keychain vs Age encryption, master-key management options, secret resolution precedence, CLI commands, Docker behavior, and assigns key vault work to Milestone 9A. The milestone topic has been updated with the 9A slot.
