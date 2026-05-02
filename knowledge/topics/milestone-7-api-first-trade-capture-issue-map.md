@@ -19,8 +19,9 @@ The current application repo state, verified from `README.md`, `STATUS.md`, and 
 - 7B Reference Lookup Foundation is complete.
 - 7C Trade Capture Draft Contract is complete.
 - 7D Natural-Language Parser Boundary is complete.
-- 7E FastAPI Trade Capture Service is the next planned slice.
-- React capture workspace, end-to-end save workflow, and milestone closeout remain later 7.x work.
+- 7E FastAPI Trade Capture Service is complete.
+- 7F React/Vite Trade Capture Workspace is the next planned slice.
+- End-to-end save workflow and milestone closeout remain later 7.x work.
 
 ## Issue Map
 
@@ -168,7 +169,39 @@ Expose the trade-capture workflow through FastAPI endpoints.
 
 The API should call existing application services and repositories rather than shelling out to the CLI.
 
-Status: next planned slice as of 2026-05-02.
+Status: complete in the application repo on 2026-05-02.
+
+Implemented 7E boundary:
+
+- trade-capture API schemas for editable drafts, field issues, parse responses, save responses, and saved-result summaries
+- `TradeCaptureService` for API orchestration
+- `POST /trade-capture/parse`
+- `POST /trade-capture/save`
+- `GET /trade-capture/saved/{trade_plan_id}`
+- configured local JSON store wiring through `TRADING_SYSTEM_STORE_PATH`
+- test injection support for fake parsers and temporary repositories
+
+Implemented 7E API behavior:
+
+- parse accepts raw source text and returns editable draft data, validation issues, and `ready_to_save`
+- parser errors return clear `400` responses
+- parse does not persist anything
+- save accepts a confirmed editable draft, not raw text only
+- save rejects missing or ambiguous required draft fields with `422` and stable issue paths
+- save rejects unknown instrument symbols or playbook slugs with `422`
+- save creates linked `TradeIdea`, `TradeThesis`, and `TradePlan` records through existing services
+- saved plans remain in draft approval state
+- saved-result retrieval returns a compact trade-capture summary by `trade_plan_id`
+
+Validation recorded by the application repo on 2026-05-02:
+
+- `uv run pytest tests\test_api_trade_capture.py tests\test_trade_capture_parser.py tests\test_trade_capture_draft.py`: 31 passed
+- `uv run pytest tests\test_api_trade_capture.py tests\test_trade_capture_parser.py tests\test_trade_capture_draft.py tests\test_reference_lookup_service.py tests\test_api_health.py`: 39 passed
+- `uv run pytest`: 216 passed
+
+7E does not build the React workspace, claim the full browser-backed user-facing end-to-end workflow, approve plans, evaluate rules, create order intents, open positions, record fills, create reviews, add production auth, migrate to Postgres, add broker integration, generate recommendations, or verify claims.
+
+7F remains the React/Vite capture workspace. 7G remains the full UI-backed parse/edit/save acceptance workflow.
 
 Expected endpoint groups:
 
@@ -192,6 +225,8 @@ The UI should include:
 - saved result summary
 
 The screen must not expose approval, order intent, position, fill, broker, or recommendation actions.
+
+Status: next planned slice as of 2026-05-02.
 
 ### 7G: End-to-End Save Workflow
 

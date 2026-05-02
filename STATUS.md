@@ -48,7 +48,9 @@ For trading-system milestone focus, use [PROJECT.md](PROJECT.md). For agent oper
 - Processed the non-brainstorm raw Milestone 7 planning notes on 2026-05-02. Updated the Milestone 7 issue map, application implementation status, project brief, and index to reflect 7A/7B complete; this was superseded later the same day by the 7C implementation note.
 - Processed the raw Milestone 7C implementation note on 2026-05-02. Updated canonical pages to mark 7C complete and 7D Natural-Language Parser Boundary as next; this was superseded later the same day by the 7D implementation note.
 - Processed the raw proposed Milestone 7D parser-boundary plan on 2026-05-02. Updated the Milestone 7 issue map and index with the proposed 7D scope; this was superseded later the same day by the 7D implementation note.
-- Processed the raw Milestone 7D implementation note on 2026-05-02. Updated canonical pages to mark 7D complete and 7E FastAPI Trade Capture Service as next.
+- Processed the raw Milestone 7D implementation note on 2026-05-02. Updated canonical pages to mark 7D complete and 7E FastAPI Trade Capture Service as next; this was superseded later the same day by the 7E implementation note.
+- Processed the raw proposed Milestone 7E FastAPI trade-capture service plan on 2026-05-02. Updated the Milestone 7 issue map and index with the proposed backend API scope; this was superseded later the same day by the 7E implementation note.
+- Processed the raw Milestone 7E implementation note on 2026-05-02. Updated canonical pages to mark 7E complete and 7F React/Vite Trade Capture Workspace as next.
 
 ## Next Maintenance Candidates
 

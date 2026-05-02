@@ -185,7 +185,8 @@ Verified from application repo `README.md`, `STATUS.md`, and `DOCS/` on 2026-05-
 - 7B intentionally does not add reference management screens, draft schemas, natural-language parsing, save workflow, approval, execution, positions, fills, broker integration, or recommendations.
 - Milestone 7C Trade Capture Draft Contract is complete.
 - Milestone 7D Natural-Language Parser Boundary is complete.
-- The next planned slice is Milestone 7E FastAPI Trade Capture Service.
+- Milestone 7E FastAPI Trade Capture Service is complete.
+- The next planned slice is Milestone 7F React/Vite Trade Capture Workspace.
 
 ## Implemented Workflow
 
@@ -281,7 +282,8 @@ Current synthesis:
 - Milestone 7B is complete
 - Milestone 7C is complete
 - Milestone 7D is complete
-- Milestone 7E is next
+- Milestone 7E is complete
+- Milestone 7F is next
 
 Milestone 2 is complete because its roadmap criteria are satisfied in the repo:
 
@@ -299,7 +301,7 @@ Milestone 5 is complete because the app repo now supports creation-time review t
 
 Milestone 6 is complete. Milestone 6A is complete because the first yfinance daily OHLCV snapshot slice is implemented, documented, and validated. Milestone 6B Issue 1 is complete because provider-backed source selection now goes through an explicit registry while preserving yfinance behavior. Milestone 6C Issue 1 is complete because ADR-009 records the Massive.com provider boundary. Milestone 6C Issue 2 is complete because Massive.com daily bars are implemented behind the provider registry. Milestone 6D closes the milestone with the provider boundary proven by two providers and 177 full-suite tests passing.
 
-Milestone 7 has started. 7A is complete because the app repo now has a Dockerized FastAPI/Vite runtime skeleton with health checks and host Ollama placeholders. 7B is complete because seeded symbol/playbook lookup is available through service and API boundaries. 7C is complete because the service-layer editable trade-capture draft contract now defines draft sections, required and optional fields, stable issue paths, missing/ambiguous issue reporting, and save-readiness checks. 7D is complete because the app repo now has a parser port, parser error boundary, fake parser, LiteLLM-backed Ollama adapter, strict extraction prompt, JSON response validation, and mapping into the 7C draft contract. 7E is next.
+Milestone 7 has started. 7A is complete because the app repo now has a Dockerized FastAPI/Vite runtime skeleton with health checks and host Ollama placeholders. 7B is complete because seeded symbol/playbook lookup is available through service and API boundaries. 7C is complete because the service-layer editable trade-capture draft contract now defines draft sections, required and optional fields, stable issue paths, missing/ambiguous issue reporting, and save-readiness checks. 7D is complete because the app repo now has a parser port, parser error boundary, fake parser, LiteLLM-backed Ollama adapter, strict extraction prompt, JSON response validation, and mapping into the 7C draft contract. 7E is complete because the app repo now exposes parse, save, and saved-result retrieval endpoints over the parser, draft, reference lookup, planning, query, and local JSON repository boundaries. 7F is next.
 
 ## Verified Milestone 7C Completion
 
@@ -325,6 +327,21 @@ Verified from the raw implementation note, application repo `STATUS.md`, `DOCS/m
 - Missing fields and ambiguity remain visible through draft validation.
 - 7D does not add API endpoints, frontend capture UI, save workflow, persistence, approval, execution, broker behavior, recommendations, or claim verification.
 - Validation recorded 22 focused draft/parser tests passing, 30 focused trade-capture/reference/API tests passing, and 207 full-suite tests passing.
+
+## Verified Milestone 7E Completion
+
+Verified from the raw implementation note, application repo `STATUS.md`, `DOCS/milestone-7e-fastapi-trade-capture-service.md`, source, and tests on 2026-05-02:
+
+- `TradeCaptureService` orchestrates backend parse/save/retrieve behavior.
+- FastAPI exposes `POST /trade-capture/parse`, `POST /trade-capture/save`, and `GET /trade-capture/saved/{trade_plan_id}`.
+- Parse returns editable draft data, validation issues, and readiness without persistence.
+- Save rejects missing or ambiguous required fields and unknown references.
+- Save resolves symbols and playbook slugs through reference lookup.
+- Save creates linked `TradeIdea`, `TradeThesis`, and `TradePlan` records through existing services.
+- Saved plans remain in draft approval state.
+- Saved-result retrieval returns a compact result by trade plan id.
+- 7E does not add React UI, full browser-backed workflow, approval, execution, broker behavior, recommendations, claim verification, production auth, cloud deployment, or Postgres migration.
+- Validation recorded 31 focused trade-capture API/parser/draft tests passing, 39 focused trade-capture/reference/API tests passing, and 216 full-suite tests passing.
 
 ## Position Opening Rule
 
