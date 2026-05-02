@@ -360,6 +360,18 @@ Verified from the raw implementation note, application repo `STATUS.md`, `DOCS/m
 - 7F does not add approval, rule evaluation, order intent, position, fill, broker behavior, recommendations, claim verification, API key vault behavior, production auth, cloud deployment, or Postgres migration.
 - Validation recorded frontend production build passing, 13 focused trade-capture/API tests passing, and 216 full-suite tests passing.
 
+## Verified Milestone 7G Completion
+
+Verified from the raw implementation note and recorded acceptance run on 2026-05-02:
+
+- `docker compose up --build` started both containers healthy.
+- Parse via Groq `qwen/qwen3-32b` correctly extracted fields and surfaced validation issues.
+- Save created linked TradeIdea, TradeThesis, and TradePlan records.
+- Persistence confirmed in `store.json` with `approval_state: draft`.
+- All error paths validated: empty input, missing fields, ambiguous fields, unknown symbol, unknown plan ID.
+- `uv run pytest`: 216 passed.
+- Infrastructure fixes applied during acceptance: LLM switched from Ollama llama3.1 (unavailable) to Groq `qwen/qwen3-32b` (60 RPM free tier); `env_file` added to `docker-compose.yml` so `GROQ_API_KEY` reaches the backend container; LiteLLM parser hardened for small-model output variance (string-as-list, non-string candidates).
+
 ## Position Opening Rule
 
 `PositionService.open_position_from_plan(trade_plan_id)` is the current implementation point for the canonical rule that a `Position` originates from a `TradePlan`, not directly from a `TradeIdea`.
@@ -483,7 +495,7 @@ The application docs still treat these as intentionally out of scope:
 - fill correction or amendment workflows
 - manual force-close or reopen workflows
 - automated reviews or review editing workflows
-- trade-capture parse/edit/save from the web UI is not complete yet
+- trade-capture plan approval, rule evaluation, order intent creation, position opening, fill recording, broker integration, recommendations, and production auth remain out of scope for Milestone 7
 
 The current direction now emphasizes API-first local web trade capture on top of the existing manual workflow, while preserving read-only market context, review/local operations, and deterministic discipline boundaries before broker integration, Postgres migration, or RL work.
 

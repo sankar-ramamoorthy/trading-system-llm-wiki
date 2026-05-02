@@ -57,6 +57,7 @@ For trading-system milestone focus, use [PROJECT.md](PROJECT.md). For agent oper
 - Processed the fuller raw Milestone 7F React/Vite workspace plan on 2026-05-02. Expanded the proposed 7F note and issue map with UI states, styling direction, validation, and scope boundaries; this was superseded later the same day by the 7F implementation note.
 - Processed the raw Milestone 7F implementation note on 2026-05-02. Updated canonical pages to mark 7F complete and 7G End-to-End Save Workflow as next.
 - Processed the raw proposed Milestone 7G end-to-end save workflow plan on 2026-05-02. Expanded the 7G section in the issue map with steps, scope boundaries, and verification criteria. Stored cleaned source note under `knowledge/processed/`.
+- Processed the raw Milestone 7G implementation note on 2026-05-02. Updated canonical pages to mark 7G complete and 7H Milestone Closeout as next. Noted LLM provider switch from Ollama to Groq and parser hardening applied during acceptance.
 
 ## Next Maintenance Candidates
 

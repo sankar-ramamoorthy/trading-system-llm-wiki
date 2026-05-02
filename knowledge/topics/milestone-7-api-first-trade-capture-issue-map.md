@@ -289,7 +289,20 @@ Wire parse, edit, and save all the way through local JSON persistence.
 
 Saving should create linked `TradeIdea`, `TradeThesis`, and `TradePlan` records only after explicit user confirmation.
 
-Status: next planned slice as of 2026-05-02. Proposed plan captured 2026-05-02.
+Status: complete as of 2026-05-02.
+
+#### 7G Closeout
+
+Validated 2026-05-02:
+
+- `docker compose up --build` — both containers healthy
+- Parse via Groq `qwen/qwen3-32b` correctly extracts fields and surfaces validation issues
+- Save creates linked TradeIdea, TradeThesis, TradePlan records
+- Persist confirmed in `store.json` with `approval_state: draft`
+- All error paths validated: empty input, missing fields, ambiguous fields, unknown symbol, unknown plan ID
+- `uv run pytest`: 216 passed
+
+Infrastructure fixes applied during acceptance: LLM switched from Ollama llama3.1 (unavailable) to Groq `qwen/qwen3-32b` (60 RPM free tier); `env_file` added to `docker-compose.yml` so `GROQ_API_KEY` reaches the backend container; LiteLLM parser hardened for small-model output variance (string-as-list, non-string candidates).
 
 #### Proposed 7G Steps
 
