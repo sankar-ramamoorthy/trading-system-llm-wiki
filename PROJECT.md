@@ -25,7 +25,8 @@ Milestone 6 is complete. Milestone 7 has started under ADR-008 API-first web pro
 - Treat Milestone 7E FastAPI Trade Capture Service as complete.
 - Treat Milestone 7F React/Vite Trade Capture Workspace as complete.
 - Treat Milestone 7G End-to-End Save Workflow as complete.
-- Use Milestone 7H Milestone Closeout as the next planned slice.
+- Treat Milestone 7H Milestone Closeout as complete.
+- Milestone 7 is fully closed. Milestone 8 direction is outcome-level until a narrow implementation slice is ready.
 - Preserve ADR-007 and ADR-009: market data provider boundaries for yfinance and Massive.com daily OHLCV snapshots.
 - Keep yfinance as the default provider and Massive.com as the first credentialed provider.
 - Preserve the manual, local, auditable workflow established through Milestones 1 through 3.
