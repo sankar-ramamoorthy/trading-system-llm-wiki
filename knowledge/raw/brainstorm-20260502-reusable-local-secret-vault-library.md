@@ -1,7 +1,7 @@
 ---
 title: Reusable Local Secret Vault Library
 type: brainstorm
-status: raw
+status: processed
 tags: [trading-system, brainstorm, security, api-keys, key-vault, reusable-library]
 created: 2026-05-02
 ---

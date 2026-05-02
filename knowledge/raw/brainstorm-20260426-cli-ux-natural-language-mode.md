@@ -1,7 +1,7 @@
 ---
 title: CLI UX and Natural Language Mode Brainstorm
 type: brainstorm
-status: raw
+status: processed
 tags: [trading-system, brainstorm, cli-ux, natural-language-input, llm-adapter]
 created: 2026-04-26
 ---

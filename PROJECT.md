@@ -27,7 +27,8 @@ Milestone 6 is complete. Milestone 7 has started under ADR-008 API-first web pro
 - Treat Milestone 7G End-to-End Save Workflow as complete.
 - Treat Milestone 7H Milestone Closeout as complete.
 - Milestone 7 is fully closed.
-- Use Milestone 8 Options Chain Ingestion as the active next slice (yfinance + Massive.com).
+- Treat Milestone 8 Options Chain Ingestion as complete.
+- Use Milestone 9 Web Product Beyond First Capture as the active next slice.
 - Milestone 9: Web product beyond first capture (list/detail views, plan approval, context from browser).
 - Milestone 10: Secure credentials (local key vault ADR + implementation).
 - Milestone 11: Broker boundary and paper trading (Alpaca).

@@ -39,6 +39,9 @@ This index is the navigation entry point for the trading-system knowledge base.
 - [[application-implementation-status]] - current observed implementation status from app repo README, status notes, and source files
 - [[knowledge-base-workflow]] - how the wiki supports the application repository
 - [[application-repo-documentation-sources]] - map of application repo docs and ADRs used as primary sources
+- [[wiki-runtime-boundary]] - foundational boundary between the runtime trading system and the LLM wiki; failure modes and integration rules
+- [[feedback-to-design-pipeline]] - disciplined pipeline from self-observed friction to promoted topic, ADR, and code change
+- [[cli-ux-friction]] - active log of CLI UX pain points; improvement options and natural language mode direction
 
 ## Current Design Center
 
@@ -47,6 +50,8 @@ Build a trade operating system where deterministic rules control risk and proces
 ## Processing Notes
 
 Raw notes from 2026-04-18 were consolidated into the pages above and moved into `knowledge/processed/` on 2026-04-19.
+
+Raw notes audit completed 2026-05-02: all 14 raw files reviewed. Three new topic pages promoted (`wiki-runtime-boundary`, `feedback-to-design-pipeline`, `cli-ux-friction`). Two archive notes created (`milestone-6-sequencing-rationale-20260427`, `roadmap-m8-through-m12-snapshot-20260502`). All remaining raw files marked `status: processed` in frontmatter. The raw directory now contains no unprocessed non-brainstorm notes.
 
 Raw notes remaining on 2026-04-19 were consolidated into first-slice, application-structure, and knowledge-base workflow pages, then moved into `knowledge/processed/`.
 
@@ -121,5 +126,7 @@ The initial Milestone 8 scope notes (web product direction) were processed into 
 The API key/key vault discussion was processed into [[api-key-vault-discussion-20260502]] as design discussion input only. Key-vault work is not accepted 7F scope. The current stance remains environment-variable based configuration, with a possible later ADR or milestone for encrypted local key storage.
 
 The reusable key-vault library idea was captured as a raw brainstorm note and promoted to [[reusable-local-secret-vault-library]] as an ADR candidate topic. The durable stance is library-first: reusable encrypted local storage and secret resolution, with project-specific CLI/API/UI integration left outside the reusable core.
+
+Milestone 8 (Options Chain Ingestion) was implemented and processed into [[implemented-milestone-8-20260502]]. yfinance and Massive.com options chain adapters were added, `fetch-options-chain` CLI command wired in, and 233 tests pass. Massive.com options require a paid plan; yfinance works on the free tier. Milestone 9 (web product depth) is next.
 
 A detailed encryption and master-key brainstorm was captured in [[key-vault-encryption-brainstorm-20260502]]. It covers Fernet vs AES-GCM vs OS keychain vs Age encryption, master-key management options, secret resolution precedence, CLI commands, Docker behavior, and assigns key vault work to Milestone 9A. The milestone topic has been updated with the 9A slot.

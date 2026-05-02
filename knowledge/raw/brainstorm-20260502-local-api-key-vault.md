@@ -1,7 +1,7 @@
 ---
 title: Local API Key Vault For Trading System
 type: brainstorm
-status: raw
+status: processed
 tags: [trading-system, brainstorm, api-keys, local-key-vault, security]
 created: 2026-05-02
 ---
