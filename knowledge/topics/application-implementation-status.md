@@ -4,12 +4,12 @@ type: topic
 status: active
 tags: [trading-system, implementation, status]
 created: 2026-04-19
-updated: 2026-04-27
+updated: 2026-05-02
 ---
 
 # Application Implementation Status
 
-The application repository has completed Milestones 1 through 5 and has started Milestone 6.
+The application repository has completed Milestones 1 through 6 and has started Milestone 7.
 
 Application repo:
 
@@ -166,6 +166,27 @@ Verified from application repo docs on 2026-04-27:
 - Milestone 6D is complete with `DOCS/milestone-6-closeout.md`.
 - Milestone 6 is closed.
 
+## Verified Early Milestone 7 Progress
+
+Verified from application repo `README.md`, `STATUS.md`, and `DOCS/` on 2026-05-02:
+
+- ADR-008 accepts the API-first web product and trade-capture draft workflow direction.
+- Milestone 7A Dockerized Runtime Foundation is complete.
+- The application repo now has a FastAPI runtime skeleton with `GET /health`.
+- The repo now has a Vite React TypeScript frontend shell.
+- Docker Compose starts separate backend and frontend services.
+- Host Ollama configuration placeholders exist for later parser work.
+- 7A intentionally does not implement trade capture, reference lookup, draft schemas, parser behavior, save workflow, approval, execution, positions, fills, broker integration, or recommendations.
+- Milestone 7B Reference Lookup Foundation is complete.
+- Seeded local instruments include `AAPL`, `MSFT`, `NVDA`, `SPY`, and `QQQ`.
+- Seeded playbooks include `pullback-to-trend`, `breakout-continuation`, and `failed-breakdown`.
+- FastAPI reference endpoints expose instrument and playbook lookup.
+- User-facing API workflows can now use symbols and playbook slugs instead of requiring user-entered UUIDs.
+- 7B intentionally does not add reference management screens, draft schemas, natural-language parsing, save workflow, approval, execution, positions, fills, broker integration, or recommendations.
+- Milestone 7C Trade Capture Draft Contract is complete.
+- Milestone 7D Natural-Language Parser Boundary is complete.
+- The next planned slice is Milestone 7E FastAPI Trade Capture Service.
+
 ## Implemented Workflow
 
 Current executable workflow:
@@ -256,6 +277,11 @@ Current synthesis:
 - Milestone 6C Issue 1 is complete
 - Milestone 6C Issue 2 is complete
 - Milestone 6D is complete
+- Milestone 7A is complete
+- Milestone 7B is complete
+- Milestone 7C is complete
+- Milestone 7D is complete
+- Milestone 7E is next
 
 Milestone 2 is complete because its roadmap criteria are satisfied in the repo:
 
@@ -272,6 +298,33 @@ Milestone 4 is complete because the local context workflow supports import, disc
 Milestone 5 is complete because the app repo now supports creation-time review tags, review filtering, optional review quality scores, factual Markdown journal export, and explicit local JSON validation/backup/restore without expanding into review editing, taxonomy management, recommendations, generated coaching, broad analytics, or cloud operational tooling.
 
 Milestone 6 is complete. Milestone 6A is complete because the first yfinance daily OHLCV snapshot slice is implemented, documented, and validated. Milestone 6B Issue 1 is complete because provider-backed source selection now goes through an explicit registry while preserving yfinance behavior. Milestone 6C Issue 1 is complete because ADR-009 records the Massive.com provider boundary. Milestone 6C Issue 2 is complete because Massive.com daily bars are implemented behind the provider registry. Milestone 6D closes the milestone with the provider boundary proven by two providers and 177 full-suite tests passing.
+
+Milestone 7 has started. 7A is complete because the app repo now has a Dockerized FastAPI/Vite runtime skeleton with health checks and host Ollama placeholders. 7B is complete because seeded symbol/playbook lookup is available through service and API boundaries. 7C is complete because the service-layer editable trade-capture draft contract now defines draft sections, required and optional fields, stable issue paths, missing/ambiguous issue reporting, and save-readiness checks. 7D is complete because the app repo now has a parser port, parser error boundary, fake parser, LiteLLM-backed Ollama adapter, strict extraction prompt, JSON response validation, and mapping into the 7C draft contract. 7E is next.
+
+## Verified Milestone 7C Completion
+
+Verified from the raw implementation note, application repo `STATUS.md`, `DOCS/milestone-7c-trade-capture-draft-contract.md`, source, and tests on 2026-05-02:
+
+- `src/trading_system/services/trade_capture_draft.py` defines editable draft contracts for parsed-but-unsaved trade capture state.
+- Required save fields are instrument symbol, playbook slug, purpose, direction, horizon, thesis reasoning, entry criteria, and invalidation.
+- Optional editable fields include supporting evidence, risks, disconfirming signals, targets, risk model, and sizing assumptions.
+- Issue paths are stable for API/UI use, such as `TradeIdea.instrument_symbol`.
+- Missing required fields and ambiguous parser outputs block save readiness.
+- Internal UUID resolution remains later API/save workflow work.
+- Validation recorded 6 focused draft-contract tests passing, 14 focused trade-capture/reference/API tests passing, and 191 full-suite tests passing.
+
+## Verified Milestone 7D Completion
+
+Verified from the raw implementation note, application repo `STATUS.md`, `DOCS/milestone-7d-natural-language-parser-boundary.md`, source, and tests on 2026-05-02:
+
+- `src/trading_system/ports/trade_capture_parser.py` defines the `TradeCaptureParser` port.
+- `src/trading_system/services/trade_capture_parser.py` defines `TradeCaptureParseError` and `FakeTradeCaptureParser`.
+- `src/trading_system/infrastructure/litellm/trade_capture_parser.py` implements the LiteLLM parser adapter.
+- Parser configuration uses `TRADING_SYSTEM_LLM_MODEL` and `TRADING_SYSTEM_LLM_API_BASE`.
+- The adapter validates JSON response shape and maps into the Milestone 7C `TradeCaptureDraft` contract.
+- Missing fields and ambiguity remain visible through draft validation.
+- 7D does not add API endpoints, frontend capture UI, save workflow, persistence, approval, execution, broker behavior, recommendations, or claim verification.
+- Validation recorded 22 focused draft/parser tests passing, 30 focused trade-capture/reference/API tests passing, and 207 full-suite tests passing.
 
 ## Position Opening Rule
 
@@ -383,11 +436,10 @@ Full suite: 156 passed
 The application docs still treat these as intentionally out of scope:
 
 - broker integration
-- external market data provider code beyond explicit local snapshot import
+- market data provider expansion beyond explicit daily snapshot ingestion
 - live streaming market data, execution-grade quotes, and provider-driven trade recommendations
-- AI or ML features
+- AI or ML decision-making, recommendations, generated coaching, or claim verification
 - reconciliation workflows
-- FastAPI
 - broker orders or execution adapters
 - analytics, dashboards, and reports beyond the current narrow read-side P&L calculation
 - review editing, tag taxonomy management, generated coaching, and broader analytics
@@ -397,8 +449,9 @@ The application docs still treat these as intentionally out of scope:
 - fill correction or amendment workflows
 - manual force-close or reopen workflows
 - automated reviews or review editing workflows
+- trade-capture parse/edit/save from the web UI is not complete yet
 
-The current direction now emphasizes manual workflow usability, read-only market context, review and learning improvements, and local operational robustness before broker integration, Postgres migration, or RL work.
+The current direction now emphasizes API-first local web trade capture on top of the existing manual workflow, while preserving read-only market context, review/local operations, and deterministic discipline boundaries before broker integration, Postgres migration, or RL work.
 
 ## Related Pages
 
@@ -412,6 +465,7 @@ The current direction now emphasizes manual workflow usability, read-only market
 - [[milestone-5-markdown-journal-export]]
 - [[milestone-5-local-json-operations]]
 - [[milestone-6-market-data-provider-boundary]]
+- [[milestone-7-api-first-trade-capture-issue-map]]
 - [[application-project-structure]]
 - [[development-workflow]]
 - [[canonical-domain-model]]

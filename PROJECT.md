@@ -4,7 +4,7 @@ type: project
 status: active
 tags: [trading-system, project, context]
 created: 2026-04-25
-updated: 2026-04-29
+updated: 2026-05-02
 ---
 
 # Project Brief
@@ -13,12 +13,16 @@ This file is the short current-context entrypoint for the trading-system LLM wik
 
 ## Current Phase
 
-Milestone 6 is complete. Next accepted direction: ADR-008 API-first web product and trade-capture draft workflow.
+Milestone 6 is complete. Milestone 7 has started under ADR-008 API-first web product and trade-capture draft workflow.
 
 ## Active Focus
 
 - Treat Milestone 6 read-only market data provider integration as closed.
-- Build the next implementation plan from ADR-008.
+- Treat Milestone 7A Dockerized Runtime Foundation as complete.
+- Treat Milestone 7B Reference Lookup Foundation as complete.
+- Treat Milestone 7C Trade Capture Draft Contract as complete.
+- Treat Milestone 7D Natural-Language Parser Boundary as complete.
+- Use Milestone 7E FastAPI Trade Capture Service as the next planned slice.
 - Preserve ADR-007 and ADR-009: market data provider boundaries for yfinance and Massive.com daily OHLCV snapshots.
 - Keep yfinance as the default provider and Massive.com as the first credentialed provider.
 - Preserve the manual, local, auditable workflow established through Milestones 1 through 3.
@@ -32,7 +36,7 @@ Milestone 6 is complete. Next accepted direction: ADR-008 API-first web product 
 - Do not turn context ingestion into broker execution, automation, or trade decision delegation.
 - Do not let external market data become the source of truth for trade meaning.
 - Do not treat `yfinance` as production-grade market data infrastructure.
-- Do not expand provider work beyond daily OHLCV history during Milestone 6.
+- Do not expand provider work beyond the accepted daily OHLCV/advisory context boundary without a new explicit issue or ADR update.
 - Do not store API keys in snapshots, logs, docs examples, tests, or committed files.
 - Do not couple provider response objects or schemas to domain logic.
 - Do not turn review tags into a taxonomy system, analytics platform, generated coaching, or review-editing workflow.
@@ -43,7 +47,7 @@ Milestone 6 is complete. Next accepted direction: ADR-008 API-first web product 
 
 ## Open Questions
 
-- Should local API-key ergonomics get a narrow issue before ADR-008 implementation, or stay as environment-variable-only for now?
+- Milestone 8 should stay outcome-level until Milestone 7 parse/edit/save scope is stable.
 
 ## High-Priority Links
 
@@ -57,6 +61,8 @@ Milestone 6 is complete. Next accepted direction: ADR-008 API-first web product 
 - [[milestone-5-markdown-journal-export]]
 - [[milestone-5-local-json-operations]]
 - [[milestone-6-market-data-provider-boundary]]
+- [[milestone-7-api-first-trade-capture-issue-map]]
+- [[api-first-trade-capture-product-vision]]
 - [[application-repo-documentation-sources]]
 
 ## Update Rule

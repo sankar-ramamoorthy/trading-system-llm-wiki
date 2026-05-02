@@ -4,7 +4,7 @@ type: index
 status: active
 tags: [trading-system, index]
 created: 2026-04-19
-updated: 2026-04-29
+updated: 2026-05-02
 ---
 
 # Trading System Knowledge Index
@@ -92,3 +92,11 @@ The fourth Milestone 5 slice is implemented in the application repo: local JSON 
 Milestone 6 is complete in the application repo. ADR-007 accepts optional prototype-grade `yfinance` as the first provider stance and daily OHLCV history as the first data shape, with all provider output stored as advisory, non-canonical `MarketContextSnapshot` records. Milestone 6A implements yfinance daily OHLCV snapshots. Milestone 6B adds explicit provider selection through a registry boundary. ADR-009 accepts Massive.com as the first credentialed provider candidate. Milestone 6C implements `fetch-market-data --provider massive` with `MASSIVE_API_KEY`. Milestone 6D closes the milestone with 177 full-suite tests passing on 2026-04-29.
 
 Milestone 7 planning is recorded in [[milestone-7-api-first-trade-capture-issue-map]]. Issue 7A Dockerized Runtime Foundation is complete in the application repo as of 2026-04-29. It adds the Dockerized API/web runtime skeleton, FastAPI health endpoint, Vite React TypeScript frontend shell, and host Ollama configuration placeholders. Issue 7B Reference Lookup Foundation is also complete as of 2026-04-29. It adds seeded instrument lookup by symbol and playbook lookup by slug through the API. Trade capture, parser behavior, draft contracts, and save workflow remain later 7.x issues.
+
+The non-brainstorm raw notes remaining on 2026-05-02 were processed into [[processing-summary-20260502-milestone-7-raw]]. Historical plans for yfinance ingestion, Milestone 7A, and the initial API-first trade-capture workspace were reconciled against the application repo. That pass established Milestone 6 as complete and Milestone 7A/7B as complete. Brainstorm notes were intentionally left in `knowledge/raw/`.
+
+The later raw implementation note for Milestone 7C was processed into [[implemented-milestone-7c-20260502]]. The application repo now has the service-layer draft contract for parsed-but-unsaved trade capture state, with stable required/optional field definitions, missing and ambiguous field issue reporting, and save-readiness checks. That note made Milestone 7D the next planned slice, which was superseded by the later 7D implementation note.
+
+The raw proposed plan for Milestone 7D was processed into [[proposed-milestone-7d-natural-language-parser-boundary-20260502]]. The plan kept 7D as a parser-boundary slice only: LiteLLM/Ollama adapter, parser port, fake parser, strict extraction behavior, and parser failure handling, without API endpoints, frontend UI, save workflow, persistence, recommendations, or claim verification. That planning status was superseded by the later 7D implementation note.
+
+The later raw implementation note for Milestone 7D was processed into [[implemented-milestone-7d-20260502]]. The application repo now has the parser port, fake parser, LiteLLM-backed parser adapter, environment-based model/API-base configuration, JSON response validation, and mapping into the 7C draft contract. Milestone 7E FastAPI Trade Capture Service is now the next planned slice.
