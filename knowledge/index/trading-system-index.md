@@ -112,7 +112,11 @@ The raw implementation note for Milestone 7F was processed into [[implemented-mi
 
 The Milestone 7G acceptance run was processed into [[implemented-milestone-7g-20260502]]. Docker/API end-to-end validation confirmed the full parse→save→persist workflow: Groq-backed `qwen/qwen3-32b` model wired in, `env_file` added to docker-compose for secret passing, LiteLLM parser hardened for small-model output variance, linked records confirmed in local JSON store, and 216 tests passing.
 
-The Milestone 7H closeout was processed into [[implemented-milestone-7h-20260502]]. The milestone-7 closeout document was created, the README was updated with the web interface section, the issue map and STATUS.md were marked complete, and 216 tests + frontend build were confirmed passing. Milestone 7 is fully closed. Milestone 8 is outcome-level.
+The Milestone 7H closeout was processed into [[implemented-milestone-7h-20260502]]. The milestone-7 closeout document was created, the README was updated with the web interface section, the issue map and STATUS.md were marked complete, and 216 tests + frontend build were confirmed passing. Milestone 7 is fully closed.
+
+The post-Milestone 7 elevator pitch and capability baseline were processed into [[system-capability-after-milestone-7-20260502]]. This is the canonical capability snapshot as of 2026-05-02: two entry points (web + CLI), 13 capability areas, and explicit "does not do" boundaries.
+
+The initial Milestone 8 scope notes (web product direction) were processed into [[milestone-8-initial-scope-notes-20260502]] and marked superseded. Options Chain Ingestion is now accepted as Milestone 8; the web product expansion moved to Milestone 9. The near-term sequence is now M8 (options chain) → M9 (web depth) → M10 (key vault) → M11 (paper trading). See `DOCS/product-roadmap.md`.
 
 The API key/key vault discussion was processed into [[api-key-vault-discussion-20260502]] as design discussion input only. Key-vault work is not accepted 7F scope. The current stance remains environment-variable based configuration, with a possible later ADR or milestone for encrypted local key storage.
 
