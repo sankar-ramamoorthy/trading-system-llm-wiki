@@ -20,8 +20,9 @@ The current application repo state, verified from `README.md`, `STATUS.md`, and 
 - 7C Trade Capture Draft Contract is complete.
 - 7D Natural-Language Parser Boundary is complete.
 - 7E FastAPI Trade Capture Service is complete.
-- 7F React/Vite Trade Capture Workspace is the next planned slice.
-- End-to-end save workflow and milestone closeout remain later 7.x work.
+- 7F React/Vite Trade Capture Workspace is complete.
+- 7G End-to-End Save Workflow is the next planned slice.
+- Milestone closeout remains later 7.x work.
 
 ## Issue Map
 
@@ -226,9 +227,11 @@ The UI should include:
 
 The screen must not expose approval, order intent, position, fill, broker, or recommendation actions.
 
-Status: next planned slice as of 2026-05-02.
+Status: complete in the application repo on 2026-05-02.
 
-7F should replace the current frontend runtime/status shell with the first real trade-capture screen on top of the 7E backend.
+7F replaces the frontend runtime/status shell with the first real trade-capture screen on top of the 7E backend.
+
+7F is frontend-only plus docs, tests, and build validation. It uses existing 7E backend endpoints.
 
 Expected user-facing flow:
 
@@ -245,15 +248,48 @@ Expected user-facing flow:
 8. UI calls `POST /trade-capture/save`.
 9. UI shows a saved-result summary with generated idea, thesis, and plan IDs.
 
-7F should not add plan approval, rule evaluation, order intent creation, position opening, fill recording, broker actions, trade recommendations, or claim verification.
+Implemented 7F behavior:
+
+- React/Vite trade-capture workspace as the first screen
+- API health and reference count status strip
+- raw trader-language input
+- parse action using `POST /trade-capture/parse`
+- editable `TradeIdea`, `TradeThesis`, and `TradePlan` sections
+- field-level missing and ambiguous issue display using stable draft paths
+- explicit save action using `POST /trade-capture/save`
+- saved-result summary with generated idea, thesis, and plan IDs
+- responsive desktop and mobile layout
+
+Validation recorded by the application repo on 2026-05-02:
+
+- `npm.cmd run build`: passed
+- `uv run pytest tests\test_api_trade_capture.py tests\test_api_health.py`: 13 passed
+- `uv run pytest`: 216 passed
+
+7F does not add plan approval, rule evaluation, order intent creation, position opening, fill recording, broker actions, trade recommendations, claim verification, API key vault behavior, production auth, cloud deployment, or Postgres migration.
 
 7G remains useful as the stricter end-to-end acceptance slice: Docker/browser/manual validation, persistence verification, and final workflow polish over the 7E backend and 7F UI.
+
+Required 7F UI states:
+
+- initial empty draft
+- parsing
+- parsed with issues
+- parsed and ready to save
+- saving
+- saved
+- parse or save error
+- API unreachable
+
+The 7F implementation note also records a knowledge-base side effect: the local API-key vault discussion was captured as a raw brainstorm note. That key-vault work remains separate from 7F implementation scope.
 
 ### 7G: End-to-End Save Workflow
 
 Wire parse, edit, and save all the way through local JSON persistence.
 
 Saving should create linked `TradeIdea`, `TradeThesis`, and `TradePlan` records only after explicit user confirmation.
+
+Status: next planned slice as of 2026-05-02.
 
 ### 7H: Milestone Closeout
 

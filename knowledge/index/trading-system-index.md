@@ -104,9 +104,11 @@ The later raw implementation note for Milestone 7D was processed into [[implemen
 
 The raw proposed plan for Milestone 7E was processed into [[proposed-milestone-7e-fastapi-trade-capture-service-20260502]]. The plan kept 7E as a backend API slice: parse, save, and saved-result retrieval over existing parser, draft, reference lookup, planning, query, and JSON repository boundaries. That planning status was superseded by the later 7E implementation note.
 
-The later raw implementation note for Milestone 7E was processed into [[implemented-milestone-7e-20260502]]. The application repo now has `TradeCaptureService`, `POST /trade-capture/parse`, `POST /trade-capture/save`, and `GET /trade-capture/saved/{trade_plan_id}` over local JSON-backed services. Milestone 7F React/Vite Trade Capture Workspace is now the next planned slice.
+The later raw implementation note for Milestone 7E was processed into [[implemented-milestone-7e-20260502]]. The application repo now has `TradeCaptureService`, `POST /trade-capture/parse`, `POST /trade-capture/save`, and `GET /trade-capture/saved/{trade_plan_id}` over local JSON-backed services. That note made Milestone 7F the next planned slice, which was superseded by the later 7F implementation note.
 
-The raw note describing what 7F should do was processed into [[proposed-milestone-7f-react-trade-capture-workspace-20260502]]. The durable direction is that 7F should replace the frontend status shell with a browser trade-capture workspace over the 7E backend: parse, edit draft sections, surface missing/ambiguous fields, save explicitly, and show generated IDs. Approval, execution, broker actions, recommendations, and claim verification remain out of scope.
+The raw notes describing what 7F should do were processed into [[proposed-milestone-7f-react-trade-capture-workspace-20260502]]. The durable direction was that 7F should replace the frontend status shell with a browser trade-capture workspace over the 7E backend. That planning status was superseded by the later 7F implementation note.
+
+The raw implementation note for Milestone 7F was processed into [[implemented-milestone-7f-20260502]]. The application repo now has a React/Vite trade-capture workspace for raw trader-language input, parse, editable Idea/Thesis/Plan sections, field-level issue display, explicit save, and saved-result summary. Milestone 7G End-to-End Save Workflow is now the next planned slice.
 
 The API key/key vault discussion was processed into [[api-key-vault-discussion-20260502]] as design discussion input only. Key-vault work is not accepted 7F scope. The current stance remains environment-variable based configuration, with a possible later ADR or milestone for encrypted local key storage.
 
