@@ -51,6 +51,9 @@ For trading-system milestone focus, use [PROJECT.md](PROJECT.md). For agent oper
 - Processed the raw Milestone 7D implementation note on 2026-05-02. Updated canonical pages to mark 7D complete and 7E FastAPI Trade Capture Service as next; this was superseded later the same day by the 7E implementation note.
 - Processed the raw proposed Milestone 7E FastAPI trade-capture service plan on 2026-05-02. Updated the Milestone 7 issue map and index with the proposed backend API scope; this was superseded later the same day by the 7E implementation note.
 - Processed the raw Milestone 7E implementation note on 2026-05-02. Updated canonical pages to mark 7E complete and 7F React/Vite Trade Capture Workspace as next.
+- Processed the raw 7F scope note on 2026-05-02. Updated the Milestone 7 issue map and index with the proposed React/Vite trade-capture workspace flow.
+- Processed the API key/key vault discussion note on 2026-05-02 as discussion input only. Captured it as a later ADR/milestone candidate, not as accepted 7F scope.
+- Captured the reusable local secret-vault library idea as a raw brainstorm note and added a durable discussion topic for a future ADR candidate.
 
 ## Next Maintenance Candidates
 

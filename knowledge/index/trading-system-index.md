@@ -33,6 +33,7 @@ This index is the navigation entry point for the trading-system knowledge base.
 - [[milestone-5-local-json-operations]] - fourth Milestone 5 local-operations slice for JSON store validation, backup, and restore
 - [[milestone-6-market-data-provider-boundary]] - accepted ADR-007 boundary for prototype yfinance daily OHLCV snapshots
 - [[milestone-7-api-first-trade-capture-issue-map]] - issue map for the API-first trade-capture web product milestone
+- [[reusable-local-secret-vault-library]] - discussion note for a possible reusable local secret-vault library and future ADR
 - [[product-roadmap-and-learning-boundaries]] - near-term roadmap, long-term product direction, and deferred AI/RL boundary
 - [[application-project-structure]] - Python modular monolith structure and boundaries
 - [[application-implementation-status]] - current observed implementation status from app repo README, status notes, and source files
@@ -104,3 +105,9 @@ The later raw implementation note for Milestone 7D was processed into [[implemen
 The raw proposed plan for Milestone 7E was processed into [[proposed-milestone-7e-fastapi-trade-capture-service-20260502]]. The plan kept 7E as a backend API slice: parse, save, and saved-result retrieval over existing parser, draft, reference lookup, planning, query, and JSON repository boundaries. That planning status was superseded by the later 7E implementation note.
 
 The later raw implementation note for Milestone 7E was processed into [[implemented-milestone-7e-20260502]]. The application repo now has `TradeCaptureService`, `POST /trade-capture/parse`, `POST /trade-capture/save`, and `GET /trade-capture/saved/{trade_plan_id}` over local JSON-backed services. Milestone 7F React/Vite Trade Capture Workspace is now the next planned slice.
+
+The raw note describing what 7F should do was processed into [[proposed-milestone-7f-react-trade-capture-workspace-20260502]]. The durable direction is that 7F should replace the frontend status shell with a browser trade-capture workspace over the 7E backend: parse, edit draft sections, surface missing/ambiguous fields, save explicitly, and show generated IDs. Approval, execution, broker actions, recommendations, and claim verification remain out of scope.
+
+The API key/key vault discussion was processed into [[api-key-vault-discussion-20260502]] as design discussion input only. Key-vault work is not accepted 7F scope. The current stance remains environment-variable based configuration, with a possible later ADR or milestone for encrypted local key storage.
+
+The reusable key-vault library idea was captured as a raw brainstorm note and promoted to [[reusable-local-secret-vault-library]] as an ADR candidate topic. The durable stance is library-first: reusable encrypted local storage and secret resolution, with project-specific CLI/API/UI integration left outside the reusable core.

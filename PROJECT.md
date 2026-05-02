@@ -39,6 +39,7 @@ Milestone 6 is complete. Milestone 7 has started under ADR-008 API-first web pro
 - Do not treat `yfinance` as production-grade market data infrastructure.
 - Do not expand provider work beyond the accepted daily OHLCV/advisory context boundary without a new explicit issue or ADR update.
 - Do not store API keys in snapshots, logs, docs examples, tests, or committed files.
+- Do not put API-key collection or key-vault management into the 7F browser trade-capture workspace.
 - Do not couple provider response objects or schemas to domain logic.
 - Do not turn review tags into a taxonomy system, analytics platform, generated coaching, or review-editing workflow.
 - Do not turn review quality scores or journal export into optimization, recommendations, or coaching.
@@ -49,6 +50,8 @@ Milestone 6 is complete. Milestone 7 has started under ADR-008 API-first web pro
 ## Open Questions
 
 - Milestone 8 should stay outcome-level until Milestone 7 parse/edit/save scope is stable.
+- Local encrypted API-key storage needs a later design discussion before it becomes an ADR or implementation milestone.
+- A reusable local secret-vault library is plausible, but the first accepted shape should be library-first and small, not a full key-management product.
 
 ## High-Priority Links
 
@@ -63,6 +66,7 @@ Milestone 6 is complete. Milestone 7 has started under ADR-008 API-first web pro
 - [[milestone-5-local-json-operations]]
 - [[milestone-6-market-data-provider-boundary]]
 - [[milestone-7-api-first-trade-capture-issue-map]]
+- [[reusable-local-secret-vault-library]]
 - [[api-first-trade-capture-product-vision]]
 - [[application-repo-documentation-sources]]
 

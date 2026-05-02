@@ -228,6 +228,27 @@ The screen must not expose approval, order intent, position, fill, broker, or re
 
 Status: next planned slice as of 2026-05-02.
 
+7F should replace the current frontend runtime/status shell with the first real trade-capture screen on top of the 7E backend.
+
+Expected user-facing flow:
+
+1. User pastes normal trader language into a large input.
+2. User clicks parse.
+3. UI calls `POST /trade-capture/parse`.
+4. UI renders editable draft sections:
+   - Idea: symbol, playbook, purpose, direction, horizon
+   - Thesis: reasoning, evidence, risks, disconfirming signals
+   - Plan: entry criteria, invalidation, targets, risk model, sizing assumptions
+5. Missing or ambiguous fields are shown clearly next to the relevant section or field.
+6. User edits the draft directly in the browser.
+7. User explicitly clicks save.
+8. UI calls `POST /trade-capture/save`.
+9. UI shows a saved-result summary with generated idea, thesis, and plan IDs.
+
+7F should not add plan approval, rule evaluation, order intent creation, position opening, fill recording, broker actions, trade recommendations, or claim verification.
+
+7G remains useful as the stricter end-to-end acceptance slice: Docker/browser/manual validation, persistence verification, and final workflow polish over the 7E backend and 7F UI.
+
 ### 7G: End-to-End Save Workflow
 
 Wire parse, edit, and save all the way through local JSON persistence.
