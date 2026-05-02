@@ -4,7 +4,7 @@ type: index
 status: active
 tags: [trading-system, index]
 created: 2026-04-19
-updated: 2026-04-29
+updated: 2026-05-02
 ---
 
 # Trading System Knowledge Index
@@ -33,6 +33,7 @@ This index is the navigation entry point for the trading-system knowledge base.
 - [[milestone-5-local-json-operations]] - fourth Milestone 5 local-operations slice for JSON store validation, backup, and restore
 - [[milestone-6-market-data-provider-boundary]] - accepted ADR-007 boundary for prototype yfinance daily OHLCV snapshots
 - [[milestone-7-api-first-trade-capture-issue-map]] - issue map for the API-first trade-capture web product milestone
+- [[reusable-local-secret-vault-library]] - discussion note for a possible reusable local secret-vault library and future ADR
 - [[product-roadmap-and-learning-boundaries]] - near-term roadmap, long-term product direction, and deferred AI/RL boundary
 - [[application-project-structure]] - Python modular monolith structure and boundaries
 - [[application-implementation-status]] - current observed implementation status from app repo README, status notes, and source files
@@ -92,3 +93,23 @@ The fourth Milestone 5 slice is implemented in the application repo: local JSON 
 Milestone 6 is complete in the application repo. ADR-007 accepts optional prototype-grade `yfinance` as the first provider stance and daily OHLCV history as the first data shape, with all provider output stored as advisory, non-canonical `MarketContextSnapshot` records. Milestone 6A implements yfinance daily OHLCV snapshots. Milestone 6B adds explicit provider selection through a registry boundary. ADR-009 accepts Massive.com as the first credentialed provider candidate. Milestone 6C implements `fetch-market-data --provider massive` with `MASSIVE_API_KEY`. Milestone 6D closes the milestone with 177 full-suite tests passing on 2026-04-29.
 
 Milestone 7 planning is recorded in [[milestone-7-api-first-trade-capture-issue-map]]. Issue 7A Dockerized Runtime Foundation is complete in the application repo as of 2026-04-29. It adds the Dockerized API/web runtime skeleton, FastAPI health endpoint, Vite React TypeScript frontend shell, and host Ollama configuration placeholders. Issue 7B Reference Lookup Foundation is also complete as of 2026-04-29. It adds seeded instrument lookup by symbol and playbook lookup by slug through the API. Trade capture, parser behavior, draft contracts, and save workflow remain later 7.x issues.
+
+The non-brainstorm raw notes remaining on 2026-05-02 were processed into [[processing-summary-20260502-milestone-7-raw]]. Historical plans for yfinance ingestion, Milestone 7A, and the initial API-first trade-capture workspace were reconciled against the application repo. That pass established Milestone 6 as complete and Milestone 7A/7B as complete. Brainstorm notes were intentionally left in `knowledge/raw/`.
+
+The later raw implementation note for Milestone 7C was processed into [[implemented-milestone-7c-20260502]]. The application repo now has the service-layer draft contract for parsed-but-unsaved trade capture state, with stable required/optional field definitions, missing and ambiguous field issue reporting, and save-readiness checks. That note made Milestone 7D the next planned slice, which was superseded by the later 7D implementation note.
+
+The raw proposed plan for Milestone 7D was processed into [[proposed-milestone-7d-natural-language-parser-boundary-20260502]]. The plan kept 7D as a parser-boundary slice only: LiteLLM/Ollama adapter, parser port, fake parser, strict extraction behavior, and parser failure handling, without API endpoints, frontend UI, save workflow, persistence, recommendations, or claim verification. That planning status was superseded by the later 7D implementation note.
+
+The later raw implementation note for Milestone 7D was processed into [[implemented-milestone-7d-20260502]]. The application repo now has the parser port, fake parser, LiteLLM-backed parser adapter, environment-based model/API-base configuration, JSON response validation, and mapping into the 7C draft contract. That note made Milestone 7E the next planned slice, which was superseded by the later 7E implementation note.
+
+The raw proposed plan for Milestone 7E was processed into [[proposed-milestone-7e-fastapi-trade-capture-service-20260502]]. The plan kept 7E as a backend API slice: parse, save, and saved-result retrieval over existing parser, draft, reference lookup, planning, query, and JSON repository boundaries. That planning status was superseded by the later 7E implementation note.
+
+The later raw implementation note for Milestone 7E was processed into [[implemented-milestone-7e-20260502]]. The application repo now has `TradeCaptureService`, `POST /trade-capture/parse`, `POST /trade-capture/save`, and `GET /trade-capture/saved/{trade_plan_id}` over local JSON-backed services. That note made Milestone 7F the next planned slice, which was superseded by the later 7F implementation note.
+
+The raw notes describing what 7F should do were processed into [[proposed-milestone-7f-react-trade-capture-workspace-20260502]]. The durable direction was that 7F should replace the frontend status shell with a browser trade-capture workspace over the 7E backend. That planning status was superseded by the later 7F implementation note.
+
+The raw implementation note for Milestone 7F was processed into [[implemented-milestone-7f-20260502]]. The application repo now has a React/Vite trade-capture workspace for raw trader-language input, parse, editable Idea/Thesis/Plan sections, field-level issue display, explicit save, and saved-result summary. Milestone 7G End-to-End Save Workflow is now the next planned slice.
+
+The API key/key vault discussion was processed into [[api-key-vault-discussion-20260502]] as design discussion input only. Key-vault work is not accepted 7F scope. The current stance remains environment-variable based configuration, with a possible later ADR or milestone for encrypted local key storage.
+
+The reusable key-vault library idea was captured as a raw brainstorm note and promoted to [[reusable-local-secret-vault-library]] as an ADR candidate topic. The durable stance is library-first: reusable encrypted local storage and secret resolution, with project-specific CLI/API/UI integration left outside the reusable core.

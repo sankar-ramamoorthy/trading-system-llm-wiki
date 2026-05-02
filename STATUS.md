@@ -45,6 +45,17 @@ For trading-system milestone focus, use [PROJECT.md](PROJECT.md). For agent oper
 - Synced the Milestone 6 market-data provider boundary and the implemented `fetch-market-data` slice into the project brief, implementation status, and milestone topic pages.
 - Processed the Milestone 6C Issue 2 plan and implementation notes into a processed note and updated the canonical Milestone 6, roadmap, index, and project brief pages.
 - Processed Milestone 6D closeout and updated project, roadmap, implementation status, index, and Milestone 6 topic pages to mark Milestone 6 complete.
+- Processed the non-brainstorm raw Milestone 7 planning notes on 2026-05-02. Updated the Milestone 7 issue map, application implementation status, project brief, and index to reflect 7A/7B complete; this was superseded later the same day by the 7C implementation note.
+- Processed the raw Milestone 7C implementation note on 2026-05-02. Updated canonical pages to mark 7C complete and 7D Natural-Language Parser Boundary as next; this was superseded later the same day by the 7D implementation note.
+- Processed the raw proposed Milestone 7D parser-boundary plan on 2026-05-02. Updated the Milestone 7 issue map and index with the proposed 7D scope; this was superseded later the same day by the 7D implementation note.
+- Processed the raw Milestone 7D implementation note on 2026-05-02. Updated canonical pages to mark 7D complete and 7E FastAPI Trade Capture Service as next; this was superseded later the same day by the 7E implementation note.
+- Processed the raw proposed Milestone 7E FastAPI trade-capture service plan on 2026-05-02. Updated the Milestone 7 issue map and index with the proposed backend API scope; this was superseded later the same day by the 7E implementation note.
+- Processed the raw Milestone 7E implementation note on 2026-05-02. Updated canonical pages to mark 7E complete and 7F React/Vite Trade Capture Workspace as next; this was superseded later the same day by the 7F implementation note.
+- Processed the raw 7F scope note on 2026-05-02. Updated the Milestone 7 issue map and index with the proposed React/Vite trade-capture workspace flow; this was superseded later the same day by the 7F implementation note.
+- Processed the API key/key vault discussion note on 2026-05-02 as discussion input only. Captured it as a later ADR/milestone candidate, not as accepted 7F scope.
+- Captured the reusable local secret-vault library idea as a raw brainstorm note and added a durable discussion topic for a future ADR candidate.
+- Processed the fuller raw Milestone 7F React/Vite workspace plan on 2026-05-02. Expanded the proposed 7F note and issue map with UI states, styling direction, validation, and scope boundaries; this was superseded later the same day by the 7F implementation note.
+- Processed the raw Milestone 7F implementation note on 2026-05-02. Updated canonical pages to mark 7F complete and 7G End-to-End Save Workflow as next.
 
 ## Next Maintenance Candidates
 
