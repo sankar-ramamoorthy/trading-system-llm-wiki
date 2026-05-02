@@ -289,7 +289,31 @@ Wire parse, edit, and save all the way through local JSON persistence.
 
 Saving should create linked `TradeIdea`, `TradeThesis`, and `TradePlan` records only after explicit user confirmation.
 
-Status: next planned slice as of 2026-05-02.
+Status: next planned slice as of 2026-05-02. Proposed plan captured 2026-05-02.
+
+#### Proposed 7G Steps
+
+1. **Docker stack acceptance run** — start `docker compose up` in the application repo and confirm all containers come up healthy.
+2. **Browser golden-path walkthrough** — enter raw trader text, click Parse, confirm draft sections populate, edit one or more fields, click Save, confirm the saved-result summary appears with generated IDs.
+3. **Persistence verification** — inspect the local JSON store after save and confirm linked TradeIdea, TradeThesis, and TradePlan records are written and retrievable. Optionally call `GET /trade-capture/saved/{trade_plan_id}` to verify API round-trip.
+4. **Edge-case / error state validation** — walk through all known 7F UI states: empty draft, parsing in progress, parsed with issues, parsed and ready to save, save in progress, saved, parse or save error, API unreachable.
+5. **Final workflow polish (if needed)** — fix rough edges surfaced during manual testing; no scope expansion.
+6. **Record validation** — update application repo STATUS.md and this knowledge base with commands run, pass/fail results, any issues found and resolved, and confirmation of 7G acceptance criteria.
+
+#### 7G Scope Boundaries
+
+7G does not add: plan approval, rule evaluation, order intent creation, position opening or fill recording, broker integration, recommendations or claim verification, API key vault behavior, production auth, cloud deployment, or Postgres migration.
+
+#### 7G Verification Criteria
+
+Done when:
+
+- `docker compose up` starts cleanly
+- Browser golden-path walkthrough completes without errors
+- Local JSON store contains the saved TradeIdea, TradeThesis, and TradePlan records
+- All known UI error states render correctly
+- Full test suite still passes (`uv run pytest`: 216+ passed)
+- STATUS.md in application repo updated to reflect 7G complete / 7H next
 
 ### 7H: Milestone Closeout
 
