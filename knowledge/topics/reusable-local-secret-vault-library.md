@@ -98,13 +98,13 @@ A future ADR should decide:
 
 ## Milestone Assignment
 
-Proposed as **Milestone 9A** within "Milestone 9: Secure Credentials and Market Data Depth":
+Proposed as candidate scope for **Milestone 10: Secure Credentials**:
 
-- **9A**: Write ADR for key vault boundary → implement `local_secret_vault` library → wire into CLI secret resolution
-- **9B**: Massive.com options chain data as new snapshot type
-- **9C**: Milestone 9 closeout
+- Write an ADR for the key vault boundary.
+- Implement or adopt a small reusable vault library.
+- Wire vault-first, environment-fallback secret resolution into CLI/provider configuration.
 
-Key vault lands before Alpaca/paper trading (Milestone 10) so broker credentials (higher stakes) use the vault from day one.
+Key vault work should land before Alpaca/paper trading (Milestone 11) so broker credentials (higher stakes) use the vault from day one.
 
 ## Related Pages
 

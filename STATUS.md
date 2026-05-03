@@ -58,6 +58,10 @@ For trading-system milestone focus, use [PROJECT.md](PROJECT.md). For agent oper
 - Processed the raw Milestone 7F implementation note on 2026-05-02. Updated canonical pages to mark 7F complete and 7G End-to-End Save Workflow as next.
 - Processed the raw proposed Milestone 7G end-to-end save workflow plan on 2026-05-02. Expanded the 7G section in the issue map with steps, scope boundaries, and verification criteria. Stored cleaned source note under `knowledge/processed/`.
 - Processed the raw Milestone 7G implementation note on 2026-05-02. Updated canonical pages to mark 7G complete and 7H Milestone Closeout as next. Noted LLM provider switch from Ollama to Groq and parser hardening applied during acceptance.
+- Processed the Milestone 7H closeout note on 2026-05-02. Updated canonical pages to mark Milestone 7 fully closed and recorded the final web/API validation.
+- Processed the initial Milestone 8 scope notes and later roadmap snapshot on 2026-05-02. Reconciled the sequence to M8 Options Chain Ingestion, M9 Web Product Beyond First Capture, M10 Secure Credentials, and M11 Broker Boundary and Paper Trading.
+- Processed the Milestone 8 implementation note on 2026-05-02. Updated canonical pages to mark options chain ingestion complete and Milestone 9 as the next active slice.
+- Processed the raw Milestone 9 web product plan on 2026-05-02. Promoted a plan-centered browser workbench scope into a canonical topic page and archived the cleaned source note under `knowledge/processed/`.
 
 ## Next Maintenance Candidates
 

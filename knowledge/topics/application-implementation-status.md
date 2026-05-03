@@ -9,7 +9,7 @@ updated: 2026-05-02
 
 # Application Implementation Status
 
-The application repository has completed Milestones 1 through 6 and has started Milestone 7.
+The application repository has completed Milestones 1 through 8. Milestone 9 Web Product Beyond First Capture is the next planned slice.
 
 Application repo:
 
@@ -19,7 +19,7 @@ C:\Users\bosto\dockerstuff\trading-system
 
 ## Current State
 
-Observed from processed issue notes, raw notes captured on 2026-04-22 through 2026-04-27, application repo docs, and verified source files and tests under `src/trading_system/` and `tests/`:
+Observed from processed issue notes, raw notes captured through 2026-05-02, application repo docs, and verified source files and tests under `src/trading_system/` and `tests/`:
 
 - Initial Python `src/` scaffold exists.
 - The package root is `src/trading_system/`.
@@ -32,8 +32,9 @@ Observed from processed issue notes, raw notes captured on 2026-04-22 through 20
 - The canonical demo now uses local JSON persistence rather than in-memory-only execution.
 - Milestone 4 local context snapshot workflow is complete.
 - Milestone 5 review tags/filtering, review quality scores, Markdown journal export, and local JSON operations are implemented as review/learning/local-ops slices.
-- ADR-007 starts Milestone 6 by accepting a read-only market data provider boundary for optional prototype-grade `yfinance` daily OHLCV snapshots.
-- The first Milestone 6 slice is implemented as `fetch-market-data`, which stores daily OHLCV snapshots through the provider boundary.
+- Milestone 6 is complete with read-only market data provider integration for yfinance and Massive.com daily OHLCV snapshots.
+- Milestone 7 is complete with the API-first web trade-capture workspace.
+- Milestone 8 is complete with yfinance and Massive.com options chain ingestion stored as advisory `MarketContextSnapshot` records.
 
 ## Completed Milestone 1
 
@@ -226,6 +227,7 @@ Verified CLI commands now include:
 - read commands for `list-trade-ideas`, `list-trade-theses`, `show-trade-thesis`, `list-trade-plans`, `show-trade-plan`, `list-trade-reviews`, `show-trade-review`, `list-positions`, `show-position`, and `show-position-timeline`
 - context commands for `import-context`, `list-context`, and `show-context`
 - context reuse command `copy-context`
+- market data commands for `fetch-market-data` and `fetch-options-chain`
 - review export command `export-review-journal`
 - local JSON operation commands `validate-store`, `backup-store`, and `restore-store`
 
@@ -256,14 +258,14 @@ Markdown journal export is now part of the review workflow:
 
 ## Current Roadmap Direction
 
-Application repo roadmap docs dated 2026-04-24 now define the accepted post-Milestone-2 sequence as:
+Application repo roadmap docs dated 2026-05-02 now define the accepted near-term sequence as:
 
-- Milestone 3: manual workflow usability
-- Milestone 4: read-only market context
-- Milestone 5: review, learning, and local operations
-- Milestone 6: read-only market data provider integration
+- Milestone 8: options chain ingestion, complete
+- Milestone 9: web product beyond first capture, next
+- Milestone 10: secure credentials, outcome-level
+- Milestone 11: broker boundary and paper trading, outcome-level
 
-Reinforcement learning remains exploratory only and is not the accepted Milestone 6 direction.
+Reinforcement learning remains exploratory only and is not part of the accepted near-term sequence.
 
 The current Milestone 3 usability bundle also explicitly leaves `OrderIntent` cancellation for a later follow-on issue if real usage still justifies it.
 
@@ -277,7 +279,7 @@ Current synthesis:
 - Milestone 3 is complete
 - Milestone 4 is complete
 - Milestone 5 is complete
-- Milestone 6 has started with ADR-007 accepted
+- Milestone 6 is complete
 - Milestone 6A is complete
 - Milestone 6B Issue 1 is complete
 - Milestone 6C Issue 1 is complete
@@ -292,6 +294,8 @@ Current synthesis:
 - Milestone 7G is complete
 - Milestone 7H is complete
 - Milestone 7 is fully closed
+- Milestone 8 is complete
+- Milestone 9 is next
 
 Milestone 2 is complete because its roadmap criteria are satisfied in the repo:
 
@@ -309,7 +313,7 @@ Milestone 5 is complete because the app repo now supports creation-time review t
 
 Milestone 6 is complete. Milestone 6A is complete because the first yfinance daily OHLCV snapshot slice is implemented, documented, and validated. Milestone 6B Issue 1 is complete because provider-backed source selection now goes through an explicit registry while preserving yfinance behavior. Milestone 6C Issue 1 is complete because ADR-009 records the Massive.com provider boundary. Milestone 6C Issue 2 is complete because Massive.com daily bars are implemented behind the provider registry. Milestone 6D closes the milestone with the provider boundary proven by two providers and 177 full-suite tests passing.
 
-Milestone 7 has started. 7A is complete because the app repo now has a Dockerized FastAPI/Vite runtime skeleton with health checks and host Ollama placeholders. 7B is complete because seeded symbol/playbook lookup is available through service and API boundaries. 7C is complete because the service-layer editable trade-capture draft contract now defines draft sections, required and optional fields, stable issue paths, missing/ambiguous issue reporting, and save-readiness checks. 7D is complete because the app repo now has a parser port, parser error boundary, fake parser, LiteLLM-backed Ollama adapter, strict extraction prompt, JSON response validation, and mapping into the 7C draft contract. 7E is complete because the app repo now exposes parse, save, and saved-result retrieval endpoints over the parser, draft, reference lookup, planning, query, and local JSON repository boundaries. 7F is complete because the frontend now provides the browser trade-capture workspace over the 7E API. 7G is complete because the Docker/API acceptance run validated the full parse→edit→save→persist workflow, confirmed local JSON persistence of linked TradeIdea/TradeThesis/TradePlan records, verified all error paths, and passed 216 tests. 7H is complete because the milestone closeout document, README web section, and final validation are all recorded. Milestone 7 is fully closed. Milestone 8 is complete because yfinance and Massive.com options chain adapters were implemented, the `fetch-options-chain` CLI command was added, and 233 tests passed. Milestone 9 is next.
+Milestone 7 is complete. 7A is complete because the app repo now has a Dockerized FastAPI/Vite runtime skeleton with health checks and host Ollama placeholders. 7B is complete because seeded symbol/playbook lookup is available through service and API boundaries. 7C is complete because the service-layer editable trade-capture draft contract now defines draft sections, required and optional fields, stable issue paths, missing/ambiguous issue reporting, and save-readiness checks. 7D is complete because the app repo now has a parser port, parser error boundary, fake parser, LiteLLM-backed Ollama adapter, strict extraction prompt, JSON response validation, and mapping into the 7C draft contract. 7E is complete because the app repo now exposes parse, save, and saved-result retrieval endpoints over the parser, draft, reference lookup, planning, query, and local JSON repository boundaries. 7F is complete because the frontend now provides the browser trade-capture workspace over the 7E API. 7G is complete because the Docker/API acceptance run validated the full parse→edit→save→persist workflow, confirmed local JSON persistence of linked TradeIdea/TradeThesis/TradePlan records, verified all error paths, and passed 216 tests. 7H is complete because the milestone closeout document, README web section, and final validation are all recorded. Milestone 7 is fully closed. Milestone 8 is complete because yfinance and Massive.com options chain adapters were implemented, the `fetch-options-chain` CLI command was added, and 233 tests passed. Milestone 9 is next.
 
 ## Verified Milestone 7C Completion
 
@@ -486,7 +490,7 @@ Full suite: 156 passed
 The application docs still treat these as intentionally out of scope:
 
 - broker integration
-- market data provider expansion beyond explicit daily snapshot ingestion
+- market data provider expansion beyond explicit daily and options snapshot ingestion
 - live streaming market data, execution-grade quotes, and provider-driven trade recommendations
 - AI or ML decision-making, recommendations, generated coaching, or claim verification
 - reconciliation workflows
@@ -503,6 +507,20 @@ The application docs still treat these as intentionally out of scope:
 
 The current direction now emphasizes API-first local web trade capture on top of the existing manual workflow, while preserving read-only market context, review/local operations, and deterministic discipline boundaries before broker integration, Postgres migration, or RL work.
 
+## Proposed Milestone 9 Direction
+
+Milestone 9 is not implemented yet. The current processed plan narrows the next web product slice to a plan-centered browser workbench:
+
+- saved trade plan list with approval-state filtering and newest/oldest sorting
+- trade plan detail with linked idea, thesis, plan fields, rule evaluations, order intents, positions, and market-context metadata
+- browser approval for draft plans through the existing `TradePlanningService.approve_trade_plan()` behavior
+- metadata-only market-context discovery in the browser
+- context attachment by copying an existing snapshot to a `TradePlan` target without mutating the original snapshot
+
+The Milestone 9 plan explicitly excludes broker integration, execution, order intent creation, position opening, fill recording, generated recommendations, authentication, key vault behavior, Postgres migration, separate idea/thesis management screens, and full market-context payload rendering in the browser.
+
+Related planning page: [[milestone-9-web-product-beyond-first-capture]].
+
 ## Related Pages
 
 - [[first-vertical-slice]]
@@ -516,6 +534,7 @@ The current direction now emphasizes API-first local web trade capture on top of
 - [[milestone-5-local-json-operations]]
 - [[milestone-6-market-data-provider-boundary]]
 - [[milestone-7-api-first-trade-capture-issue-map]]
+- [[milestone-9-web-product-beyond-first-capture]]
 - [[application-project-structure]]
 - [[development-workflow]]
 - [[canonical-domain-model]]

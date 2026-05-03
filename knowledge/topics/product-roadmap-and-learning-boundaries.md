@@ -4,7 +4,7 @@ type: topic
 status: active
 tags: [trading-system, roadmap, learning-systems, reinforcement-learning, product-boundaries]
 created: 2026-04-26
-updated: 2026-04-29
+updated: 2026-05-02
 ---
 
 # Product Roadmap And Learning Boundaries
@@ -18,13 +18,15 @@ The current roadmap should be read as near-term accepted milestones plus longer-
 
 ## Current Near-Term Roadmap
 
-The accepted near-term sequence has advanced to:
+The accepted near-term sequence has advanced through:
 
 1. Milestone 4: read-only market context
 2. Milestone 5: review, learning, and local operations
 3. Milestone 6: read-only market data provider integration
+4. Milestone 7: API-first trade capture workspace
+5. Milestone 8: options chain ingestion
 
-Milestones 3 through 6 are complete.
+Milestones 3 through 8 are complete. Milestone 9 Web Product Beyond First Capture is the next planned slice.
 
 Milestone 4 added read-only market and context support while preserving the system as the canonical owner of trade meaning.
 
@@ -42,7 +44,11 @@ Milestone 6C Issue 2 is complete. The linked application repo now supports `fetc
 
 Milestone 6D is complete. Milestone 6 is closed with yfinance and Massive.com behind the provider boundary.
 
-ADR-008 is now the next accepted implementation direction. A narrow local API-key ergonomics issue may be considered first, but it should not expand into cloud secret management, accounts, provider fallback, or broad web configuration.
+ADR-008 has now been implemented through Milestone 7 as the local API-first trade capture workspace. Milestone 8 added options chain ingestion as the first market data depth extension.
+
+Milestone 9 should deepen the browser product without crossing into execution. The current proposed plan is a plan-centered local workbench: saved plan list/detail views, browser approval for draft plans, and metadata-only context attachment by copying existing snapshots to plans.
+
+Milestone 10 is the current secure-credentials candidate. It should not be pulled into Milestone 9 web product depth.
 
 ## External Product Assessment Notes
 
@@ -126,6 +132,7 @@ This page synthesizes:
 - `knowledge/processed/Analysis by Perplexity based on just the Repo README.md and Repo STATUS.md 2026-04-26 2_42 pm EST.md`
 - [[milestone-6c-massive-daily-bars-implemented-20260429]]
 - [[milestone-6-closeout-20260429]]
+- [[milestone-9-web-product-beyond-first-capture]]
 
 ## Processing Notes
 

@@ -33,6 +33,7 @@ This index is the navigation entry point for the trading-system knowledge base.
 - [[milestone-5-local-json-operations]] - fourth Milestone 5 local-operations slice for JSON store validation, backup, and restore
 - [[milestone-6-market-data-provider-boundary]] - accepted ADR-007 boundary for prototype yfinance daily OHLCV snapshots
 - [[milestone-7-api-first-trade-capture-issue-map]] - issue map for the API-first trade-capture web product milestone
+- [[milestone-9-web-product-beyond-first-capture]] - proposed plan-centered web workbench slice after first trade capture
 - [[reusable-local-secret-vault-library]] - discussion note for a possible reusable local secret-vault library and future ADR
 - [[product-roadmap-and-learning-boundaries]] - near-term roadmap, long-term product direction, and deferred AI/RL boundary
 - [[application-project-structure]] - Python modular monolith structure and boundaries
@@ -129,4 +130,6 @@ The reusable key-vault library idea was captured as a raw brainstorm note and pr
 
 Milestone 8 (Options Chain Ingestion) was implemented and processed into [[implemented-milestone-8-20260502]]. yfinance and Massive.com options chain adapters were added, `fetch-options-chain` CLI command wired in, and 233 tests pass. Massive.com options require a paid plan; yfinance works on the free tier. Milestone 9 (web product depth) is next.
 
-A detailed encryption and master-key brainstorm was captured in [[key-vault-encryption-brainstorm-20260502]]. It covers Fernet vs AES-GCM vs OS keychain vs Age encryption, master-key management options, secret resolution precedence, CLI commands, Docker behavior, and assigns key vault work to Milestone 9A. The milestone topic has been updated with the 9A slot.
+A detailed encryption and master-key brainstorm was captured in [[key-vault-encryption-brainstorm-20260502]]. It covers Fernet vs AES-GCM vs OS keychain vs Age encryption, master-key management options, secret resolution precedence, CLI commands, and Docker behavior. The current roadmap assigns key vault work to Milestone 10 Secure Credentials, after Milestone 9 web product depth.
+
+The raw Milestone 9 web product plan was processed into [[proposed-milestone-9-web-product-beyond-first-capture-20260502]] and promoted to [[milestone-9-web-product-beyond-first-capture]]. The promoted scope is a plan-centered browser workbench: saved plan list/detail, draft-plan approval, and metadata-only context attachment by copying existing snapshots to plans. It is planning material, not an implementation closeout.

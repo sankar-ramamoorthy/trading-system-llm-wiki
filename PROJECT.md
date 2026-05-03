@@ -13,7 +13,7 @@ This file is the short current-context entrypoint for the trading-system LLM wik
 
 ## Current Phase
 
-Milestone 6 is complete. Milestone 7 has started under ADR-008 API-first web product and trade-capture draft workflow.
+Milestones 1 through 8 are complete. Milestone 9 Web Product Beyond First Capture is the active next slice.
 
 ## Active Focus
 
@@ -58,8 +58,8 @@ Milestone 6 is complete. Milestone 7 has started under ADR-008 API-first web pro
 
 ## Open Questions
 
-- Milestone 8 should stay outcome-level until Milestone 7 parse/edit/save scope is stable.
-- Local encrypted API-key storage needs a later design discussion before it becomes an ADR or implementation milestone.
+- Milestone 9 has a proposed narrow implementation plan for web product depth. It still needs promotion into the application repo as an issue map or design document before coding starts.
+- Local encrypted API-key storage is a Milestone 10 candidate and needs a design discussion before it becomes an ADR or implementation slice.
 - A reusable local secret-vault library is plausible, but the first accepted shape should be library-first and small, not a full key-management product.
 
 ## High-Priority Links
@@ -75,6 +75,7 @@ Milestone 6 is complete. Milestone 7 has started under ADR-008 API-first web pro
 - [[milestone-5-local-json-operations]]
 - [[milestone-6-market-data-provider-boundary]]
 - [[milestone-7-api-first-trade-capture-issue-map]]
+- [[milestone-9-web-product-beyond-first-capture]]
 - [[reusable-local-secret-vault-library]]
 - [[api-first-trade-capture-product-vision]]
 - [[application-repo-documentation-sources]]

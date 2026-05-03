@@ -4,6 +4,7 @@ type: topic
 status: draft
 tags: [trading-system, product-vision, api-first, web-ui, trade-capture, trader-language-input]
 created: 2026-04-27
+updated: 2026-05-02
 ---
 
 # API-First Trade Capture Product Vision
@@ -100,6 +101,15 @@ The early version only translates user-authored trade language into editable str
 
 ## Future Direction
 
+The first post-capture web depth slice is Milestone 9. It should keep the same discipline boundary while making saved plans usable in the browser:
+
+- list saved plans
+- inspect plan detail with linked idea and thesis content
+- approve draft plans from the browser
+- attach existing market context snapshots to plans
+
+This moves the browser from capture-only to a local plan workbench. It still should not create execution intent, open positions, record fills, make recommendations, or treat context as canonical trade meaning.
+
 Later versions may add thesis verification.
 
 For example, the claim:
@@ -140,4 +150,5 @@ That boundary keeps the system useful without turning early parsing into unsafe 
 - [[context-intelligence-layer]]
 - [[deterministic-rules-vs-contextual-intelligence]]
 - [[product-roadmap-and-learning-boundaries]]
+- [[milestone-9-web-product-beyond-first-capture]]
 - [[brainstorm-20260427-api-first-web-product-and-trader-language-input]]
