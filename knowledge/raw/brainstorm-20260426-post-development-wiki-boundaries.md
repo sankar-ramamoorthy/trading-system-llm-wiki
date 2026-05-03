@@ -1,7 +1,7 @@
 ---
 title: Post-Development Wiki Usage and Runtime Boundary Brainstorm
 type: brainstorm
-status: raw
+status: processed
 tags: [trading-system, brainstorm, llm-wiki, runtime-boundary, learning-loop]
 created: 2026-04-26
 ---

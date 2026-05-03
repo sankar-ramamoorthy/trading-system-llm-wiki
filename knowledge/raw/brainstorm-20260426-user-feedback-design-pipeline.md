@@ -1,7 +1,7 @@
 ---
 title: User Feedback Design Pipeline Brainstorm
 type: brainstorm
-status: raw
+status: processed
 tags: [trading-system, brainstorm, user-feedback, design-process]
 created: 2026-04-26
 ---

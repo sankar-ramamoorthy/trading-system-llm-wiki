@@ -13,7 +13,7 @@ This file is the short current-context entrypoint for the trading-system LLM wik
 
 ## Current Phase
 
-Milestone 6 is complete. Milestone 7 has started under ADR-008 API-first web product and trade-capture draft workflow.
+Milestones 1 through 8 are complete. Milestone 9 Web Product Beyond First Capture is the active next slice.
 
 ## Active Focus
 
@@ -24,7 +24,15 @@ Milestone 6 is complete. Milestone 7 has started under ADR-008 API-first web pro
 - Treat Milestone 7D Natural-Language Parser Boundary as complete.
 - Treat Milestone 7E FastAPI Trade Capture Service as complete.
 - Treat Milestone 7F React/Vite Trade Capture Workspace as complete.
-- Use Milestone 7G End-to-End Save Workflow as the next planned slice.
+- Treat Milestone 7G End-to-End Save Workflow as complete.
+- Treat Milestone 7H Milestone Closeout as complete.
+- Milestone 7 is fully closed.
+- Treat Milestone 8 Options Chain Ingestion as complete.
+- Use Milestone 9 Web Product Beyond First Capture as the active next slice.
+- Milestone 9: Web product beyond first capture (list/detail views, plan approval, context from browser).
+- Milestone 10: Secure credentials (local key vault ADR + implementation).
+- Milestone 11: Broker boundary and paper trading (Alpaca).
+- See `DOCS/product-roadmap.md` for the accepted near-term sequence.
 - Preserve ADR-007 and ADR-009: market data provider boundaries for yfinance and Massive.com daily OHLCV snapshots.
 - Keep yfinance as the default provider and Massive.com as the first credentialed provider.
 - Preserve the manual, local, auditable workflow established through Milestones 1 through 3.
@@ -50,8 +58,8 @@ Milestone 6 is complete. Milestone 7 has started under ADR-008 API-first web pro
 
 ## Open Questions
 
-- Milestone 8 should stay outcome-level until Milestone 7 parse/edit/save scope is stable.
-- Local encrypted API-key storage needs a later design discussion before it becomes an ADR or implementation milestone.
+- Milestone 9 has a proposed narrow implementation plan for web product depth. It still needs promotion into the application repo as an issue map or design document before coding starts.
+- Local encrypted API-key storage is a Milestone 10 candidate and needs a design discussion before it becomes an ADR or implementation slice.
 - A reusable local secret-vault library is plausible, but the first accepted shape should be library-first and small, not a full key-management product.
 
 ## High-Priority Links
@@ -67,6 +75,7 @@ Milestone 6 is complete. Milestone 7 has started under ADR-008 API-first web pro
 - [[milestone-5-local-json-operations]]
 - [[milestone-6-market-data-provider-boundary]]
 - [[milestone-7-api-first-trade-capture-issue-map]]
+- [[milestone-9-web-product-beyond-first-capture]]
 - [[reusable-local-secret-vault-library]]
 - [[api-first-trade-capture-product-vision]]
 - [[application-repo-documentation-sources]]

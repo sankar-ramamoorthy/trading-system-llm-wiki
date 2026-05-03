@@ -1,7 +1,7 @@
 ---
 title: Post-Milestone 5 Real Data Direction
 type: brainstorm
-status: raw
+status: processed
 tags: [trading-system, brainstorm, milestone-5, market-data, roadmap]
 created: 2026-04-27
 ---

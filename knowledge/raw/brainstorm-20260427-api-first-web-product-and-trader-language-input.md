@@ -1,7 +1,7 @@
 ---
 title: API-First Web Product And Trader-Language Input Brainstorm
 type: brainstorm
-status: raw
+status: processed
 tags: [trading-system, brainstorm, product-vision, api-first, web-ui, trader-language-input]
 created: 2026-04-27
 ---

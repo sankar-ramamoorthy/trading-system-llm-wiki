@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(docker compose *)",
+      "Bash(curl -s http://localhost:8000/health)",
+      "Bash(python -m json.tool)",
+      "Bash(curl -s http://localhost:8000/reference-data/summary)",
+      "Bash(curl -s http://localhost:8000/openapi.json)",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); [print\\(p\\) for p in d['paths']]\")",
+      "Bash(curl -s --max-time 5 http://localhost:11434/api/tags)",
+      "Bash(curl -s -X POST http://localhost:8000/trade-capture/parse -H 'Content-Type: application/json' -d '{\"source_text\": \"NVDA long swing pullback setup, entry on reclaim of prior high, stop below pullback low.\"}')",
+      "Bash(uv run *)",
+      "Bash(git add *)",
+      "Bash(git commit -m 'Wire symbol resolution into CLI and fix Massive.com volume parsing *)",
+      "Bash(git commit *)"
+    ]
+  }
+}

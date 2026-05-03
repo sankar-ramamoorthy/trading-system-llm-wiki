@@ -289,7 +289,44 @@ Wire parse, edit, and save all the way through local JSON persistence.
 
 Saving should create linked `TradeIdea`, `TradeThesis`, and `TradePlan` records only after explicit user confirmation.
 
-Status: next planned slice as of 2026-05-02.
+Status: complete as of 2026-05-02.
+
+#### 7G Closeout
+
+Validated 2026-05-02:
+
+- `docker compose up --build` — both containers healthy
+- Parse via Groq `qwen/qwen3-32b` correctly extracts fields and surfaces validation issues
+- Save creates linked TradeIdea, TradeThesis, TradePlan records
+- Persist confirmed in `store.json` with `approval_state: draft`
+- All error paths validated: empty input, missing fields, ambiguous fields, unknown symbol, unknown plan ID
+- `uv run pytest`: 216 passed
+
+Infrastructure fixes applied during acceptance: LLM switched from Ollama llama3.1 (unavailable) to Groq `qwen/qwen3-32b` (60 RPM free tier); `env_file` added to `docker-compose.yml` so `GROQ_API_KEY` reaches the backend container; LiteLLM parser hardened for small-model output variance (string-as-list, non-string candidates).
+
+#### Proposed 7G Steps
+
+1. **Docker stack acceptance run** — start `docker compose up` in the application repo and confirm all containers come up healthy.
+2. **Browser golden-path walkthrough** — enter raw trader text, click Parse, confirm draft sections populate, edit one or more fields, click Save, confirm the saved-result summary appears with generated IDs.
+3. **Persistence verification** — inspect the local JSON store after save and confirm linked TradeIdea, TradeThesis, and TradePlan records are written and retrievable. Optionally call `GET /trade-capture/saved/{trade_plan_id}` to verify API round-trip.
+4. **Edge-case / error state validation** — walk through all known 7F UI states: empty draft, parsing in progress, parsed with issues, parsed and ready to save, save in progress, saved, parse or save error, API unreachable.
+5. **Final workflow polish (if needed)** — fix rough edges surfaced during manual testing; no scope expansion.
+6. **Record validation** — update application repo STATUS.md and this knowledge base with commands run, pass/fail results, any issues found and resolved, and confirmation of 7G acceptance criteria.
+
+#### 7G Scope Boundaries
+
+7G does not add: plan approval, rule evaluation, order intent creation, position opening or fill recording, broker integration, recommendations or claim verification, API key vault behavior, production auth, cloud deployment, or Postgres migration.
+
+#### 7G Verification Criteria
+
+Done when:
+
+- `docker compose up` starts cleanly
+- Browser golden-path walkthrough completes without errors
+- Local JSON store contains the saved TradeIdea, TradeThesis, and TradePlan records
+- All known UI error states render correctly
+- Full test suite still passes (`uv run pytest`: 216+ passed)
+- STATUS.md in application repo updated to reflect 7G complete / 7H next
 
 ### 7H: Milestone Closeout
 

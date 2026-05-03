@@ -33,12 +33,16 @@ This index is the navigation entry point for the trading-system knowledge base.
 - [[milestone-5-local-json-operations]] - fourth Milestone 5 local-operations slice for JSON store validation, backup, and restore
 - [[milestone-6-market-data-provider-boundary]] - accepted ADR-007 boundary for prototype yfinance daily OHLCV snapshots
 - [[milestone-7-api-first-trade-capture-issue-map]] - issue map for the API-first trade-capture web product milestone
+- [[milestone-9-web-product-beyond-first-capture]] - proposed plan-centered web workbench slice after first trade capture
 - [[reusable-local-secret-vault-library]] - discussion note for a possible reusable local secret-vault library and future ADR
 - [[product-roadmap-and-learning-boundaries]] - near-term roadmap, long-term product direction, and deferred AI/RL boundary
 - [[application-project-structure]] - Python modular monolith structure and boundaries
 - [[application-implementation-status]] - current observed implementation status from app repo README, status notes, and source files
 - [[knowledge-base-workflow]] - how the wiki supports the application repository
 - [[application-repo-documentation-sources]] - map of application repo docs and ADRs used as primary sources
+- [[wiki-runtime-boundary]] - foundational boundary between the runtime trading system and the LLM wiki; failure modes and integration rules
+- [[feedback-to-design-pipeline]] - disciplined pipeline from self-observed friction to promoted topic, ADR, and code change
+- [[cli-ux-friction]] - active log of CLI UX pain points; improvement options and natural language mode direction
 
 ## Current Design Center
 
@@ -47,6 +51,8 @@ Build a trade operating system where deterministic rules control risk and proces
 ## Processing Notes
 
 Raw notes from 2026-04-18 were consolidated into the pages above and moved into `knowledge/processed/` on 2026-04-19.
+
+Raw notes audit completed 2026-05-02: all 14 raw files reviewed. Three new topic pages promoted (`wiki-runtime-boundary`, `feedback-to-design-pipeline`, `cli-ux-friction`). Two archive notes created (`milestone-6-sequencing-rationale-20260427`, `roadmap-m8-through-m12-snapshot-20260502`). All remaining raw files marked `status: processed` in frontmatter. The raw directory now contains no unprocessed non-brainstorm notes.
 
 Raw notes remaining on 2026-04-19 were consolidated into first-slice, application-structure, and knowledge-base workflow pages, then moved into `knowledge/processed/`.
 
@@ -108,8 +114,22 @@ The later raw implementation note for Milestone 7E was processed into [[implemen
 
 The raw notes describing what 7F should do were processed into [[proposed-milestone-7f-react-trade-capture-workspace-20260502]]. The durable direction was that 7F should replace the frontend status shell with a browser trade-capture workspace over the 7E backend. That planning status was superseded by the later 7F implementation note.
 
-The raw implementation note for Milestone 7F was processed into [[implemented-milestone-7f-20260502]]. The application repo now has a React/Vite trade-capture workspace for raw trader-language input, parse, editable Idea/Thesis/Plan sections, field-level issue display, explicit save, and saved-result summary. Milestone 7G End-to-End Save Workflow is now the next planned slice.
+The raw implementation note for Milestone 7F was processed into [[implemented-milestone-7f-20260502]]. The application repo now has a React/Vite trade-capture workspace for raw trader-language input, parse, editable Idea/Thesis/Plan sections, field-level issue display, explicit save, and saved-result summary.
+
+The Milestone 7G acceptance run was processed into [[implemented-milestone-7g-20260502]]. Docker/API end-to-end validation confirmed the full parse→save→persist workflow: Groq-backed `qwen/qwen3-32b` model wired in, `env_file` added to docker-compose for secret passing, LiteLLM parser hardened for small-model output variance, linked records confirmed in local JSON store, and 216 tests passing.
+
+The Milestone 7H closeout was processed into [[implemented-milestone-7h-20260502]]. The milestone-7 closeout document was created, the README was updated with the web interface section, the issue map and STATUS.md were marked complete, and 216 tests + frontend build were confirmed passing. Milestone 7 is fully closed.
+
+The post-Milestone 7 elevator pitch and capability baseline were processed into [[system-capability-after-milestone-7-20260502]]. This is the canonical capability snapshot as of 2026-05-02: two entry points (web + CLI), 13 capability areas, and explicit "does not do" boundaries.
+
+The initial Milestone 8 scope notes (web product direction) were processed into [[milestone-8-initial-scope-notes-20260502]] and marked superseded. Options Chain Ingestion is now accepted as Milestone 8; the web product expansion moved to Milestone 9. The near-term sequence is now M8 (options chain) → M9 (web depth) → M10 (key vault) → M11 (paper trading). See `DOCS/product-roadmap.md`.
 
 The API key/key vault discussion was processed into [[api-key-vault-discussion-20260502]] as design discussion input only. Key-vault work is not accepted 7F scope. The current stance remains environment-variable based configuration, with a possible later ADR or milestone for encrypted local key storage.
 
 The reusable key-vault library idea was captured as a raw brainstorm note and promoted to [[reusable-local-secret-vault-library]] as an ADR candidate topic. The durable stance is library-first: reusable encrypted local storage and secret resolution, with project-specific CLI/API/UI integration left outside the reusable core.
+
+Milestone 8 (Options Chain Ingestion) was implemented and processed into [[implemented-milestone-8-20260502]]. yfinance and Massive.com options chain adapters were added, `fetch-options-chain` CLI command wired in, and 233 tests pass. Massive.com options require a paid plan; yfinance works on the free tier. Milestone 9 (web product depth) is next.
+
+A detailed encryption and master-key brainstorm was captured in [[key-vault-encryption-brainstorm-20260502]]. It covers Fernet vs AES-GCM vs OS keychain vs Age encryption, master-key management options, secret resolution precedence, CLI commands, and Docker behavior. The current roadmap assigns key vault work to Milestone 10 Secure Credentials, after Milestone 9 web product depth.
+
+The raw Milestone 9 web product plan was processed into [[proposed-milestone-9-web-product-beyond-first-capture-20260502]] and promoted to [[milestone-9-web-product-beyond-first-capture]]. The promoted scope is a plan-centered browser workbench: saved plan list/detail, draft-plan approval, and metadata-only context attachment by copying existing snapshots to plans. It is planning material, not an implementation closeout.

@@ -96,9 +96,20 @@ A future ADR should decide:
 - Docker and local development behavior
 - redaction and testing requirements
 
+## Milestone Assignment
+
+Proposed as candidate scope for **Milestone 10: Secure Credentials**:
+
+- Write an ADR for the key vault boundary.
+- Implement or adopt a small reusable vault library.
+- Wire vault-first, environment-fallback secret resolution into CLI/provider configuration.
+
+Key vault work should land before Alpaca/paper trading (Milestone 11) so broker credentials (higher stakes) use the vault from day one.
+
 ## Related Pages
 
 - [[api-key-vault-discussion-20260502]]
+- [[key-vault-encryption-brainstorm-20260502]]
 - [[data-and-platform-strategy]]
 - [[milestone-6-market-data-provider-boundary]]
 - [[milestone-7-api-first-trade-capture-issue-map]]
