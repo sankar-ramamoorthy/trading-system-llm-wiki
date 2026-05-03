@@ -9,7 +9,7 @@ updated: 2026-05-03
 
 # Application Implementation Status
 
-The application repository has completed Milestones 1 through 11. Milestone 11 Broker Boundary and Paper Trading added the broker execution boundary and simulated paper execution through core services and CLI commands only.
+The application repository has completed Milestones 1 through 13. Milestone 13 Alpaca Paper Adapter added live Alpaca paper trading behind the existing broker execution boundary through core services and CLI commands only.
 
 Application repo:
 
@@ -38,6 +38,8 @@ Observed from processed issue notes, raw notes captured through 2026-05-02, appl
 - Milestone 9 is complete with browser plan list/detail, draft approval, and context attachment.
 - Milestone 10 is complete with a local encrypted secret vault, CLI secret commands, and vault-first Massive.com credential resolution.
 - Milestone 11 is complete with ADR-011, a provider-agnostic broker port, simulated paper broker execution, local `BrokerOrder` persistence, broker-linked fills, and CLI paper execution commands.
+- Milestone 12 is complete with broker-order listing/detail hardening plus simulated cancellation and rejection workflows.
+- Milestone 13 is complete with `AlpacaPaperBrokerClient`, vault-first `ALPACA_API_KEY` and `ALPACA_SECRET_KEY` resolution, `submit-paper-order --provider alpaca`, and Alpaca sync into local `BrokerOrder` and `Fill` records.
 
 ## Completed Milestone 1
 
@@ -198,6 +200,8 @@ Verified from application repo `README.md`, `STATUS.md`, and `DOCS/` on 2026-05-
 - Milestone 9 Web Product Beyond First Capture is complete.
 - Milestone 10 Secure Credentials is complete.
 - Milestone 11 Broker Boundary and Paper Trading is complete.
+- Milestone 12 Paper Execution Hardening is complete.
+- Milestone 13 Alpaca Paper Adapter is complete.
 
 ## Implemented Workflow
 
@@ -240,7 +244,7 @@ Verified CLI commands now include:
 - context reuse command `copy-context`
 - market data commands for `fetch-market-data` and `fetch-options-chain`
 - secret management commands for `set-secret`, `list-secrets`, `delete-secret`, and `rotate-master-key`
-- simulated paper broker commands for `submit-paper-order`, `sync-paper-order`, and `show-broker-order`
+- paper broker commands for `submit-paper-order`, `sync-paper-order`, `show-broker-order`, `list-broker-orders`, `cancel-paper-order`, and `reject-paper-order`
 - review export command `export-review-journal`
 - local JSON operation commands `validate-store`, `backup-store`, and `restore-store`
 
@@ -277,7 +281,9 @@ Application repo roadmap docs and status dated 2026-05-03 now define the accepte
 - Milestone 9: web product beyond first capture, complete
 - Milestone 10: secure credentials, complete
 - Milestone 11: broker boundary and simulated paper execution, complete
-- Milestone 12: not yet accepted; post-M11 roadmap candidate is paper execution hardening
+- Milestone 12: paper execution hardening, complete
+- Milestone 13: Alpaca paper adapter, complete
+- Milestone 14: not yet accepted; post-M11 roadmap candidate is broker reconciliation and status sync
 
 Reinforcement learning remains exploratory only and is not part of the accepted near-term sequence.
 
@@ -312,7 +318,9 @@ Current synthesis:
 - Milestone 9 is complete
 - Milestone 10 is complete
 - Milestone 11 is complete
-- Milestone 12 is not yet accepted
+- Milestone 12 is complete
+- Milestone 13 is complete
+- Milestone 14 is not yet accepted
 
 Milestone 2 is complete because its roadmap criteria are satisfied in the repo:
 
@@ -330,7 +338,7 @@ Milestone 5 is complete because the app repo now supports creation-time review t
 
 Milestone 6 is complete. Milestone 6A is complete because the first yfinance daily OHLCV snapshot slice is implemented, documented, and validated. Milestone 6B Issue 1 is complete because provider-backed source selection now goes through an explicit registry while preserving yfinance behavior. Milestone 6C Issue 1 is complete because ADR-009 records the Massive.com provider boundary. Milestone 6C Issue 2 is complete because Massive.com daily bars are implemented behind the provider registry. Milestone 6D closes the milestone with the provider boundary proven by two providers and 177 full-suite tests passing.
 
-Milestone 7 is complete. 7A is complete because the app repo now has a Dockerized FastAPI/Vite runtime skeleton with health checks and host Ollama placeholders. 7B is complete because seeded symbol/playbook lookup is available through service and API boundaries. 7C is complete because the service-layer editable trade-capture draft contract now defines draft sections, required and optional fields, stable issue paths, missing/ambiguous issue reporting, and save-readiness checks. 7D is complete because the app repo now has a parser port, parser error boundary, fake parser, LiteLLM-backed Ollama adapter, strict extraction prompt, JSON response validation, and mapping into the 7C draft contract. 7E is complete because the app repo now exposes parse, save, and saved-result retrieval endpoints over the parser, draft, reference lookup, planning, query, and local JSON repository boundaries. 7F is complete because the frontend now provides the browser trade-capture workspace over the 7E API. 7G is complete because the Docker/API acceptance run validated the full parse→edit→save→persist workflow, confirmed local JSON persistence of linked TradeIdea/TradeThesis/TradePlan records, verified all error paths, and passed 216 tests. 7H is complete because the milestone closeout document, README web section, and final validation are all recorded. Milestone 7 is fully closed. Milestone 8 is complete because yfinance and Massive.com options chain adapters were implemented, the `fetch-options-chain` CLI command was added, and 233 tests passed. Milestone 9 is complete because the browser now supports saved plan list/detail, draft approval, and metadata-only context attachment. Milestone 10 is complete because the app repo accepted ADR-010, added the encrypted local secret vault and CLI secret commands, and moved Massive.com credential lookup behind vault-first resolution. Milestone 11 is complete because the app repo accepted ADR-011, implemented a provider-agnostic broker execution port, added local `BrokerOrder` persistence, implemented simulated paper broker execution, linked broker-imported fills to local records, exposed CLI commands for submit/sync/show, and recorded 257 full-suite tests passing.
+Milestone 7 is complete. 7A is complete because the app repo now has a Dockerized FastAPI/Vite runtime skeleton with health checks and host Ollama placeholders. 7B is complete because seeded symbol/playbook lookup is available through service and API boundaries. 7C is complete because the service-layer editable trade-capture draft contract now defines draft sections, required and optional fields, stable issue paths, missing/ambiguous issue reporting, and save-readiness checks. 7D is complete because the app repo now has a parser port, parser error boundary, fake parser, LiteLLM-backed Ollama adapter, strict extraction prompt, JSON response validation, and mapping into the 7C draft contract. 7E is complete because the app repo now exposes parse, save, and saved-result retrieval endpoints over the parser, draft, reference lookup, planning, query, and local JSON repository boundaries. 7F is complete because the frontend now provides the browser trade-capture workspace over the 7E API. 7G is complete because the Docker/API acceptance run validated the full parse→edit→save→persist workflow, confirmed local JSON persistence of linked TradeIdea/TradeThesis/TradePlan records, verified all error paths, and passed 216 tests. 7H is complete because the milestone closeout document, README web section, and final validation are all recorded. Milestone 7 is fully closed. Milestone 8 is complete because yfinance and Massive.com options chain adapters were implemented, the `fetch-options-chain` CLI command was added, and 233 tests passed. Milestone 9 is complete because the browser now supports saved plan list/detail, draft approval, and metadata-only context attachment. Milestone 10 is complete because the app repo accepted ADR-010, added the encrypted local secret vault and CLI secret commands, and moved Massive.com credential lookup behind vault-first resolution. Milestone 11 is complete because the app repo accepted ADR-011, implemented a provider-agnostic broker execution port, added local `BrokerOrder` persistence, implemented simulated paper broker execution, linked broker-imported fills to local records, exposed CLI commands for submit/sync/show, and recorded 257 full-suite tests passing. Milestone 12 is complete because broker-order query/list/detail workflows, simulated cancellation/rejection, and audit visibility hardening landed with 264 full-suite tests passing. Milestone 13 is complete because Alpaca paper trading was added behind the existing broker port, CLI provider selection and sync were wired, simulated behavior remained intact, and 280 full-suite tests passed.
 
 ## Verified Milestone 7C Completion
 
@@ -524,7 +532,7 @@ The application docs still treat these as intentionally out of scope:
 
 The current direction now emphasizes a local, auditable trading workflow with browser trade capture and CLI-only simulated paper execution, while preserving read-only market context, review/local operations, and deterministic discipline boundaries before live broker integration, Postgres migration, or RL work.
 
-## Completed Milestone 9 Through 11 Direction
+## Completed Milestone 9 Through 13 Direction
 
 Milestone 9 implemented the plan-centered browser workbench:
 
@@ -554,7 +562,24 @@ Milestone 11 implemented the broker execution boundary:
 - CLI commands for `submit-paper-order`, `sync-paper-order`, and `show-broker-order`
 - no live Alpaca calls, FastAPI broker controls, React broker controls, real-money execution, autonomous trading, recommendations, or full OMS behavior
 
-Related pages: [[milestone-9-web-product-beyond-first-capture]], [[milestone-10-secure-credentials]], and [[milestone-11-broker-boundary-and-paper-trading]].
+Milestone 12 implemented paper execution hardening:
+
+- broker-order list and query workflows
+- richer broker-order detail with linked fill and local lifecycle metadata
+- broker-order linkage in position and timeline views
+- simulated cancel/reject workflows
+- continued CLI/core-services-only scope
+
+Milestone 13 implemented Alpaca paper trading:
+
+- `AlpacaPaperBrokerClient` behind the existing broker port
+- `alpaca-py` dependency
+- vault-first, environment-fallback credentials for `ALPACA_API_KEY` and `ALPACA_SECRET_KEY`
+- `submit-paper-order --provider alpaca`
+- Alpaca sync through `sync-paper-order` without simulated fill prices
+- continued exclusion of real-money execution, API/web broker controls, browser execution buttons, autonomous trading, reconciliation, and full OMS behavior
+
+Related pages: [[milestone-9-web-product-beyond-first-capture]], [[milestone-10-secure-credentials]], [[milestone-11-broker-boundary-and-paper-trading]], [[milestone-12-paper-execution-hardening]], and [[milestone-13-alpaca-paper-adapter]].
 
 ## Related Pages
 
@@ -572,6 +597,8 @@ Related pages: [[milestone-9-web-product-beyond-first-capture]], [[milestone-10-
 - [[milestone-9-web-product-beyond-first-capture]]
 - [[milestone-10-secure-credentials]]
 - [[milestone-11-broker-boundary-and-paper-trading]]
+- [[milestone-12-paper-execution-hardening]]
+- [[milestone-13-alpaca-paper-adapter]]
 - [[application-project-structure]]
 - [[development-workflow]]
 - [[canonical-domain-model]]

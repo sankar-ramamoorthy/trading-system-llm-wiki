@@ -26,7 +26,7 @@ The accepted near-term sequence has advanced through:
 4. Milestone 7: API-first trade capture workspace
 5. Milestone 8: options chain ingestion
 
-Milestones 3 through 11 are complete. Milestone 11 Broker Boundary and Paper Trading added the accepted broker execution boundary and simulated CLI-only paper execution.
+Milestones 3 through 13 are complete. Milestone 13 added Alpaca paper trading behind the accepted broker execution boundary while keeping controls CLI-only.
 
 Milestone 4 added read-only market and context support while preserving the system as the canonical owner of trade meaning.
 
@@ -52,7 +52,11 @@ Milestone 10 added secure credentials for local CLI workflows: ADR-010, a Fernet
 
 Milestone 11 introduced a narrow broker boundary through ADR-011, local `BrokerOrder` records, a simulated paper broker adapter, broker-linked fills, and CLI commands for submit/sync/inspection. It preserved the distinction between broker facts and internal trade meaning.
 
-The current post-Milestone-11 roadmap is staged: harden simulated paper execution first, then add a live Alpaca paper adapter, then add reconciliation, then expose read-only API/web visibility, and only later consider browser paper execution controls. Real-money execution remains a readiness gate, not a default numbered milestone.
+Milestone 12 hardened simulated paper execution with broker-order list/detail workflows, simulated cancel/reject outcomes, and clearer audit visibility.
+
+Milestone 13 added the Alpaca paper adapter behind the existing broker port, with vault-first and environment-fallback credentials for `ALPACA_API_KEY` and `ALPACA_SECRET_KEY`.
+
+The current post-Milestone-11 roadmap is now staged around future M14+ work: broker reconciliation and status sync next, then read-only API/web broker visibility, and only later browser paper execution controls. Real-money execution remains a readiness gate, not a default numbered milestone.
 
 ## External Product Assessment Notes
 
@@ -140,6 +144,8 @@ This page synthesizes:
 - [[milestone-10-secure-credentials]]
 - [[milestone-11-broker-boundary-and-paper-trading]]
 - [[post-milestone-11-roadmap]]
+- [[milestone-12-paper-execution-hardening]]
+- [[milestone-13-alpaca-paper-adapter]]
 
 ## Processing Notes
 
@@ -147,4 +153,4 @@ The raw brainstorm predates current project state. It should not supersede the c
 
 The promoted durable idea is the boundary, not the full V1-V7 sequence. The V1-V7 sequence remains long-term product direction until a later roadmap update accepts it.
 
-The post-Milestone-11 broker roadmap is more concrete than the older V1-V7 product sketch, but it is still a proposed staged direction unless and until the application repo accepts specific milestone issue maps.
+The post-Milestone-11 broker roadmap is more concrete than the older V1-V7 product sketch. Milestones 12 and 13 are now implemented; Milestone 14 and later remain proposed staged direction unless and until the application repo accepts specific milestone issue maps.
