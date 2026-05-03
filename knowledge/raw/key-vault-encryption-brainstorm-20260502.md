@@ -1,21 +1,27 @@
 ---
 title: Key Vault and Encryption Brainstorm
 type: raw
-status: brainstorm
-tags: [trading-system, security, api-keys, key-vault, encryption, milestone-9]
+status: processed
+tags: [trading-system, security, api-keys, key-vault, encryption, milestone-10]
 created: 2026-05-02
 ---
 
 # Key Vault and Encryption Brainstorm
 
-Raw brainstorm for local encrypted secret storage. Source material for a future ADR. Not yet accepted implementation scope.
+Raw brainstorm for local encrypted secret storage. This note has been processed into the Milestone 10 secure-credentials synthesis.
+
+## Processing Note
+
+Processed on 2026-05-03 after the application repo completed Milestone 10 Secure Credentials. The brainstorm was directionally accepted, but its milestone numbering is stale: key vault work landed as Milestone 10, and Alpaca/paper trading is now Milestone 11.
+
+The accepted implementation uses a Fernet-encrypted local vault, OS keychain-backed master key, CLI-only secret commands, vault-first resolution, and environment-variable fallback. It remains out of browser scope.
 
 ## Why This Matters Now
 
 The system currently has three active API keys:
 - `GROQ_API_KEY` — LLM provider (trade capture parsing)
 - `MASSIVE_API_KEY` — market data provider (daily OHLCV)
-- Future: Alpaca API key/secret (paper trading, Milestone 10)
+- Future: Alpaca API key/secret (paper trading, Milestone 11)
 
 These live in `.env` (Docker) and are manually set as environment variables for local CLI use. This is workable for a single developer but brittle — easy to accidentally commit, hard to rotate, and invisible to the application.
 
@@ -184,14 +190,14 @@ The secret resolution layer should detect when no vault file exists and fall dir
 
 ## Milestone Assignment
 
-**Milestone 9A: Local Key Vault ADR + Implementation**
+**Superseded by Milestone 10: Secure Credentials**
 
-Proposed sequence for Milestone 9:
-- 9A: Write ADR for key vault boundary → implement `local_secret_vault` library → wire into CLI secret resolution
-- 9B: Massive.com options chain data as a new snapshot type
-- 9C: Milestone 9 closeout
+Implemented sequence:
+- 10A: Local secret vault ADR
+- 10B: Vault library and CLI commands
+- 10C: Massive.com secret resolution
 
-Rationale: key vault before Alpaca (Milestone 10) because broker credentials are higher-stakes than market data API keys. Validate the vault on Groq + Massive keys first, then use it for Alpaca.
+Rationale: key vault before Alpaca (Milestone 11) because broker credentials are higher-stakes than market data API keys. Validate the vault on Massive keys first, then use the same boundary for future broker-paper-trading credentials.
 
 ---
 

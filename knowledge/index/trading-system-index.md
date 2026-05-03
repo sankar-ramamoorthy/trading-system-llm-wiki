@@ -4,7 +4,7 @@ type: index
 status: active
 tags: [trading-system, index]
 created: 2026-04-19
-updated: 2026-05-02
+updated: 2026-05-03
 ---
 
 # Trading System Knowledge Index
@@ -34,6 +34,9 @@ This index is the navigation entry point for the trading-system knowledge base.
 - [[milestone-6-market-data-provider-boundary]] - accepted ADR-007 boundary for prototype yfinance daily OHLCV snapshots
 - [[milestone-7-api-first-trade-capture-issue-map]] - issue map for the API-first trade-capture web product milestone
 - [[milestone-9-web-product-beyond-first-capture]] - proposed plan-centered web workbench slice after first trade capture
+- [[milestone-10-secure-credentials]] - completed local encrypted secret vault and CLI credential-resolution milestone
+- [[milestone-11-broker-boundary-and-paper-trading]] - completed broker execution boundary and simulated paper-execution slice
+- [[post-milestone-11-roadmap]] - proposed staged roadmap for paper hardening, Alpaca, reconciliation, API/web visibility, and browser controls
 - [[reusable-local-secret-vault-library]] - discussion note for a possible reusable local secret-vault library and future ADR
 - [[product-roadmap-and-learning-boundaries]] - near-term roadmap, long-term product direction, and deferred AI/RL boundary
 - [[application-project-structure]] - Python modular monolith structure and boundaries
@@ -133,3 +136,13 @@ Milestone 8 (Options Chain Ingestion) was implemented and processed into [[imple
 A detailed encryption and master-key brainstorm was captured in [[key-vault-encryption-brainstorm-20260502]]. It covers Fernet vs AES-GCM vs OS keychain vs Age encryption, master-key management options, secret resolution precedence, CLI commands, and Docker behavior. The current roadmap assigns key vault work to Milestone 10 Secure Credentials, after Milestone 9 web product depth.
 
 The raw Milestone 9 web product plan was processed into [[proposed-milestone-9-web-product-beyond-first-capture-20260502]] and promoted to [[milestone-9-web-product-beyond-first-capture]]. The promoted scope is a plan-centered browser workbench: saved plan list/detail, draft-plan approval, and metadata-only context attachment by copying existing snapshots to plans. It is planning material, not an implementation closeout.
+
+Application repo status on 2026-05-03 now marks Milestones 9 and 10 complete. Milestone 9 added browser plan list/detail, draft approval, and context attachment. Milestone 10 added ADR-010, local encrypted secret vault CLI commands, OS keychain-backed master-key storage, and vault-first Massive.com credential resolution. The key-vault brainstorm was processed into [[milestone-10-secure-credentials]] and marked stale where its milestone numbering differed from the accepted app roadmap.
+
+Milestone 11 is complete in the linked application repo. The roadmap direction for broker boundary and paper trading was implemented through ADR-011, core broker services, local `BrokerOrder` persistence, simulated paper broker execution, broker-linked fills, and CLI submit/sync/show commands. The durable boundary remains that broker facts are external execution facts while local records preserve internal trade meaning.
+
+The raw Proposed Milestone 11 plan was processed on 2026-05-03 into [[proposed-milestone-11-broker-boundary-paper-execution-20260503]] and used to update [[milestone-11-broker-boundary-and-paper-trading]]. That planned stance was later implemented: core services and CLI only, simulated paper broker first, Alpaca-ready port but no live Alpaca calls, existing local position required before broker fills can be imported, and API/web execution controls deferred.
+
+Follow-up on 2026-05-03 confirmed the ADR sequencing gap was resolved in the linked application repo. ADR-011 now exists, the Milestone 11 issue map marks 11A through 11E complete, and application `STATUS.md` records Milestone 11 complete with simulated CLI-only paper execution.
+
+The raw Post-Milestone 11 Higher-Level Roadmap note was processed on 2026-05-03 into [[post-milestone-11-higher-level-roadmap-20260503]] and promoted to [[post-milestone-11-roadmap]]. The staged direction is M12 paper execution hardening, M13 Alpaca paper adapter, M14 broker reconciliation and status sync, M15 API/web broker visibility, M16 browser paper execution controls, with real-money execution treated as a readiness gate rather than a default milestone.

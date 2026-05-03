@@ -4,7 +4,7 @@ type: project
 status: active
 tags: [trading-system, project, context]
 created: 2026-04-25
-updated: 2026-05-02
+updated: 2026-05-03
 ---
 
 # Project Brief
@@ -13,7 +13,7 @@ This file is the short current-context entrypoint for the trading-system LLM wik
 
 ## Current Phase
 
-Milestones 1 through 8 are complete. Milestone 9 Web Product Beyond First Capture is the active next slice.
+Milestones 1 through 10 are complete. Milestone 11 Broker Boundary and Paper Trading is the next planned slice.
 
 ## Active Focus
 
@@ -28,10 +28,9 @@ Milestones 1 through 8 are complete. Milestone 9 Web Product Beyond First Captur
 - Treat Milestone 7H Milestone Closeout as complete.
 - Milestone 7 is fully closed.
 - Treat Milestone 8 Options Chain Ingestion as complete.
-- Use Milestone 9 Web Product Beyond First Capture as the active next slice.
-- Milestone 9: Web product beyond first capture (list/detail views, plan approval, context from browser).
-- Milestone 10: Secure credentials (local key vault ADR + implementation).
-- Milestone 11: Broker boundary and paper trading (Alpaca).
+- Treat Milestone 9 Web Product Beyond First Capture as complete.
+- Treat Milestone 10 Secure Credentials as complete.
+- Milestone 11: Broker boundary and paper trading (existing approved `OrderIntent` to Alpaca paper adapter behind a provider-agnostic execution boundary).
 - See `DOCS/product-roadmap.md` for the accepted near-term sequence.
 - Preserve ADR-007 and ADR-009: market data provider boundaries for yfinance and Massive.com daily OHLCV snapshots.
 - Keep yfinance as the default provider and Massive.com as the first credentialed provider.
@@ -58,9 +57,9 @@ Milestones 1 through 8 are complete. Milestone 9 Web Product Beyond First Captur
 
 ## Open Questions
 
-- Milestone 9 has a proposed narrow implementation plan for web product depth. It still needs promotion into the application repo as an issue map or design document before coding starts.
-- Local encrypted API-key storage is a Milestone 10 candidate and needs a design discussion before it becomes an ADR or implementation slice.
-- A reusable local secret-vault library is plausible, but the first accepted shape should be library-first and small, not a full key-management product.
+- Milestone 11 needs an ADR and narrow issue map before implementation starts.
+- Broker-paper-trading work should preserve the source-of-truth boundary: broker facts are external execution facts, local JSON remains the source for internal trade records, and the trading system owns trade meaning.
+- A reusable local secret-vault library remains plausible beyond the app-specific Milestone 10 implementation, but the accepted app shape is already library-first and small.
 
 ## High-Priority Links
 
@@ -76,6 +75,8 @@ Milestones 1 through 8 are complete. Milestone 9 Web Product Beyond First Captur
 - [[milestone-6-market-data-provider-boundary]]
 - [[milestone-7-api-first-trade-capture-issue-map]]
 - [[milestone-9-web-product-beyond-first-capture]]
+- [[milestone-10-secure-credentials]]
+- [[milestone-11-broker-boundary-and-paper-trading]]
 - [[reusable-local-secret-vault-library]]
 - [[api-first-trade-capture-product-vision]]
 - [[application-repo-documentation-sources]]
