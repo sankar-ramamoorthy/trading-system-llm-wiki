@@ -4,7 +4,7 @@ type: topic
 status: active
 tags: [trading-system, roadmap, learning-systems, reinforcement-learning, product-boundaries]
 created: 2026-04-26
-updated: 2026-05-02
+updated: 2026-05-03
 ---
 
 # Product Roadmap And Learning Boundaries
@@ -26,7 +26,7 @@ The accepted near-term sequence has advanced through:
 4. Milestone 7: API-first trade capture workspace
 5. Milestone 8: options chain ingestion
 
-Milestones 3 through 8 are complete. Milestone 9 Web Product Beyond First Capture is the next planned slice.
+Milestones 3 through 11 are complete. Milestone 11 Broker Boundary and Paper Trading added the accepted broker execution boundary and simulated CLI-only paper execution.
 
 Milestone 4 added read-only market and context support while preserving the system as the canonical owner of trade meaning.
 
@@ -46,9 +46,13 @@ Milestone 6D is complete. Milestone 6 is closed with yfinance and Massive.com be
 
 ADR-008 has now been implemented through Milestone 7 as the local API-first trade capture workspace. Milestone 8 added options chain ingestion as the first market data depth extension.
 
-Milestone 9 should deepen the browser product without crossing into execution. The current proposed plan is a plan-centered local workbench: saved plan list/detail views, browser approval for draft plans, and metadata-only context attachment by copying existing snapshots to plans.
+Milestone 9 deepened the browser product without crossing into execution. It added saved plan list/detail views, browser approval for draft plans, and metadata-only context attachment by copying existing snapshots to plans.
 
-Milestone 10 is the current secure-credentials candidate. It should not be pulled into Milestone 9 web product depth.
+Milestone 10 added secure credentials for local CLI workflows: ADR-010, a Fernet-encrypted local secret vault, OS keychain-backed master-key storage, CLI secret commands, and vault-first credential resolution with environment fallback.
+
+Milestone 11 introduced a narrow broker boundary through ADR-011, local `BrokerOrder` records, a simulated paper broker adapter, broker-linked fills, and CLI commands for submit/sync/inspection. It preserved the distinction between broker facts and internal trade meaning.
+
+The current post-Milestone-11 roadmap is staged: harden simulated paper execution first, then add a live Alpaca paper adapter, then add reconciliation, then expose read-only API/web visibility, and only later consider browser paper execution controls. Real-money execution remains a readiness gate, not a default numbered milestone.
 
 ## External Product Assessment Notes
 
@@ -133,9 +137,14 @@ This page synthesizes:
 - [[milestone-6c-massive-daily-bars-implemented-20260429]]
 - [[milestone-6-closeout-20260429]]
 - [[milestone-9-web-product-beyond-first-capture]]
+- [[milestone-10-secure-credentials]]
+- [[milestone-11-broker-boundary-and-paper-trading]]
+- [[post-milestone-11-roadmap]]
 
 ## Processing Notes
 
 The raw brainstorm predates current project state. It should not supersede the current milestone pages.
 
 The promoted durable idea is the boundary, not the full V1-V7 sequence. The V1-V7 sequence remains long-term product direction until a later roadmap update accepts it.
+
+The post-Milestone-11 broker roadmap is more concrete than the older V1-V7 product sketch, but it is still a proposed staged direction unless and until the application repo accepts specific milestone issue maps.

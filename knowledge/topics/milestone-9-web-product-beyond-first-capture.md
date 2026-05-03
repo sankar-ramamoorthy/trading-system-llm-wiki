@@ -1,19 +1,19 @@
 ---
 title: Milestone 9 Web Product Beyond First Capture
 type: topic
-status: draft
+status: complete
 tags: [trading-system, milestone-9, web-ui, fastapi, react, trade-plans, market-context]
 created: 2026-05-02
-updated: 2026-05-02
+updated: 2026-05-03
 ---
 
 # Milestone 9 Web Product Beyond First Capture
 
-Milestone 9 is the next planned slice after completed Milestone 8 Options Chain Ingestion.
+Milestone 9 is complete in the application repo.
 
 The goal is to make the browser useful after the first trade capture is saved. The durable product direction is a plan-centered local workbench: saved plan list, plan detail, browser approval for draft plans, and browser attachment of existing market context snapshots.
 
-This is a planning page, not an implementation closeout.
+This page began as a planning page and now records the implemented Milestone 9 shape at a durable summary level.
 
 ## Product Shape
 
@@ -114,6 +114,41 @@ Browser approval means approve only. Deterministic rule evaluation remains a sep
 
 JSON persistence and existing service boundaries remain the active implementation foundation.
 
+## Implemented Result
+
+The application repo now has browser workbench navigation for Capture, Plans, and Context.
+
+Milestone 9 implemented:
+
+- saved plan list filtering and sorting
+- saved plan detail inspection with linked idea, thesis, and plan fields
+- browser approval for draft plans
+- market-context metadata listing
+- context attachment by copying an existing snapshot to a trade-plan target
+
+The FastAPI surface now includes:
+
+```text
+GET  /trade-plans
+GET  /trade-plans/{trade_plan_id}
+POST /trade-plans/{trade_plan_id}/approve
+GET  /market-context
+POST /market-context/{snapshot_id}/copy-to-target
+```
+
+Validation recorded on 2026-05-03:
+
+```text
+uv run pytest tests\test_api_trade_capture.py tests\test_api_trade_plans.py
+15 passed
+
+uv run pytest
+239 passed
+
+npm.cmd run build
+passed
+```
+
 ## Acceptance Direction
 
 Backend validation should prove:
@@ -140,7 +175,7 @@ Regression should include focused API/query/context tests plus the full applicat
 
 This page was promoted from [[proposed-milestone-9-web-product-beyond-first-capture-20260502]] and reconciled against the linked application repo roadmap and status on 2026-05-02.
 
-No contradiction was found with the application repo. The app repo currently treats Milestone 9 as the next planned slice, while this page records the narrower proposed plan-centered shape.
+On 2026-05-03, application repo `STATUS.md` and `DOCS/product-roadmap.md` mark Milestone 9 complete. The implemented shape matches the proposed plan-centered scope and did not cross into broker integration, execution, key-vault behavior, auth, or Postgres work.
 
 ## Related Pages
 
@@ -149,3 +184,4 @@ No contradiction was found with the application repo. The app repo currently tre
 - [[product-roadmap-and-learning-boundaries]]
 - [[milestone-7-api-first-trade-capture-issue-map]]
 - [[implemented-milestone-8-20260502]]
+- [[milestone-10-secure-credentials]]

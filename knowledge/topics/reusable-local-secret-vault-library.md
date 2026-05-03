@@ -1,16 +1,17 @@
 ---
 title: Reusable Local Secret Vault Library
 type: topic
-status: discussion
+status: partially-accepted
 tags: [trading-system, security, api-keys, key-vault, reusable-library, adr-candidate]
 created: 2026-05-02
+updated: 2026-05-03
 ---
 
 # Reusable Local Secret Vault Library
 
 This page captures a possible reusable library direction for local API-key and secret management.
 
-It is not an accepted trading-system architecture decision yet. It is source material for a possible ADR.
+This direction is now partially accepted in the trading-system application repo. Milestone 10 implemented a small app-local `local_secret_vault` library and ADR-010 accepted the local secret vault boundary. The broader idea of extracting the vault as a reusable cross-project package remains future work.
 
 ## Current Stance
 
@@ -82,11 +83,24 @@ Those can be separate adapters or later product decisions.
 - Do not store secrets in snapshots, logs, docs examples, tests, or API responses.
 - Treat master-key management as the real security boundary.
 
+## Accepted Application Shape
+
+Milestone 10 Secure Credentials accepted and implemented the first app-local version:
+
+- Fernet-encrypted local vault payload
+- OS keychain-backed master-key storage
+- `.trading-system/keys.enc` vault file
+- CLI-only secret management
+- vault-first, environment-fallback resolution
+- Massive.com provider credential resolution through the vault boundary
+
+See [[milestone-10-secure-credentials]].
+
 ## ADR Candidate
 
-A future ADR should decide:
+A future extraction ADR or design note should decide:
 
-- whether trading-system should adopt a reusable local secret-vault library
+- whether the app-local `local_secret_vault` should be extracted for reuse across projects
 - whether the library should be created outside the application repo or prototyped locally first
 - encryption approach
 - master-key naming and storage expectations
@@ -98,11 +112,11 @@ A future ADR should decide:
 
 ## Milestone Assignment
 
-Proposed as candidate scope for **Milestone 10: Secure Credentials**:
+Accepted and completed as **Milestone 10: Secure Credentials**:
 
-- Write an ADR for the key vault boundary.
-- Implement or adopt a small reusable vault library.
-- Wire vault-first, environment-fallback secret resolution into CLI/provider configuration.
+- ADR-010 records the key vault boundary.
+- A small app-local vault library was implemented.
+- Vault-first, environment-fallback secret resolution was wired into Massive.com provider configuration.
 
 Key vault work should land before Alpaca/paper trading (Milestone 11) so broker credentials (higher stakes) use the vault from day one.
 
