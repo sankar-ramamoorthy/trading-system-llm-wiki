@@ -36,7 +36,9 @@ This index is the navigation entry point for the trading-system knowledge base.
 - [[milestone-9-web-product-beyond-first-capture]] - proposed plan-centered web workbench slice after first trade capture
 - [[milestone-10-secure-credentials]] - completed local encrypted secret vault and CLI credential-resolution milestone
 - [[milestone-11-broker-boundary-and-paper-trading]] - completed broker execution boundary and simulated paper-execution slice
-- [[post-milestone-11-roadmap]] - proposed staged roadmap for paper hardening, Alpaca, reconciliation, API/web visibility, and browser controls
+- [[milestone-12-paper-execution-hardening]] - completed simulated paper execution hardening slice
+- [[milestone-13-alpaca-paper-adapter]] - completed Alpaca paper adapter slice behind the broker port
+- [[post-milestone-11-roadmap]] - staged roadmap for broker reconciliation, API/web visibility, browser controls, and real-money readiness
 - [[reusable-local-secret-vault-library]] - discussion note for a possible reusable local secret-vault library and future ADR
 - [[product-roadmap-and-learning-boundaries]] - near-term roadmap, long-term product direction, and deferred AI/RL boundary
 - [[application-project-structure]] - Python modular monolith structure and boundaries
@@ -145,4 +147,6 @@ The raw Proposed Milestone 11 plan was processed on 2026-05-03 into [[proposed-m
 
 Follow-up on 2026-05-03 confirmed the ADR sequencing gap was resolved in the linked application repo. ADR-011 now exists, the Milestone 11 issue map marks 11A through 11E complete, and application `STATUS.md` records Milestone 11 complete with simulated CLI-only paper execution.
 
-The raw Post-Milestone 11 Higher-Level Roadmap note was processed on 2026-05-03 into [[post-milestone-11-higher-level-roadmap-20260503]] and promoted to [[post-milestone-11-roadmap]]. The staged direction is M12 paper execution hardening, M13 Alpaca paper adapter, M14 broker reconciliation and status sync, M15 API/web broker visibility, M16 browser paper execution controls, with real-money execution treated as a readiness gate rather than a default milestone.
+The raw Post-Milestone 11 Higher-Level Roadmap note was processed on 2026-05-03 into [[post-milestone-11-higher-level-roadmap-20260503]] and promoted to [[post-milestone-11-roadmap]]. M12 paper execution hardening and M13 Alpaca paper adapter are complete. The staged direction is now M14 broker reconciliation and status sync, M15 API/web broker visibility, M16 browser paper execution controls, with real-money execution treated as a readiness gate rather than a default milestone.
+
+Milestones 12 and 13 are now complete in the linked application repo. Milestone 12 added broker-order query/list/detail hardening, simulated cancel/reject outcomes, and stronger CLI audit visibility with 264 full-suite tests passing. Milestone 13 added `AlpacaPaperBrokerClient`, `alpaca-py`, vault/env Alpaca credential resolution, `submit-paper-order --provider alpaca`, and Alpaca sync through existing CLI commands with 280 full-suite tests passing. The raw Milestone 13 implementation note was processed into [[implemented-milestone-13-alpaca-paper-adapter-20260503]] and promoted to [[milestone-13-alpaca-paper-adapter]].

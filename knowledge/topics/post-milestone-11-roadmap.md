@@ -14,15 +14,15 @@ Milestone 11 closed the first broker boundary with simulated paper execution thr
 The next broker-related work should move in controlled layers:
 
 ```text
-M12 paper execution hardening
-M13 Alpaca paper adapter
-M14 broker reconciliation and status sync
+M12 paper execution hardening - complete
+M13 Alpaca paper adapter - complete
+M14 broker reconciliation and status sync - next candidate
 M15 API/web broker visibility
 M16 browser paper execution controls
 real-money readiness gate
 ```
 
-This sequence is a proposed roadmap, not proof that these milestones are already accepted in the application repo.
+This sequence is partially implemented. Milestones 12 and 13 are complete in the application repo; Milestones 14 through 16 remain proposed staged direction until accepted through issue maps.
 
 ## Current Boundary
 
@@ -45,25 +45,25 @@ It deliberately did not add:
 - recommendations
 - full OMS behavior
 
-## Milestone 12 Candidate: Paper Execution Hardening
+## Milestone 12 Complete: Paper Execution Hardening
 
-Milestone 12 should make the simulated paper workflow easier to inspect and safer to operate before any external broker is added.
+Milestone 12 made the simulated paper workflow easier to inspect and safer to operate before any external broker was added.
 
-Likely direction:
+Implemented direction:
 
 - broker-order list/read models
 - clearer broker-order links in plan, position, and timeline views
 - lifecycle audit improvements for submitted, filled, canceled, rejected, and repeated sync cases
-- simulated cancellation/rejection support if needed
+- simulated cancellation/rejection support
 - CLI/core-services scope only
 
-Do not add Alpaca, API broker endpoints, or React broker controls in this slice.
+Milestone 12 did not add Alpaca, API broker endpoints, or React broker controls.
 
-## Milestone 13 Candidate: Alpaca Paper Adapter
+## Milestone 13 Complete: Alpaca Paper Adapter
 
-Milestone 13 can add live Alpaca paper trading behind the existing broker port.
+Milestone 13 added live Alpaca paper trading behind the existing broker port.
 
-Likely direction:
+Implemented direction:
 
 - Alpaca adapter implementing the accepted `BrokerClient` boundary
 - vault-first, environment-fallback credentials
@@ -71,6 +71,7 @@ Likely direction:
 - paper submission only from existing approved local `OrderIntent` plus open local `Position`
 - Alpaca order/fill state imported into local `BrokerOrder` and `Fill`
 - real-money execution blocked
+- CLI-only controls: `submit-paper-order --provider alpaca` and `sync-paper-order`
 
 Alpaca should conform to the local boundary; local domain records should not reshape themselves around Alpaca response objects.
 
@@ -129,8 +130,12 @@ Until then, all broker work remains paper-only and human-controlled.
 ## Source Notes
 
 - [[post-milestone-11-higher-level-roadmap-20260503]]
+- [[milestone-12-paper-execution-hardening]]
+- [[milestone-13-alpaca-paper-adapter]]
 - [[milestone-11-broker-boundary-and-paper-trading]]
 - Application repo `STATUS.md`
 - Application repo `PROJECT.md`
 - Application repo `DOCS/ADR/011-broker-execution-boundary.md`
 - Application repo `DOCS/milestone-11-issue-map.md`
+- Application repo `DOCS/milestone-12-issue-map.md`
+- Application repo `DOCS/milestone-13-issue-map.md`

@@ -13,7 +13,7 @@ This file is the short current-context entrypoint for the trading-system LLM wik
 
 ## Current Phase
 
-Milestones 1 through 10 are complete. Milestone 11 Broker Boundary and Paper Trading is the next planned slice.
+Milestones 1 through 13 are complete. Milestone 14 Broker Reconciliation And Status Sync is the next planned slice.
 
 ## Active Focus
 
@@ -30,7 +30,10 @@ Milestones 1 through 10 are complete. Milestone 11 Broker Boundary and Paper Tra
 - Treat Milestone 8 Options Chain Ingestion as complete.
 - Treat Milestone 9 Web Product Beyond First Capture as complete.
 - Treat Milestone 10 Secure Credentials as complete.
-- Milestone 11: Broker boundary and paper trading (existing approved `OrderIntent` to Alpaca paper adapter behind a provider-agnostic execution boundary).
+- Treat Milestone 11 Broker Boundary and Paper Trading as complete.
+- Treat Milestone 12 Paper Execution Hardening as complete.
+- Treat Milestone 13 Alpaca Paper Adapter as complete.
+- Milestone 14: broker reconciliation and status sync after live Alpaca paper submission.
 - See `DOCS/product-roadmap.md` for the accepted near-term sequence.
 - Preserve ADR-007 and ADR-009: market data provider boundaries for yfinance and Massive.com daily OHLCV snapshots.
 - Keep yfinance as the default provider and Massive.com as the first credentialed provider.
@@ -57,8 +60,8 @@ Milestones 1 through 10 are complete. Milestone 11 Broker Boundary and Paper Tra
 
 ## Open Questions
 
-- Milestone 11 needs an ADR and narrow issue map before implementation starts.
 - Broker-paper-trading work should preserve the source-of-truth boundary: broker facts are external execution facts, local JSON remains the source for internal trade records, and the trading system owns trade meaning.
+- Milestone 14 should focus on explicit reconciliation and mismatch reporting, not browser execution controls.
 - A reusable local secret-vault library remains plausible beyond the app-specific Milestone 10 implementation, but the accepted app shape is already library-first and small.
 
 ## High-Priority Links
@@ -77,6 +80,7 @@ Milestones 1 through 10 are complete. Milestone 11 Broker Boundary and Paper Tra
 - [[milestone-9-web-product-beyond-first-capture]]
 - [[milestone-10-secure-credentials]]
 - [[milestone-11-broker-boundary-and-paper-trading]]
+- [[post-milestone-11-roadmap]]
 - [[reusable-local-secret-vault-library]]
 - [[api-first-trade-capture-product-vision]]
 - [[application-repo-documentation-sources]]

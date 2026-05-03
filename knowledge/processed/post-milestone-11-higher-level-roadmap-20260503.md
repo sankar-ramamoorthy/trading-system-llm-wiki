@@ -33,6 +33,8 @@ All broker expansion should stay human-controlled, paper-only, and explicit unti
 
 ### Milestone 12: Paper Execution Hardening
 
+Status: complete in the application repo.
+
 Goal: make the simulated paper execution workflow easier to inspect, safer to operate, and harder to misuse.
 
 Likely scope:
@@ -43,9 +45,11 @@ Likely scope:
 - cancellation/rejection support for simulated paper orders if needed
 - core services and CLI only
 
-Milestone 12 should not add Alpaca, FastAPI broker endpoints, or React broker controls.
+Milestone 12 did not add Alpaca, FastAPI broker endpoints, or React broker controls.
 
 ### Milestone 13: Alpaca Paper Adapter
+
+Status: complete in the application repo.
 
 Goal: add live Alpaca paper-trading integration behind the existing broker port.
 
@@ -59,7 +63,7 @@ Likely scope:
 - real-money execution explicitly blocked
 - controls stay CLI-only unless a later milestone decides otherwise
 
-Alpaca should fit the accepted broker boundary rather than reshaping local domain records around Alpaca-specific API models.
+Alpaca fits the accepted broker boundary rather than reshaping local domain records around Alpaca-specific API models.
 
 ### Milestone 14: Broker Reconciliation And Status Sync
 
@@ -105,7 +109,7 @@ Browser execution controls have higher blast radius than CLI commands and should
 
 These remain deferred until explicitly accepted:
 
-- live Alpaca paper submission: Milestone 13 candidate
+- live Alpaca paper submission: implemented in Milestone 13 for paper-only CLI workflows
 - FastAPI broker controls: Milestone 15 or later candidate
 - React broker controls: Milestone 16 or later candidate
 - real-money trading: readiness gate, not a default numbered milestone
@@ -131,6 +135,8 @@ Until that gate is passed, broker work remains paper-only and human-controlled.
 ## Related Pages
 
 - [[post-milestone-11-roadmap]]
+- [[milestone-12-paper-execution-hardening]]
+- [[milestone-13-alpaca-paper-adapter]]
 - [[milestone-11-broker-boundary-and-paper-trading]]
 - [[product-roadmap-and-learning-boundaries]]
 - [[data-and-platform-strategy]]

@@ -1,3 +1,15 @@
+---
+title: Proposed Milestone 11 Plan
+type: raw-note
+status: processed
+tags: [trading-system, milestone-11, broker-boundary, paper-trading]
+created: 2026-05-03
+processed: 2026-05-03
+processed_to:
+  - knowledge/processed/proposed-milestone-11-broker-boundary-paper-execution-20260503.md
+  - knowledge/topics/milestone-11-broker-boundary-and-paper-trading.md
+---
+
  For CLI + API + web in one milestone: yes, it can be done as separate sequential issues, but it changes Milestone 11 from “broker boundary proof” into a
   product workflow milestone. The likely shape would be:
 
@@ -127,4 +139,4 @@
       - https://alpaca.markets/sdks/python/api_reference/trading/trading-client.html
       - https://alpaca.markets/sdks/python/api_reference/trading/orders.html
   - Future browser execution belongs in a later milestone after the broker boundary is proven through CLI.
-	
+
