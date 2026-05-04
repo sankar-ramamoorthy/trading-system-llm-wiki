@@ -4,7 +4,7 @@ type: project
 status: active
 tags: [trading-system, project, context]
 created: 2026-04-25
-updated: 2026-05-03
+updated: 2026-05-04
 ---
 
 # Project Brief
@@ -13,7 +13,7 @@ This file is the short current-context entrypoint for the trading-system LLM wik
 
 ## Current Phase
 
-Milestones 1 through 13 are complete. Milestone 14 Broker Reconciliation And Status Sync is the next planned slice.
+Milestones 1 through 15 are complete. The accepted next slice is Milestone 16 Finqual Fundamentals Provider.
 
 ## Active Focus
 
@@ -33,7 +33,10 @@ Milestones 1 through 13 are complete. Milestone 14 Broker Reconciliation And Sta
 - Treat Milestone 11 Broker Boundary and Paper Trading as complete.
 - Treat Milestone 12 Paper Execution Hardening as complete.
 - Treat Milestone 13 Alpaca Paper Adapter as complete.
-- Milestone 14: broker reconciliation and status sync after live Alpaca paper submission.
+- Treat Milestone 14 Broker Reconciliation And Status Sync as complete.
+- Treat Milestone 15 Alpaca Read-Only Market Data Provider as complete.
+- Treat Milestone 16 as the planned Finqual read-only fundamentals and ownership provider slice.
+- Treat broker UI expansion as later work: Milestone 17 read-only API/web broker visibility, then Milestone 18 browser paper execution controls.
 - See `DOCS/product-roadmap.md` for the accepted near-term sequence.
 - Preserve ADR-007 and ADR-009: market data provider boundaries for yfinance and Massive.com daily OHLCV snapshots.
 - Keep yfinance as the default provider and Massive.com as the first credentialed provider.
@@ -49,6 +52,9 @@ Milestones 1 through 13 are complete. Milestone 14 Broker Reconciliation And Sta
 - Do not let external market data become the source of truth for trade meaning.
 - Do not treat `yfinance` as production-grade market data infrastructure.
 - Do not expand provider work beyond the accepted daily OHLCV/advisory context boundary without a new explicit issue or ADR update.
+- Do not couple Alpaca market data provider work to Alpaca broker execution.
+- Do not treat Finqual fundamentals, insider transactions, or 13F snapshots as canonical trade meaning.
+- Do not add automatic provider fallback between yfinance, Massive.com, Alpaca, Finqual, or later providers.
 - Do not store API keys in snapshots, logs, docs examples, tests, or committed files.
 - Do not put API-key collection or key-vault management into the 7F browser trade-capture workspace.
 - Do not couple provider response objects or schemas to domain logic.
@@ -61,7 +67,7 @@ Milestones 1 through 13 are complete. Milestone 14 Broker Reconciliation And Sta
 ## Open Questions
 
 - Broker-paper-trading work should preserve the source-of-truth boundary: broker facts are external execution facts, local JSON remains the source for internal trade records, and the trading system owns trade meaning.
-- Milestone 14 should focus on explicit reconciliation and mismatch reporting, not browser execution controls.
+- Future broker visibility should build on explicit reconciliation and mismatch reporting, but it now follows the Alpaca and Finqual read-only provider milestones.
 - A reusable local secret-vault library remains plausible beyond the app-specific Milestone 10 implementation, but the accepted app shape is already library-first and small.
 
 ## High-Priority Links
@@ -80,6 +86,8 @@ Milestones 1 through 13 are complete. Milestone 14 Broker Reconciliation And Sta
 - [[milestone-9-web-product-beyond-first-capture]]
 - [[milestone-10-secure-credentials]]
 - [[milestone-11-broker-boundary-and-paper-trading]]
+- [[milestone-14-broker-reconciliation-and-status-sync]]
+- [[milestone-15-alpaca-read-only-market-data-provider]]
 - [[post-milestone-11-roadmap]]
 - [[reusable-local-secret-vault-library]]
 - [[api-first-trade-capture-product-vision]]

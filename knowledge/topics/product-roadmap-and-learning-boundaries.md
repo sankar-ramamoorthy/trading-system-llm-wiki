@@ -4,7 +4,7 @@ type: topic
 status: active
 tags: [trading-system, roadmap, learning-systems, reinforcement-learning, product-boundaries]
 created: 2026-04-26
-updated: 2026-05-03
+updated: 2026-05-04
 ---
 
 # Product Roadmap And Learning Boundaries
@@ -26,7 +26,7 @@ The accepted near-term sequence has advanced through:
 4. Milestone 7: API-first trade capture workspace
 5. Milestone 8: options chain ingestion
 
-Milestones 3 through 13 are complete. Milestone 13 added Alpaca paper trading behind the accepted broker execution boundary while keeping controls CLI-only.
+Milestones 3 through 15 are complete. Milestone 15 added Alpaca read-only market/options data behind the existing market-context boundary.
 
 Milestone 4 added read-only market and context support while preserving the system as the canonical owner of trade meaning.
 
@@ -56,7 +56,13 @@ Milestone 12 hardened simulated paper execution with broker-order list/detail wo
 
 Milestone 13 added the Alpaca paper adapter behind the existing broker port, with vault-first and environment-fallback credentials for `ALPACA_API_KEY` and `ALPACA_SECRET_KEY`.
 
-The current post-Milestone-11 roadmap is now staged around future M14+ work: broker reconciliation and status sync next, then read-only API/web broker visibility, and only later browser paper execution controls. Real-money execution remains a readiness gate, not a default numbered milestone.
+Milestone 14 added broker snapshots, batch sync, reconciliation reporting, and mismatch audit events without redefining local trade meaning.
+
+Milestone 15 added Alpaca read-only daily OHLCV and options-chain snapshots through `fetch-market-data --provider alpaca` and `fetch-options-chain --provider alpaca`. It keeps Alpaca market data separate from Alpaca broker execution, stores output only as `MarketContextSnapshot`, and avoids automatic fallback, live streaming, scheduled refresh, recommendations, AI interpretation, or trade mutation.
+
+The current accepted sequence now continues provider gaps before expanding broker UI: Milestone 16 Finqual read-only fundamentals and ownership provider, Milestone 17 read-only API/web broker visibility, and Milestone 18 human-controlled browser paper execution controls. Real-money execution remains a readiness gate, not a default numbered milestone.
+
+Milestone 16 should treat Finqual as advisory external context. Core financial statements come first; insider transactions and 13F snapshots are secondary or later shapes in the same milestone. `FINQUAL_API_KEY` is the future secret name, and output remains `MarketContextSnapshot` only.
 
 ## External Product Assessment Notes
 
@@ -146,6 +152,8 @@ This page synthesizes:
 - [[post-milestone-11-roadmap]]
 - [[milestone-12-paper-execution-hardening]]
 - [[milestone-13-alpaca-paper-adapter]]
+- [[milestone-14-broker-reconciliation-and-status-sync]]
+- [[milestone-15-alpaca-read-only-market-data-provider]]
 
 ## Processing Notes
 
@@ -153,4 +161,4 @@ The raw brainstorm predates current project state. It should not supersede the c
 
 The promoted durable idea is the boundary, not the full V1-V7 sequence. The V1-V7 sequence remains long-term product direction until a later roadmap update accepts it.
 
-The post-Milestone-11 broker roadmap is more concrete than the older V1-V7 product sketch. Milestones 12 and 13 are now implemented; Milestone 14 and later remain proposed staged direction unless and until the application repo accepts specific milestone issue maps.
+The post-Milestone-11 broker roadmap is more concrete than the older V1-V7 product sketch. Milestones 12 through 15 are now implemented. The accepted next order remains provider-focused before broker UI: M16 Finqual fundamentals, M17 API/web broker visibility, and M18 browser paper execution controls.
