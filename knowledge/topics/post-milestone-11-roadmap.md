@@ -18,13 +18,13 @@ M12 paper execution hardening - complete
 M13 Alpaca paper adapter - complete
 M14 broker reconciliation and status sync - complete
 M15 Alpaca read-only market data provider - complete
-M16 Finqual fundamentals provider
+M16 Finqual fundamentals provider - complete
 M17 API/web broker visibility
 M18 browser paper execution controls
 real-money readiness gate
 ```
 
-This sequence is partially implemented. Milestones 12 through 15 are complete in the application repo; Milestones 16 through 18 remain proposed staged direction until accepted through issue maps.
+This sequence is partially implemented. Milestones 12 through 16 are complete in the application repo; Milestones 17 and 18 remain proposed staged direction until accepted through issue maps.
 
 ## Current Boundary
 
@@ -111,18 +111,21 @@ Implemented direction:
 
 The promoted Milestone 15 page is [[milestone-15-alpaca-read-only-market-data-provider]].
 
-## Milestone 16 Candidate: Finqual Fundamentals Provider
+## Milestone 16 Complete: Finqual Fundamentals Provider
 
-Milestone 16 should introduce Finqual as a read-only fundamentals and ownership provider candidate.
+Milestone 16 introduced Finqual as a read-only fundamentals and ownership provider.
 
-Likely direction:
+Implemented direction:
 
-- future `FINQUAL_API_KEY` secret name
-- core financial statements first
-- insider transactions and 13F snapshots as secondary or later shapes in the same milestone
+- vault-first, environment-fallback credentials for `FINQUAL_API_KEY`
+- `fetch-financial-statement --provider finqual`
+- `fetch-insider-transactions --provider finqual`
+- `fetch-13f --provider finqual`
 - store all output only as `MarketContextSnapshot`
 - keep Finqual advisory and non-canonical
 - no automatic provider fallback, automated scoring, recommendations, AI interpretation, portfolio analytics, or trade mutation
+
+The promoted Milestone 16 page is [[milestone-16-finqual-fundamentals-provider]].
 
 ## Milestone 17 Candidate: API/Web Broker Visibility
 

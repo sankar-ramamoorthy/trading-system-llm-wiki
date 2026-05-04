@@ -40,7 +40,8 @@ This index is the navigation entry point for the trading-system knowledge base.
 - [[milestone-13-alpaca-paper-adapter]] - completed Alpaca paper adapter slice behind the broker port
 - [[milestone-14-broker-reconciliation-and-status-sync]] - completed explicit broker reconciliation and status-sync slice after Alpaca paper integration
 - [[milestone-15-alpaca-read-only-market-data-provider]] - completed Alpaca read-only daily OHLCV and options-chain provider slice
-- [[post-milestone-11-roadmap]] - staged roadmap now placing Alpaca and Finqual read-only providers before broker API/web visibility and browser controls
+- [[milestone-16-finqual-fundamentals-provider]] - completed Finqual financial statement, insider transaction, and 13F provider slice
+- [[post-milestone-11-roadmap]] - staged roadmap with Alpaca and Finqual providers complete before broker API/web visibility and browser controls
 - [[reusable-local-secret-vault-library]] - discussion note for a possible reusable local secret-vault library and future ADR
 - [[product-roadmap-and-learning-boundaries]] - near-term roadmap, long-term product direction, and deferred AI/RL boundary
 - [[application-project-structure]] - Python modular monolith structure and boundaries
@@ -160,3 +161,5 @@ Milestone 14 is now complete in the linked application repo. The implementation 
 Roadmap update on 2026-05-03 revised the next milestones after M14. M15 is now Alpaca Read-Only Market Data Provider using existing `ALPACA_API_KEY` and `ALPACA_SECRET_KEY` credentials for read-only market/options context only. M16 is now Finqual Fundamentals Provider using future `FINQUAL_API_KEY`, with core financial statements first and insider transactions/13F snapshots as secondary shapes. Broker visibility and browser paper controls move later to M17 and M18.
 
 Milestone 15 is now complete in the linked application repo. The implementation added Alpaca daily OHLCV and options-chain adapters behind the existing market data provider registry, exposed `fetch-market-data --provider alpaca` and `fetch-options-chain --provider alpaca`, stored output only as `MarketContextSnapshot`, and preserved the boundary between Alpaca market data and Alpaca broker execution. Validation recorded 27 focused M15/provider tests passing and 305 full-suite tests passing.
+
+Milestone 16 is now complete in the linked application repo. The implementation added Finqual financial statement, insider transaction, and 13F adapters behind the existing market-context boundary, exposed `fetch-financial-statement --provider finqual`, `fetch-insider-transactions --provider finqual`, and `fetch-13f --provider finqual`, stored output only as `MarketContextSnapshot`, and preserved the advisory/non-canonical provider boundary. Validation recorded 18 focused Finqual tests passing and 323 full-suite tests passing.

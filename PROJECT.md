@@ -13,7 +13,7 @@ This file is the short current-context entrypoint for the trading-system LLM wik
 
 ## Current Phase
 
-Milestones 1 through 15 are complete. The accepted next slice is Milestone 16 Finqual Fundamentals Provider.
+Milestones 1 through 16 are complete. The accepted next slice is Milestone 17 read-only API/web broker visibility.
 
 ## Active Focus
 
@@ -35,8 +35,8 @@ Milestones 1 through 15 are complete. The accepted next slice is Milestone 16 Fi
 - Treat Milestone 13 Alpaca Paper Adapter as complete.
 - Treat Milestone 14 Broker Reconciliation And Status Sync as complete.
 - Treat Milestone 15 Alpaca Read-Only Market Data Provider as complete.
-- Treat Milestone 16 as the planned Finqual read-only fundamentals and ownership provider slice.
-- Treat broker UI expansion as later work: Milestone 17 read-only API/web broker visibility, then Milestone 18 browser paper execution controls.
+- Treat Milestone 16 Finqual Fundamentals Provider as complete.
+- Treat broker UI expansion as current next work: Milestone 17 read-only API/web broker visibility, then Milestone 18 browser paper execution controls.
 - See `DOCS/product-roadmap.md` for the accepted near-term sequence.
 - Preserve ADR-007 and ADR-009: market data provider boundaries for yfinance and Massive.com daily OHLCV snapshots.
 - Keep yfinance as the default provider and Massive.com as the first credentialed provider.
@@ -88,6 +88,7 @@ Milestones 1 through 15 are complete. The accepted next slice is Milestone 16 Fi
 - [[milestone-11-broker-boundary-and-paper-trading]]
 - [[milestone-14-broker-reconciliation-and-status-sync]]
 - [[milestone-15-alpaca-read-only-market-data-provider]]
+- [[milestone-16-finqual-fundamentals-provider]]
 - [[post-milestone-11-roadmap]]
 - [[reusable-local-secret-vault-library]]
 - [[api-first-trade-capture-product-vision]]
