@@ -135,8 +135,12 @@ Likely direction:
 
 - read-only FastAPI endpoints for broker orders
 - broker order status and linked fills in web plan/position views
+- provider, provider order id, linked `OrderIntent`, linked `Position`, timestamps, and reconciliation/mismatch information
 - no browser submit/sync/cancel actions
+- no browser reconcile action
 - no autonomous execution or recommendations
+
+The promoted Milestone 17 planning page is [[milestone-17-api-web-broker-visibility]].
 
 ## Milestone 18 Candidate: Browser Paper Execution Controls
 
@@ -147,8 +151,11 @@ Likely direction:
 - explicit submit/sync controls in React
 - confirmation before paper submission
 - display linked order intent, position, provider, quantity, side, and order type before submit
+- only operate on existing approved local `OrderIntent` records
 - continued block on real-money execution
 - no generated recommendations or autonomous behavior
+
+The promoted Milestone 18 planning page is [[milestone-18-browser-paper-execution-controls]].
 
 ## Real-Money Gate
 
@@ -172,6 +179,8 @@ Until then, all broker work remains paper-only and human-controlled.
 - [[milestone-13-alpaca-paper-adapter]]
 - [[milestone-14-broker-reconciliation-and-status-sync]]
 - [[milestone-15-alpaca-read-only-market-data-provider]]
+- [[milestone-17-api-web-broker-visibility]]
+- [[milestone-18-browser-paper-execution-controls]]
 - [[milestone-11-broker-boundary-and-paper-trading]]
 - Application repo `STATUS.md`
 - Application repo `PROJECT.md`
