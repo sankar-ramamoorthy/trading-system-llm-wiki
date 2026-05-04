@@ -4,7 +4,7 @@ type: index
 status: active
 tags: [trading-system, index]
 created: 2026-04-19
-updated: 2026-05-03
+updated: 2026-05-04
 ---
 
 # Trading System Knowledge Index
@@ -38,7 +38,9 @@ This index is the navigation entry point for the trading-system knowledge base.
 - [[milestone-11-broker-boundary-and-paper-trading]] - completed broker execution boundary and simulated paper-execution slice
 - [[milestone-12-paper-execution-hardening]] - completed simulated paper execution hardening slice
 - [[milestone-13-alpaca-paper-adapter]] - completed Alpaca paper adapter slice behind the broker port
-- [[post-milestone-11-roadmap]] - staged roadmap for broker reconciliation, API/web visibility, browser controls, and real-money readiness
+- [[milestone-14-broker-reconciliation-and-status-sync]] - completed explicit broker reconciliation and status-sync slice after Alpaca paper integration
+- [[milestone-15-alpaca-read-only-market-data-provider]] - completed Alpaca read-only daily OHLCV and options-chain provider slice
+- [[post-milestone-11-roadmap]] - staged roadmap now placing Alpaca and Finqual read-only providers before broker API/web visibility and browser controls
 - [[reusable-local-secret-vault-library]] - discussion note for a possible reusable local secret-vault library and future ADR
 - [[product-roadmap-and-learning-boundaries]] - near-term roadmap, long-term product direction, and deferred AI/RL boundary
 - [[application-project-structure]] - Python modular monolith structure and boundaries
@@ -147,6 +149,14 @@ The raw Proposed Milestone 11 plan was processed on 2026-05-03 into [[proposed-m
 
 Follow-up on 2026-05-03 confirmed the ADR sequencing gap was resolved in the linked application repo. ADR-011 now exists, the Milestone 11 issue map marks 11A through 11E complete, and application `STATUS.md` records Milestone 11 complete with simulated CLI-only paper execution.
 
-The raw Post-Milestone 11 Higher-Level Roadmap note was processed on 2026-05-03 into [[post-milestone-11-higher-level-roadmap-20260503]] and promoted to [[post-milestone-11-roadmap]]. M12 paper execution hardening and M13 Alpaca paper adapter are complete. The staged direction is now M14 broker reconciliation and status sync, M15 API/web broker visibility, M16 browser paper execution controls, with real-money execution treated as a readiness gate rather than a default milestone.
+The raw Post-Milestone 11 Higher-Level Roadmap note was processed on 2026-05-03 into [[post-milestone-11-higher-level-roadmap-20260503]] and promoted to [[post-milestone-11-roadmap]]. M12 paper execution hardening, M13 Alpaca paper adapter, and M14 broker reconciliation and status sync are complete. That staged direction has now been revised so provider gaps come before broker UI: M15 Alpaca read-only market/options data provider, M16 Finqual fundamentals provider, M17 API/web broker visibility, and M18 browser paper execution controls. Real-money execution remains a readiness gate rather than a default milestone.
 
 Milestones 12 and 13 are now complete in the linked application repo. Milestone 12 added broker-order query/list/detail hardening, simulated cancel/reject outcomes, and stronger CLI audit visibility with 264 full-suite tests passing. Milestone 13 added `AlpacaPaperBrokerClient`, `alpaca-py`, vault/env Alpaca credential resolution, `submit-paper-order --provider alpaca`, and Alpaca sync through existing CLI commands with 280 full-suite tests passing. The raw Milestone 13 implementation note was processed into [[implemented-milestone-13-alpaca-paper-adapter-20260503]] and promoted to [[milestone-13-alpaca-paper-adapter]].
+
+The raw Milestone 14 broker reconciliation plan was processed on 2026-05-03 into [[proposed-milestone-14-broker-reconciliation-status-sync-20260503]] and promoted to [[milestone-14-broker-reconciliation-and-status-sync]]. The proposed scope is CLI-only explicit broker reconciliation after Alpaca paper integration: remote order snapshots behind the broker port, Alpaca order listing inside infrastructure, batch sync, idempotent fill import, mismatch reporting, and no broker-driven rewriting of local trade meaning.
+
+Milestone 14 is now complete in the linked application repo. The implementation added `BrokerOrderSnapshot`, Alpaca remote order listing, `BrokerReconciliationService`, `sync-broker-orders --provider alpaca`, `reconcile-broker-orders --provider alpaca`, sync/mismatch audit events, and report-only broker-only remote order handling. Validation recorded 51 focused broker/CLI tests passing and 287 full-suite tests passing.
+
+Roadmap update on 2026-05-03 revised the next milestones after M14. M15 is now Alpaca Read-Only Market Data Provider using existing `ALPACA_API_KEY` and `ALPACA_SECRET_KEY` credentials for read-only market/options context only. M16 is now Finqual Fundamentals Provider using future `FINQUAL_API_KEY`, with core financial statements first and insider transactions/13F snapshots as secondary shapes. Broker visibility and browser paper controls move later to M17 and M18.
+
+Milestone 15 is now complete in the linked application repo. The implementation added Alpaca daily OHLCV and options-chain adapters behind the existing market data provider registry, exposed `fetch-market-data --provider alpaca` and `fetch-options-chain --provider alpaca`, stored output only as `MarketContextSnapshot`, and preserved the boundary between Alpaca market data and Alpaca broker execution. Validation recorded 27 focused M15/provider tests passing and 305 full-suite tests passing.

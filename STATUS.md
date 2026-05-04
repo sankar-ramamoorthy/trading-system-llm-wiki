@@ -62,6 +62,7 @@ For trading-system milestone focus, use [PROJECT.md](PROJECT.md). For agent oper
 - Processed the initial Milestone 8 scope notes and later roadmap snapshot on 2026-05-02. Reconciled the sequence to M8 Options Chain Ingestion, M9 Web Product Beyond First Capture, M10 Secure Credentials, and M11 Broker Boundary and Paper Trading.
 - Processed the Milestone 8 implementation note on 2026-05-02. Updated canonical pages to mark options chain ingestion complete and Milestone 9 as the next active slice.
 - Processed the raw Milestone 9 web product plan on 2026-05-02. Promoted a plan-centered browser workbench scope into a canonical topic page and archived the cleaned source note under `knowledge/processed/`.
+- Mirrored Milestone 15 completion on 2026-05-04. Added the Alpaca read-only market data provider topic and updated project, roadmap, status, and index pages.
 
 ## Next Maintenance Candidates
 
