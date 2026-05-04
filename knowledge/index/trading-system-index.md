@@ -41,6 +41,8 @@ This index is the navigation entry point for the trading-system knowledge base.
 - [[milestone-14-broker-reconciliation-and-status-sync]] - completed explicit broker reconciliation and status-sync slice after Alpaca paper integration
 - [[milestone-15-alpaca-read-only-market-data-provider]] - completed Alpaca read-only daily OHLCV and options-chain provider slice
 - [[milestone-16-finqual-fundamentals-provider]] - completed Finqual financial statement, insider transaction, and 13F provider slice
+- [[milestone-17-api-web-broker-visibility]] - proposed read-only API/web broker visibility without browser broker mutations
+- [[milestone-18-browser-paper-execution-controls]] - proposed human-controlled browser paper execution controls after read-only visibility
 - [[post-milestone-11-roadmap]] - staged roadmap with Alpaca and Finqual providers complete before broker API/web visibility and browser controls
 - [[reusable-local-secret-vault-library]] - discussion note for a possible reusable local secret-vault library and future ADR
 - [[product-roadmap-and-learning-boundaries]] - near-term roadmap, long-term product direction, and deferred AI/RL boundary
@@ -163,3 +165,5 @@ Roadmap update on 2026-05-03 revised the next milestones after M14. M15 is now A
 Milestone 15 is now complete in the linked application repo. The implementation added Alpaca daily OHLCV and options-chain adapters behind the existing market data provider registry, exposed `fetch-market-data --provider alpaca` and `fetch-options-chain --provider alpaca`, stored output only as `MarketContextSnapshot`, and preserved the boundary between Alpaca market data and Alpaca broker execution. Validation recorded 27 focused M15/provider tests passing and 305 full-suite tests passing.
 
 Milestone 16 is now complete in the linked application repo. The implementation added Finqual financial statement, insider transaction, and 13F adapters behind the existing market-context boundary, exposed `fetch-financial-statement --provider finqual`, `fetch-insider-transactions --provider finqual`, and `fetch-13f --provider finqual`, stored output only as `MarketContextSnapshot`, and preserved the advisory/non-canonical provider boundary. Validation recorded 18 focused Finqual tests passing and 323 full-suite tests passing.
+
+The raw high-level Milestone 17 and Milestone 18 note was processed on 2026-05-04 into [[high-level-milestone-17-and-milestone-18-20260504]] and promoted to [[milestone-17-api-web-broker-visibility]] plus [[milestone-18-browser-paper-execution-controls]]. The durable split is that M17 is browser/API visibility only with no broker mutations, while M18 can add human-confirmed paper execution controls. Across both, `BrokerOrder` and `Fill` stay the local audit records, broker data remains external execution fact, and browser controls must not create trade meaning or recommendations.

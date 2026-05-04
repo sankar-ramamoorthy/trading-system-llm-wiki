@@ -89,6 +89,8 @@ Milestones 1 through 16 are complete. The accepted next slice is Milestone 17 re
 - [[milestone-14-broker-reconciliation-and-status-sync]]
 - [[milestone-15-alpaca-read-only-market-data-provider]]
 - [[milestone-16-finqual-fundamentals-provider]]
+- [[milestone-17-api-web-broker-visibility]]
+- [[milestone-18-browser-paper-execution-controls]]
 - [[post-milestone-11-roadmap]]
 - [[reusable-local-secret-vault-library]]
 - [[api-first-trade-capture-product-vision]]
