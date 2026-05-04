@@ -9,9 +9,9 @@ updated: 2026-05-04
 
 # Application Implementation Status
 
-The application repository has completed Milestones 1 through 15. Milestone 15 Alpaca Read-Only Market Data Provider added Alpaca daily OHLCV and options-chain ingestion behind the existing market-context boundary.
+The application repository has completed Milestones 1 through 16. Milestone 16 Finqual Fundamentals Provider added read-only financial statement, insider transaction, and 13F holdings ingestion behind the existing market-context boundary.
 
-The accepted next sequence is Milestone 16 Finqual Fundamentals Provider, Milestone 17 read-only API/web broker visibility, and Milestone 18 human-controlled browser paper execution controls.
+The accepted next sequence is Milestone 17 read-only API/web broker visibility and Milestone 18 human-controlled browser paper execution controls.
 
 Application repo:
 
@@ -44,7 +44,7 @@ Observed from processed issue notes, raw notes captured through 2026-05-02, appl
 - Milestone 13 is complete with `AlpacaPaperBrokerClient`, vault-first `ALPACA_API_KEY` and `ALPACA_SECRET_KEY` resolution, `submit-paper-order --provider alpaca`, and Alpaca sync into local `BrokerOrder` and `Fill` records.
 - Milestone 14 is complete with `BrokerOrderSnapshot`, Alpaca remote order listing, `BrokerReconciliationService`, `sync-broker-orders --provider alpaca`, `reconcile-broker-orders --provider alpaca`, and sync/mismatch audit events.
 - Milestone 15 is complete with Alpaca read-only daily OHLCV and options-chain snapshots stored only as `MarketContextSnapshot`.
-- Milestone 16 is planned as Finqual read-only fundamentals and ownership context, with core financial statements first and insider transactions/13F snapshots as secondary shapes.
+- Milestone 16 is complete with Finqual read-only financial statement, insider transaction, and 13F holdings snapshots stored only as `MarketContextSnapshot`.
 
 ## Completed Milestone 1
 
@@ -290,7 +290,7 @@ Application repo roadmap docs and status dated 2026-05-03 now define the accepte
 - Milestone 13: Alpaca paper adapter, complete
 - Milestone 14: broker reconciliation and status sync, complete
 - Milestone 15: Alpaca read-only market data provider, complete
-- Milestone 16: Finqual fundamentals provider, planned
+- Milestone 16: Finqual fundamentals provider, complete
 - Milestone 17: read-only API/web broker visibility, deferred
 - Milestone 18: browser paper execution controls, deferred
 
@@ -331,7 +331,7 @@ Current synthesis:
 - Milestone 13 is complete
 - Milestone 14 is complete
 - Milestone 15 is complete
-- Milestone 16 is planned next
+- Milestone 16 is complete
 
 Milestone 2 is complete because its roadmap criteria are satisfied in the repo:
 
@@ -349,7 +349,7 @@ Milestone 5 is complete because the app repo now supports creation-time review t
 
 Milestone 6 is complete. Milestone 6A is complete because the first yfinance daily OHLCV snapshot slice is implemented, documented, and validated. Milestone 6B Issue 1 is complete because provider-backed source selection now goes through an explicit registry while preserving yfinance behavior. Milestone 6C Issue 1 is complete because ADR-009 records the Massive.com provider boundary. Milestone 6C Issue 2 is complete because Massive.com daily bars are implemented behind the provider registry. Milestone 6D closes the milestone with the provider boundary proven by two providers and 177 full-suite tests passing.
 
-Milestone 7 is complete. 7A is complete because the app repo now has a Dockerized FastAPI/Vite runtime skeleton with health checks and host Ollama placeholders. 7B is complete because seeded symbol/playbook lookup is available through service and API boundaries. 7C is complete because the service-layer editable trade-capture draft contract now defines draft sections, required and optional fields, stable issue paths, missing/ambiguous issue reporting, and save-readiness checks. 7D is complete because the app repo now has a parser port, parser error boundary, fake parser, LiteLLM-backed Ollama adapter, strict extraction prompt, JSON response validation, and mapping into the 7C draft contract. 7E is complete because the app repo now exposes parse, save, and saved-result retrieval endpoints over the parser, draft, reference lookup, planning, query, and local JSON repository boundaries. 7F is complete because the frontend now provides the browser trade-capture workspace over the 7E API. 7G is complete because the Docker/API acceptance run validated the full parse→edit→save→persist workflow, confirmed local JSON persistence of linked TradeIdea/TradeThesis/TradePlan records, verified all error paths, and passed 216 tests. 7H is complete because the milestone closeout document, README web section, and final validation are all recorded. Milestone 7 is fully closed. Milestone 8 is complete because yfinance and Massive.com options chain adapters were implemented, the `fetch-options-chain` CLI command was added, and 233 tests passed. Milestone 9 is complete because the browser now supports saved plan list/detail, draft approval, and metadata-only context attachment. Milestone 10 is complete because the app repo accepted ADR-010, added the encrypted local secret vault and CLI secret commands, and moved Massive.com credential lookup behind vault-first resolution. Milestone 11 is complete because the app repo accepted ADR-011, implemented a provider-agnostic broker execution port, added local `BrokerOrder` persistence, implemented simulated paper broker execution, linked broker-imported fills to local records, exposed CLI commands for submit/sync/show, and recorded 257 full-suite tests passing. Milestone 12 is complete because broker-order query/list/detail workflows, simulated cancellation/rejection, and audit visibility hardening landed with 264 full-suite tests passing. Milestone 13 is complete because Alpaca paper trading was added behind the existing broker port, CLI provider selection and sync were wired, simulated behavior remained intact, and 280 full-suite tests passed. Milestone 14 is complete because broker snapshots, batch sync, reconciliation reporting, and mismatch audit events landed with 287 full-suite tests passing. Milestone 15 is complete because Alpaca daily OHLCV and options-chain provider adapters were added behind existing CLI/context boundaries, with 305 full-suite tests passing. Milestone 16 follows as Finqual read-only fundamentals and ownership provider work.
+Milestone 7 is complete. 7A is complete because the app repo now has a Dockerized FastAPI/Vite runtime skeleton with health checks and host Ollama placeholders. 7B is complete because seeded symbol/playbook lookup is available through service and API boundaries. 7C is complete because the service-layer editable trade-capture draft contract now defines draft sections, required and optional fields, stable issue paths, missing/ambiguous issue reporting, and save-readiness checks. 7D is complete because the app repo now has a parser port, parser error boundary, fake parser, LiteLLM-backed Ollama adapter, strict extraction prompt, JSON response validation, and mapping into the 7C draft contract. 7E is complete because the app repo now exposes parse, save, and saved-result retrieval endpoints over the parser, draft, reference lookup, planning, query, and local JSON repository boundaries. 7F is complete because the frontend now provides the browser trade-capture workspace over the 7E API. 7G is complete because the Docker/API acceptance run validated the full parse→edit→save→persist workflow, confirmed local JSON persistence of linked TradeIdea/TradeThesis/TradePlan records, verified all error paths, and passed 216 tests. 7H is complete because the milestone closeout document, README web section, and final validation are all recorded. Milestone 7 is fully closed. Milestone 8 is complete because yfinance and Massive.com options chain adapters were implemented, the `fetch-options-chain` CLI command was added, and 233 tests passed. Milestone 9 is complete because the browser now supports saved plan list/detail, draft approval, and metadata-only context attachment. Milestone 10 is complete because the app repo accepted ADR-010, added the encrypted local secret vault and CLI secret commands, and moved Massive.com credential lookup behind vault-first resolution. Milestone 11 is complete because the app repo accepted ADR-011, implemented a provider-agnostic broker execution port, added local `BrokerOrder` persistence, implemented simulated paper broker execution, linked broker-imported fills to local records, exposed CLI commands for submit/sync/show, and recorded 257 full-suite tests passing. Milestone 12 is complete because broker-order query/list/detail workflows, simulated cancellation/rejection, and audit visibility hardening landed with 264 full-suite tests passing. Milestone 13 is complete because Alpaca paper trading was added behind the existing broker port, CLI provider selection and sync were wired, simulated behavior remained intact, and 280 full-suite tests passed. Milestone 14 is complete because broker snapshots, batch sync, reconciliation reporting, and mismatch audit events landed with 287 full-suite tests passing. Milestone 15 is complete because Alpaca daily OHLCV and options-chain provider adapters were added behind existing CLI/context boundaries, with 305 full-suite tests passing. Milestone 16 is complete because Finqual financial statement, insider transaction, and 13F provider adapters were added behind existing CLI/context boundaries, with 323 full-suite tests passing.
 
 ## Verified Milestone 7C Completion
 
@@ -608,7 +608,7 @@ Milestone 15 implemented Alpaca read-only market/options data:
 - vault-first, environment-fallback credentials for `ALPACA_API_KEY` and `ALPACA_SECRET_KEY`
 - output stored only as `MarketContextSnapshot`
 
-Milestone 16 is the next planned Finqual read-only fundamentals and ownership provider. Both M15 and M16 keep output advisory and non-canonical.
+Milestone 16 implemented Finqual read-only fundamentals and ownership context. Both M15 and M16 keep output advisory and non-canonical.
 
 Related pages: [[milestone-9-web-product-beyond-first-capture]], [[milestone-10-secure-credentials]], [[milestone-11-broker-boundary-and-paper-trading]], [[milestone-12-paper-execution-hardening]], [[milestone-13-alpaca-paper-adapter]], [[milestone-14-broker-reconciliation-and-status-sync]], and [[milestone-15-alpaca-read-only-market-data-provider]].
 
